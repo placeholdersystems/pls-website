@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage — Placeholder Systems™</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+.divider { border: 0; height: 0.5px; background: rgba(255,255,255,0.07); }
+.section-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; margin-bottom: 24px; text-align: center; }
+
+/* ── BRAND ── */
+:root {
+  --brand-pink: #FF06B5;
+  --brand-orange: #ff6b35;
+  --brand-gradient: linear-gradient(135deg, var(--brand-pink), var(--brand-orange));
+}
+
+/* ── HERO (unchanged) ── */
+.hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 24px; text-align: center; }
+.hero-inner { width: 100%; max-width: 600px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.1); border: 0.5px solid rgba(255,107,53,0.35); border-radius: 999px; padding: 5px 14px; margin-bottom: 32px; }
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; background: #FF6B35; flex-shrink: 0; }
+.badge span { color: #FF6B35; font-size: 12px; font-weight: 400; letter-spacing: 0.02em; }
+.headline { font-size: clamp(38px, 8vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px; }
+.static { display: block; }
+.cycle-slot { display: block; position: relative; text-align: center; }
+.cycle-ghost { visibility: hidden; display: inline-block; }
+.cycle-word { position: absolute; top: 0; left: 0; right: 0; text-align: center; opacity: 0; transform: translateY(40px); transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s cubic-bezier(0.16,1,0.3,1); color: #fff; pointer-events: none; }
+.cycle-word.orange { color: #FF6B35; }
+.cycle-word.active { opacity: 1; transform: translateY(0); }
+.cycle-word.exit   { opacity: 0; transform: translateY(-40px); }
+.hero-desc { color: rgba(255,255,255,0.35); font-size: 15px; line-height: 1.7; max-width: 360px; margin: 0 auto; }
+
+/* ── TWO-COL OPSTAT + STATS ── */
+.two-col-section { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 60px 32px; max-width: 1100px; margin: 0 auto; box-sizing: border-box; }
+.two-col-section .col { padding: 0 24px; }
+.two-col-section .col:first-child { border-right: 0.5px solid rgba(255,255,255,0.07); padding-left: 0; }
+.two-col-section .col:last-child  { padding-right: 0; }
+.info-pill { background: #111; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; text-align: center; }
+.pill-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; margin-bottom: 6px; }
+.pill-value { font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.9); }
+#pld-time-display { font-size: 46px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
+#pld-time-toggle { display: block; margin: 12px auto 28px; padding: 8px 18px; background: transparent; color: rgba(255,255,255,0.5); border: 0.5px solid rgba(255,255,255,0.18); border-radius: 6px; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif; transition: border-color 0.2s, color 0.2s; }
+#pld-time-toggle:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.9); }
+.opstat-bar-container { position: relative; height: 84px; display: flex; align-items: center; margin-bottom: 44px; padding: 0 2px; }
+.opstat-bar-line { position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: rgba(255,255,255,0.07); transform: translateY(-50%); border-radius: 2px; z-index: 1; }
+.opstat-bar-squares { display: flex; justify-content: space-between; position: relative; z-index: 3; width: 100%; }
+.opstat-square { width: 38px; height: 38px; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 15px; font-family: 'Inter', sans-serif; color: #fff; z-index: 4; position: relative; transition: transform 0.3s; cursor: default; user-select: none; flex-shrink: 0; }
+.opstat-square.glow { transform: scale(1.18); box-shadow: 0 0 16px 4px rgba(255,255,255,0.2); }
+.sq-5 { background: #00cc44; color: #000; } .sq-4 { background: #378ADD; } .sq-3 { background: #FFD700; color: #000; } .sq-2 { background: #FF6B35; } .sq-1 { background: #ff0000; } .sq-0 { background: rgba(255,255,255,0.14); }
+.half-tick { position: absolute; width: 2px; height: 10px; background: rgba(255,255,255,0.12); border-radius: 1px; transform: translate(-50%,-50%); top: 50%; z-index: 2; }
+.opstat-indicator { position: absolute; width: 48px; height: 28px; background: #fff; text-align: center; color: #000; font-weight: 700; font-size: 13px; font-family: 'Inter', sans-serif; line-height: 28px; transform: translateX(-50%); z-index: 5; border-radius: 5px; transition: left 0.5s cubic-bezier(0.4,0,0.2,1), top 0.3s; pointer-events: none; }
+.opstat-indicator::after { content: ""; position: absolute; bottom: -8px; left: 50%; margin-left: -6px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid #fff; }
+.opstat-info-box { border-radius: 12px; padding: 22px 18px; text-align: center; margin-bottom: 14px; transition: background 0.5s; }
+#opstatLevelLabel { font-size: 32px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.02em; }
+#opstatNameLabel  { font-size: 14px; font-weight: 600; margin: 0 0 5px; letter-spacing: 0.06em; }
+#opstatDescLabel  { font-size: 13px; margin: 0; opacity: 0.75; }
+.last-fetched-pill { background: #111; border: 0.5px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 9px 14px; text-align: center; margin-top: 10px; }
+#lastUpdated { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
+#fetchStatus { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 8px; min-height: 1em; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.stat-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 18px 14px; text-align: center; }
+.s-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.32); letter-spacing: 0.08em; margin-bottom: 8px; }
+.s-value { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
+.s-sub   { font-size: 12px; color: rgba(255,255,255,0.26); margin-top: 6px; }
+.s-value.accent { color: var(--brand-pink); } .s-value.blue { color: #378ADD; }
+.counters-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.counter-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 18px 14px; text-align: center; }
+.site-tag { display: inline-block; background: rgba(255,6,181,0.12); border: 0.5px solid rgba(255,6,181,0.3); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: var(--brand-pink); margin-bottom: 8px; letter-spacing: 0.05em; font-weight: 600; }
+.site-tag.dr { background: rgba(55,138,221,0.1); border-color: rgba(55,138,221,0.22); color: #378ADD; }
+.site-tag.steak { background: rgba(63,227,115,0.1); border-color: rgba(63,227,115,0.22); color: #3fe373; }
+.site-tag.instmsg { background: rgba(255,180,0,0.1); border-color: rgba(255,180,0,0.22); color: #FFB400; }
+.c-label { font-size: 11px; color: rgba(255,255,255,0.32); letter-spacing: 0.08em; margin-bottom: 6px; }
+.c-value { font-size: 34px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
+.c-sub   { font-size: 12px; color: rgba(255,255,255,0.26); margin-top: 6px; }
+
+/* ── ABOUT US (rebuilt) ── */
+.about-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 90px 32px; }
+.about-intro { max-width: 720px; margin: 0 auto 64px; text-align: center; }
+.mission-heading { font-size: clamp(34px, 5vw, 52px); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; color: #fff; margin-bottom: 24px; }
+.mission-heading span {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.mission-body { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 16px; }
+.mission-body:last-child { margin-bottom: 0; }
+.mission-body strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+.about-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 64px; }
+.about-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.09); border-radius: 16px; padding: 28px 22px; position: relative; overflow: hidden; }
+.about-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--brand-gradient);
+}
+.about-card-title { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em; margin-bottom: 14px; }
+.about-card-body { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.75; }
+.about-card-body p { margin-bottom: 4px; }
+.about-card-body p:last-child { margin-bottom: 0; }
+.about-card-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--brand-orange); text-decoration: none; }
+
+.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 48px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+.about-footer-text { text-align: left; }
+.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 680px) {
+  .two-col-section { grid-template-columns: 1fr; padding: 40px 20px; }
+  .two-col-section .col:first-child { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,0.07); padding-bottom: 40px; padding-left: 0; }
+  .two-col-section .col { padding: 24px 0 0; }
+  .about-section { padding: 60px 20px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-footer { flex-direction: column; text-align: center; }
+  .about-footer-text { text-align: center; }
+}
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  /* Add scroll snapping to body */
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+/* Update Hero Section for snap alignment */
+.hero-section {
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+/* Update About Section */
+.about-section {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 60px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+/* Update Operations & Stats Section */
+.two-col-section {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center; /* Centers content vertically within the full page */
+  gap: 0;
+  padding: 60px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <div class="badge"><div class="badge-dot"></div><span>v0.5.2</span></div>
+    <h1 class="headline">
+      <span class="static">Entertainment,</span>
+      <span class="cycle-slot">
+        <span class="cycle-ghost">at Placeholder Systems.™</span>
+        <span class="cycle-word"        data-index="0">Redefined.</span>
+        <span class="cycle-word"        data-index="1">Unbound.</span>
+        <span class="cycle-word"        data-index="2">Perfected.</span>
+        <span class="cycle-word orange" data-index="3">at Placeholder Systems.™</span>
+      </span>
+    </h1>
+    <p class="hero-desc">↓ Scroll down to learn more. ↓</p>
+  </div>
+</section>
+<section class="about-section">
+  <p class="section-label">ABT US</p>
+
+  <div class="about-intro">
+    <h2 class="mission-heading">A technology-based<br><span>passion project.</span></h2>
+    <p class="mission-body">Welcome! We're a small organization dedicated to building independent entertainment services, run as a part-time passion project in our spare time.</p>
+    <p class="mission-body">We're currently working on <strong>a few projects</strong> including a gaming and cinema platform, simulated online casino (no real money), and an instant messaging platform.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <p class="about-card-title">Regions</p>
+      <div class="about-card-body">
+        <p>Singapore (Headquarters)</p>
+        <p>United States</p>
+      </div>
+    </div>
+
+    <div class="about-card">
+      <p class="about-card-title">Operational Hours</p>
+      <div class="about-card-body">
+        <p>UTC+8 (SGT)</p>
+        <p>Weekdays — 7:00am to 10:00pm</p>
+        <p>Weekends — 10:00am to 10:00pm</p>
+      </div>
+    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">View current OPSTAT →</a>
+    </div>
+
+    <div class="about-card">
+      <p class="about-card-title">Projects</p>
+      <div class="about-card-body">
+          <p>Colourfull</p>
+          <p>Steak</p>
+        <p>Digital Repository...</p>
+        
+        
+      </div>
+      <a class="about-card-cta" href="#projects">View All Projects →</a>
+    </div>
+
+    <div class="about-card">
+      <p class="about-card-title">Now Hiring</p>
+      <div class="about-card-body">
+        <p>Marketing: social media, graphic design</p>
+        <p>Development: HTML, Google Apps Script</p>
+      </div>
+      <a class="about-card-cta" href="#join">Apply on Join Us →</a>
+    </div>
+  </div>
+
+ 
+
+<div class="divider"></div>
+
+<!-- OPSTAT | STATISTICS -->
+<div class="two-col-section">
+  <div class="col" id="opstat" style="scroll-margin-top: 40px;">
+    <p class="section-label">OPS INFO</p>
+    <div class="info-pill" style="margin-bottom:8px;">
+      <p class="pill-label">CURRENT TIME (UTC+8)</p>
+      <div id="pld-date-display" class="pill-value"></div>
+    </div>
+    <div class="info-pill" style="margin-bottom:0;">
+      <div id="pld-time-display"></div>
+    </div>
+    <button id="pld-time-toggle">Toggle 24h / AM–PM</button>
+    <div class="opstat-bar-container">
+      <div class="opstat-bar-line"></div>
+      <div id="half-ticks"></div>
+      <div class="opstat-bar-squares">
+        <div class="opstat-square sq-5" data-band="5">5</div>
+        <div class="opstat-square sq-4" data-band="4">4</div>
+        <div class="opstat-square sq-3" data-band="3">3</div>
+        <div class="opstat-square sq-2" data-band="2">2</div>
+        <div class="opstat-square sq-1" data-band="1">1</div>
+        <div class="opstat-square sq-0" data-band="0">0</div>
+      </div>
+      <div id="opstat-indicator" class="opstat-indicator">—</div>
+    </div>
+    <div id="opstatInfoBox" class="opstat-info-box" style="background:rgba(255,255,255,0.06)">
+      <p id="opstatLevelLabel" style="color:#fff">—</p>
+      <p id="opstatNameLabel"  style="color:rgba(255,255,255,0.45)">Loading…</p>
+      <p id="opstatDescLabel"  style="color:rgba(255,255,255,0.3)"></p>
+    </div>
+    <div class="last-fetched-pill">
+      <p class="pill-label">LAST FETCHED</p>
+      <p id="lastUpdated">—</p>
+    </div>
+    <p id="fetchStatus"></p>
+  </div>
+
+  <div class="col">
+    <p class="section-label">STATS</p>
+    <div class="stats-grid">
+      <div class="stat-card"><p class="s-label">DATE ESTABLISHED</p><p class="s-value" id="est-date">—</p><p class="s-sub" id="est-year"></p></div>
+      <div class="stat-card"><p class="s-label">UPTIME RELIABILITY</p><p class="s-value accent" id="uptime-val">—</p><p class="s-sub">last 90 days</p></div>
+      <div class="stat-card"><p class="s-label">MEMBER COUNT</p><p class="s-value blue" id="member-count">—</p><p class="s-sub">registered members</p></div>
+      <div class="stat-card"><p class="s-label">DAYS ACTIVE</p><p class="s-value" id="days-active">—</p><p class="s-sub">and counting</p></div>
+    </div>
+    <div class="counters-row">
+      <div class="counter-card"><div class="site-tag">This Site</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s1">—</p><p class="c-sub">lifetime visits</p></div>
+      <div class="counter-card"><div class="site-tag dr">Digital Repository</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s2">—</p><p class="c-sub">lifetime visits</p></div>
+       <div class="counter-card"><div class="site-tag steak">Steak</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s3">—</p><p class="c-sub">lifetime visits</p></div>
+        <div class="counter-card"><div class="site-tag instmsg">[nothing here yet]</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s4">—</p><p class="c-sub">lifetime visits</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+ <div class="about-footer">
+    <img src="https://github.com/placeholdersystems/image-assets/blob/main/pls-logo.png?raw=true"
+         alt="Placeholder Systems Logo" />
+    <div class="about-footer-text">
+      <p class="org-name">Placeholder Systems™</p>
+      <p class="org-tagline">Entertainment, at Placeholder Systems.™</p>
+    </div>
+  </div>
+
+<!-- ABOUT US (rebuilt: full-width intro + card grid + footer strip) -->
+
+</section>
+
+<script>
+const ESTABLISHED            = "2025-09-23";
+const UPTIME_PCT             = 99.9;
+const MEMBER_COUNT           = "—";
+const OPSTAT_API             = "https://script.google.com/macros/s/AKfycbwENqiIDpeiFs7-eYIi1EAW4dkPeGgK2ha3hR0zEWU3J_Jy6T9T6R7Zywu_kt6KuN_8Bw/exec";
+const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
+const COUNTER_SITE2_READONLY = "https://script.google.com/macros/s/AKfycbyXFTcX7kalhx2KhbYbf23SySEwn2FJdWu8OX9dX6r_hLoq1MBiMzVZ0vB8IP7ZG--x/exec";
+const COUNTER_SITE3_READONLY = "https://script.google.com/macros/s/AKfycbzcgak-fj_XaxruiCBBxPpNeI3eUi19ZYkmVBzum0OWglolceDTCbpsxyIS0pZ9e-G70g/exec";
+
+/* Cycling text */
+const words = document.querySelectorAll('.cycle-word');
+let cwCur = 0, cwDone = false;
+words[0].classList.add('active');
+function cwAdvance() {
+  if (cwDone) return;
+  words[cwCur].classList.remove('active');
+  words[cwCur].classList.add('exit');
+  const prev = cwCur++;
+  words[cwCur].classList.add('active');
+  setTimeout(() => words[prev].classList.remove('exit'), 600);
+  if (cwCur < words.length - 1) setTimeout(cwAdvance, 1800);
+  else cwDone = true;
+}
+setTimeout(cwAdvance, 1800);
+
+/* Clock */
+let is24h = false;
+function updateClock() {
+  const now = new Date();
+  document.getElementById("pld-date-display").textContent = now.toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric", timeZone:"Asia/Singapore" });
+  document.getElementById("pld-time-display").textContent = now.toLocaleTimeString("en-US", { hour:"numeric", minute:"numeric", second:"numeric", timeZone:"Asia/Singapore", hourCycle: is24h ? "h23" : "h12" });
+}
+document.getElementById("pld-time-toggle").addEventListener("click", () => { is24h = !is24h; updateClock(); });
+updateClock(); setInterval(updateClock, 1000);
+
+/* OPSTAT */
+const LEVELS = {
+  5:{name:"NORMAL",desc:"Response Time: 2 Days.",bg:"#00cc44"},
+  4:{name:"MODERATE",desc:"Response Time: 14 Days.",bg:"#378ADD"},
+  3:{name:"MEDIUM",desc:"Response Time: 14 Days.",bg:"#FFD700"},
+  2:{name:"HIGH",desc:"Operations Temporarily Suspended.",bg:"#FF6B35"},
+  1:{name:"CRITICAL",desc:"Operations Temporarily Suspended.",bg:"#ff0000"},
+  0:{name:"NOT OPERATIONAL",desc:"Closed.",bg:"rgba(255,255,255,0.1)"}
+};
+let currentOPSTAT = null;
+function renderOPSTAT(value) {
+  currentOPSTAT = parseFloat(value);
+  const band = Math.min(5, Math.max(0, Math.floor(currentOPSTAT)));
+  const info = LEVELS[band]; const isDark = band === 0;
+  const squares = document.querySelectorAll('.opstat-square');
+  document.getElementById("opstatInfoBox").style.background = info.bg;
+  document.getElementById("opstatLevelLabel").style.color = isDark ? "#fff" : "#000";
+  document.getElementById("opstatNameLabel").style.color  = isDark ? "rgba(255,255,255,0.55)" : "#000";
+  document.getElementById("opstatDescLabel").style.color  = isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.7)";
+  document.getElementById("opstatLevelLabel").textContent = "OPSTAT " + currentOPSTAT.toFixed(1);
+  document.getElementById("opstatNameLabel").textContent  = info.name;
+  document.getElementById("opstatDescLabel").textContent  = info.desc;
+  squares.forEach(sq => { sq.classList.remove("glow"); if (parseInt(sq.dataset.band) === band) sq.classList.add("glow"); });
+  positionIndicator(currentOPSTAT, squares);
+  document.getElementById("lastUpdated").textContent = new Date().toLocaleTimeString("en-US", { timeZone:"Asia/Singapore", hour12:true });
+  document.getElementById("fetchStatus").textContent = "";
+}
+function positionIndicator(value, squares) {
+  const ind = document.getElementById("opstat-indicator");
+  const con = document.querySelector(".opstat-bar-container");
+  const arr = Array.from(squares); const cR = con.getBoundingClientRect();
+  const fc = arr[0].getBoundingClientRect().left + arr[0].getBoundingClientRect().width/2 - cR.left;
+  const lc = arr[arr.length-1].getBoundingClientRect().left + arr[arr.length-1].getBoundingClientRect().width/2 - cR.left;
+  ind.style.left = (fc + ((5-value)/5)*(lc-fc)) + "px";
+  ind.style.top  = (arr[0].getBoundingClientRect().top - cR.top - (ind.offsetHeight||26) - 8) + "px";
+  ind.textContent = value.toFixed(1);
+  const tc = document.getElementById("half-ticks"); tc.innerHTML = "";
+  for (let i = 0; i < arr.length-1; i++) {
+    const lR = arr[i].getBoundingClientRect(), rR = arr[i+1].getBoundingClientRect();
+    const t = document.createElement("div"); t.className = "half-tick";
+    t.style.left = ((lR.left+lR.width/2+rR.left+rR.width/2)/2 - cR.left) + "px";
+    tc.appendChild(t);
+  }
+}
+async function fetchOPSTAT() {
+  try {
+    const data = await fetch(OPSTAT_API).then(r => r.json());
+    if (data.value !== undefined) renderOPSTAT(data.value);
+    else document.getElementById("fetchStatus").textContent = "Unexpected data format.";
+  } catch { document.getElementById("fetchStatus").textContent = "Could not reach server. Retrying…"; }
+}
+fetchOPSTAT(); setInterval(fetchOPSTAT, 30000);
+window.addEventListener("resize", () => { if (currentOPSTAT !== null) renderOPSTAT(currentOPSTAT); });
+
+/* Stats */
+const estDate = new Date(ESTABLISHED);
+document.getElementById("est-date").textContent     = estDate.toLocaleDateString("en-US", { month:"short", day:"numeric" });
+document.getElementById("est-year").textContent     = estDate.getFullYear();
+document.getElementById("uptime-val").textContent   = UPTIME_PCT.toFixed(1) + "%";
+document.getElementById("member-count").textContent = MEMBER_COUNT;
+document.getElementById("days-active").textContent  = Math.floor((new Date()-estDate)/86400000).toLocaleString();
+
+fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
+fetch(COUNTER_SITE2_READONLY).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s2").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s2").textContent="—";});
+fetch(COUNTER_SITE3_READONLY).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s3").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s3").textContent="—";});
+function scrollToOpstat(e) {
+  e.preventDefault();
+  document.getElementById("opstat").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+</script>
+</body>
+</html>
