@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal — Placeholder Systems™</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink: #FF06B5;
+            --orange: #FF6B35;
+            --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .page-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 28px 100px;
+        }
+
+        /* ── HEADER (unchanged — hero block) ── */
+
+        .page-header {
+            margin-bottom: 52px;
+            padding-bottom: 28px;
+            border-bottom: 0.5px solid rgba(255,255,255,0.07);
+        }
+
+        .page-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+
+        .page-title span {
+            color: #FF6B35;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.75;
+            max-width: 520px;
+        }
+
+        /* ── CONTENT (bumped) ── */
+
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+        }
+
+        .contact-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-label {
+            font-size: 17px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 10px;
+        }
+
+        .social-card {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255,255,255,0.03) 0%,
+                    rgba(255,255,255,0.015) 100%
+                ),
+                #0B0B0B;
+
+            border: 0.5px solid rgba(255,255,255,0.08);
+            padding: 28px;
+            border-radius: 18px;
+
+            text-decoration: none;
+
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            min-height: 168px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .social-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(255,6,181,0.16),
+                    transparent 45%
+                );
+
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .social-card:hover {
+            transform: translateY(-4px);
+
+            border-color: rgba(255,6,181,0.45);
+
+            box-shadow:
+                0 0 0 1px rgba(255,6,181,0.06),
+                0 12px 40px rgba(255,6,181,0.08);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255,255,255,0.05) 0%,
+                    rgba(255,255,255,0.02) 100%
+                ),
+                #101010;
+        }
+
+        .social-name {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+            line-height: 1.35;
+        }
+
+        .social-name::after {
+            content: "↗";
+            font-size: 22px;
+            color: var(--pink);
+            transition: transform 0.25s ease;
+        }
+
+        .social-card:hover .social-name::after {
+            transform: translate(3px, -3px);
+        }
+
+        .social-desc {
+            position: relative;
+            z-index: 1;
+
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.7;
+
+            max-width: 260px;
+        }
+
+      
+
+
+        /* ── STANDARD ABOUT-FOOTER ── */
+        .divider { width: 100%; height: 1px; background: rgba(255,255,255,0.07); margin-top: 80px; }
+        .about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 48px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+        .about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+        .about-footer-text { text-align: left; }
+        .org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+
+        @media (max-width: 680px) {
+            .about-footer { flex-direction: column; text-align: center; }
+            .about-footer-text { text-align: center; }
+        }
+
+        @media (max-width: 600px) {
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-wrap {
+                padding: 40px 20px 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+    <div class="page-header">
+        <p class="page-eyebrow">Legal</p>
+        <h1 class="page-title">Legal <span>Information</span></h1>
+        <p class="page-subtitle">
+            Access our legal documents, policies and licensing information.
+        </p>
+    </div>
+
+    <div class="contact-section">
+
+        <div class="contact-group">
+
+            
+
+            <div class="social-grid">
+
+            
+                
+
+                <a href="https://sites.google.com/view/placeholdersystems/legal/privacy-policy"
+                   class="social-card"
+                   target="_blank">
+
+                    <span class="social-name">
+                        Privacy Policy
+                    </span>
+
+                    <span class="social-desc">
+                        Information regarding data collection,
+                        usage, storage and privacy practices.
+                    </span>
+
+                </a>
+
+                <a href="https://sites.google.com/view/placeholdersystems/legal/terms-of-service"
+                   class="social-card"
+                   target="_blank">
+
+                    <span class="social-name">
+                        Terms of Service
+                    </span>
+
+                    <span class="social-desc">
+                        Terms governing access, usage,
+                        membership and platform services.
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+   
+    <div class="divider"></div>
+    <div class="about-footer">
+        <img src="https://github.com/placeholdersystems/image-assets/blob/main/pls-logo.png?raw=true"
+             alt="Placeholder Systems Logo" />
+        <div class="about-footer-text">
+            <p class="org-name">Placeholder Systems™</p>
+            <p class="org-tagline">Entertainment, at Placeholder Systems.™</p>
+        </div>
+    </div>
+
+</div>
+<script>
+    
+    // do not touch this counter; this is for analytics only. do not modify any component.
+    //DEFAULT VC TEMPLATE!!!!
+    const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
+    fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
+</script>
+</body>
+</html>
