@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Placeholder Systems™</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange: #FF6B35;
+  --pink: #FF06B5;
+  --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
+  --orange-dim: rgba(255,107,53,0.15);
+  --orange-border: rgba(255,107,53,0.3);
+  --white: #fff;
+  --bg: #0a0a0a;
+  --card-bg: #111;
+  --card-border: rgba(255,255,255,0.08);
+  --text-muted: rgba(255,255,255,0.4);
+  --text-dim: rgba(255,255,255,0.22);
+  --font: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.page-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 56px 24px 100px;
+}
+
+/* ── HEADER (hero — unchanged) ── */
+.page-header {
+  margin-bottom: 48px;
+}
+
+.back-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orange-dim);
+  border: 0.5px solid var(--orange-border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 10px;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.page-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.page-title { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.1; margin-bottom: 14px; }
+
+.page-title span { color: var(--orange); }
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+  height: 0.5px;
+  background: var(--card-border);
+  margin-bottom: 32px;
+}
+
+/* ── PROJECT LIST ── */
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+  align-items: stretch; /* Updated from align-items: start */
+}
+
+/* ── PROJECT CARD ── */
+.project-card {
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.project-card:hover {
+  border-color: rgba(255,6,181,0.25);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* ── IMAGE AREA ── */
+.project-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+  border-right: 0.5px solid var(--card-border);
+  overflow: hidden;
+  padding: 18px;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.project-img img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-img .img-placeholder {
+  font-size: 32px;
+  color: rgba(255,255,255,0.08);
+  user-select: none;
+  letter-spacing: -0.05em;
+  text-align: center;
+}
+
+/* ── BODY ── */
+.project-body {
+  padding: 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-name {
+  font-size: clamp(21px, 3vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.project-name .unnamed {
+  color: rgba(255,255,255,0.35);
+  font-weight: 400;
+}
+
+/* ── STATUS BADGE ── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.status-badge.unavailable {
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.35);
+}
+
+.status-badge.available {
+  background: rgba(0,204,68,0.1);
+  border: 0.5px solid rgba(0,204,68,0.3);
+  color: #00cc44;
+}
+.status-badge.partly-available {
+  background: rgba(255, 179, 2, 0.12);
+  border: 0.5px solid rgba(255, 179, 2, 0.35);
+  color: #ffb302;
+}
+
+.status-badge.coming-soon {
+  background: rgba(255,0,0,0.12);
+  border: 0.5px solid rgba(255,0,0,0.35);
+  color: #ff3b30;
+}
+
+/* ── TAGLINE ── */
+.project-tagline {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+
+/* ── STATUS NOTE ── */
+.project-status-note {
+  font-size: 15px;
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+/* ── BULLETS ── */
+.project-bullets {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-bullets li {
+  font-size: 16px;
+  color: var(--text-muted);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.project-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.project-bullets li .sub-bullets {
+  list-style: none;
+  padding: 0;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.project-bullets li .sub-bullets li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.3);
+  padding-left: 14px;
+}
+
+.project-bullets li .sub-bullets li::before {
+  content: "·";
+  color: rgba(255,107,53,0.4);
+}
+
+.project-bullets a {
+  color: var(--orange) !important;
+  font-weight: 600;
+}
+
+/* ── CTA ── */
+.project-cta {
+  font-size: 16px;
+  font-weight: 700;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.02em;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+/* ── DEV NOTES ── */
+.dev-notes-section {
+  margin-top: 48px;
+  border-top: 0.5px solid var(--card-border);
+  padding-top: 28px;
+}
+
+.dev-notes-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.dev-notes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── FOOTER ── */
+.page-footer {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 0.5px solid var(--card-border);
+  text-align: center;
+}
+
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.footer-org {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 5px;
+}
+
+.footer-note {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+/* ── BUTTON STYLES ── */
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+/* Active Button State */
+.project-btn.active {
+  background: var(--orange-dim);
+  border: 1px solid var(--orange-border);
+  color: var(--orange);
+  cursor: pointer;
+}
+
+.project-btn.active:hover {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+
+/* Disabled / Placeholder State */
+.project-btn.disabled {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.25);
+  cursor: not-allowed;
+  pointer-events: none; /* Disables click events */
+  user-select: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 580px) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+  .project-img {
+    min-height: 140px;
+    border-right: none;
+    border-bottom: 0.5px solid var(--card-border);
+  }
+}
+.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 48px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+.about-footer-text { text-align: left; }
+.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+/* Full-Width Button Container */
+.project-card-action {
+  margin-top: auto;
+  padding-top: 16px;
+  width: 100%;
+}
+
+/* Base Button Styling */
+.project-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Active Button (Play / Test) */
+.project-btn.active {
+  background: var(--brand-gradient);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 6, 181, 0.2);
+}
+
+.project-btn.active:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 6, 181, 0.3);
+}
+
+/* Disabled/Placeholder Button */
+.project-btn.disabled {
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.25);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- PAGE HEADER (hero — unchanged) -->
+  <div class="page-header">
+    <p class="page-eyebrow">What we're building</p>
+    <h1 class="page-title">Our <span>Projects</span></h1>
+    <p class="page-subtitle">All projects planned or developed by Placeholder Systems™. More projects are planned for the future, please check back regularly for updates.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       PROJECTS LIST
+       Each .project-card = one project tile.
+       To add a new project, copy one full .project-card block,
+       paste it after the last one, and fill in the fields.
+
+       IMAGE BOX NOTE: .project-img is a fixed, centered box.
+       Any <img> dropped in — portrait, landscape, square, huge,
+       or tiny — will scale down to fit entirely inside the box
+       (object-fit: contain + max-width/max-height: 100%). It is
+       never cropped and never upscaled past its real size.
+  ══════════════════════════════════════════════════════════ -->
+  <div class="projects-list">
+
+
+    <!-- ╔══════════════════════════════════════════╗
+         ║  PROJECT CARD — Colourfull               ║
+         ╚══════════════════════════════════════════╝ -->
+    <div class="project-card">
+      <div class="project-img">
+        <img src="https://github.com/placeholdersystems/image-assets/blob/main/cfl-logo.png?raw=true" alt="Colourfull Logo" />
+      </div>
+      <div class="project-body">
+        <div class="project-top">
+          <h2 class="project-name">Colourfull™</h2>
+          <div class="status-badge available">AVAILABLE</div>
+        </div>
+        <p class="project-tagline">A visual colour-matching game.</p>
+        <p class="project-status-note">Dark mode coming soon!</p>
+        <ul class="project-bullets">
+          <li>Match the given colour based on hue, saturation etc.</li>
+          <li>Colourblindness assistance provided.</li>
+         
+        </ul>
+        <p class="project-cta">→ Free to play!</p>
+        <div class="project-card-action">
+  <a href="https://sites.google.com/view/pls-colourfull" class="project-btn active" target="_blank" rel="noopener">
+    click to play →
+  </a>
+</div>
+        
+      </div>
+    </div>
+
+    <!-- ╔══════════════════════════════════════════╗
+         ║  PROJECT CARD — Steak                    ║
+         ╚══════════════════════════════════════════╝ -->
+    <div class="project-card">
+      <div class="project-img">
+        <img src="https://github.com/placeholdersystems/image-assets/blob/main/stk-logo.png?raw=true" alt="Steak Logo" />
+      </div>
+      <div class="project-body">
+        <div class="project-top">
+          <h2 class="project-name">Steak™</h2>
+          <div class="status-badge available">AVAILABLE</div>
+        </div>
+        <p class="project-tagline">Gambling simulator based on Stake.</p>
+        <p class="project-status-note">More games to be added in the near future.</p>
+        <ul class="project-bullets">
+          <li>No real money involved.</li>
+          <li>Accounts that save balance/stats etc.</li>
+         
+        </ul>
+        <p class="project-cta">→ Free to play!</p>
+        <div class="project-card-action">
+  <a href="https://sites.google.com/view/pls-steak" class="project-btn active" target="_blank" rel="noopener">
+    click to play →
+  </a>
+</div>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════════════════════════════╗
+         ║  PROJECT CARD — Digital Repository       ║
+         ╚══════════════════════════════════════════╝ -->
+    <div class="project-card">
+
+      <!-- IMAGE AREA
+           Option A — Real image:
+             <img src="YOUR_IMAGE_URL_OR_BASE64" alt="Project name" />
+           Option B — Placeholder (default, no image needed):
+             Leave the <span class="img-placeholder"> block as-is.
+           Either way, the box centers the content and never
+           crops or clips an image, regardless of its dimensions.
+      -->
+      <div class="project-img">
+        <!-- REPLACE: add <img src="..."> here when ready -->
+        <img src="https://github.com/placeholdersystems/image-assets/blob/main/dgr-logo.png?raw=true" alt="Digital Repository Logo" />
+      </div>
+
+      <div class="project-body">
+
+        <div class="project-top">
+          <!-- PROJECT NAME — append status in parens if needed -->
+          <h2 class="project-name">Digital Repository™</h2>
+
+          <!-- STATUS BADGE
+               Classes: status-badge unavailable | available | partly-available | coming-soon
+               Text options: UNAVAILABLE / AVAILABLE / PARTIALLY AVAILABLE / WORKING ON IT
+          -->
+          <div class="status-badge partly-available">PARTIALLY AVAILABLE</div>
+        </div>
+
+        <!-- TAGLINE — short description, non-italic, prominent -->
+        <p class="project-tagline">A website with Games, TV shows &amp; Movies.</p>
+
+        <!-- STATUS NOTE — shown in a subtle code-style box.
+             Delete this element if not needed. -->
+        <p class="project-status-note">Only Live TV is available for testing.</p>
+
+        <!-- BULLETS — add/remove <li> as needed.
+             For sub-bullets, nest a <ul class="sub-bullets"> inside a <li>.
+             Delete the <ul> entirely if no bullets needed.
+        -->
+        <ul class="project-bullets">
+          <li>Many movies, TV shows/channels and games available (soon).
+            <ul class="sub-bullets">
+              <li>Including many popular titles!</li>
+            </ul>
+          </li>
+          <li>Content can be added at request.</li>
+         
+        </ul>
+
+        <!-- CTA / PRICING — monospace tag at the bottom -->
+        <p class="project-cta">→ Free to test; will remain free</p>
+         <div class="project-card-action">
+  <a href="https://sites.google.com/view/pls-digitalrepository/live-tv" class="project-btn active" target="_blank" rel="noopener">
+    click to test live tv →
+  </a>
+</div>
+
+      </div>
+    </div>
+
+
+    <!-- ╔═══════════════════════════════════════════════════╗
+         ║  PROJECT CARD — Placeholder Intelligence         ║
+         ╚═══════════════════════════════════════════════════╝ -->
+    <div class="project-card">
+
+      <div class="project-img">
+        <!-- REPLACE: add <img src="..."> here when ready -->
+        <span class="img-placeholder">Logo not designed.</span>
+      </div>
+
+      <div class="project-body">
+
+        <div class="project-top">
+          <h2 class="project-name">Placeholder Intelligence™</h2>
+          <div class="status-badge coming-soon">WORKING ON IT</div>
+        </div>
+
+        <p class="project-tagline">Experimental multi-purpose AI tool.</p>
+
+        <p class="project-status-note">Will release after Digital Repository's full release. Will be free and hosted on the DR site.</p>
+
+        <ul class="project-bullets">
+          <li>AI Chat, Roleplay and Image Generation</li>
+        </ul>
+
+        <p class="project-cta">→ Releasing after DGR</p>
+        <div class="project-card-action">
+  <button class="project-btn disabled" disabled>
+    Coming Soon
+  </button>
+</div>
+
+      </div>
+    </div>
+ <div class="project-card">
+
+      <div class="project-img">
+        <!-- REPLACE: add <img src="..."> here when ready -->
+        <span class="img-placeholder">Logo not designed.</span>
+      </div>
+
+      <div class="project-body">
+
+        <div class="project-top">
+          <h2 class="project-name">Project A <span class="unnamed">(Un-named)</span></h2>
+          <div class="status-badge coming-soon">WORKING ON IT</div>
+        </div>
+
+        <p class="project-tagline">Instant messaging platform</p>
+
+        <p class="project-status-note">Planning and ideation in progress.</p>
+
+        <ul class="project-bullets">
+          <li>Live chat with other users in a group.</li>
+             <li>User-user direct msging possible.</li>
+        </ul>
+
+        <p class="project-cta">→ Release date TBD</p>
+        <div class="project-card-action">
+  <button class="project-btn disabled" disabled>
+    Coming Soon
+  </button>
+</div>
+
+      </div>
+    </div>
+
+    <!-- ╔═══════════════════════════════════════════════════╗
+         ║  PROJECT CARD — Project X                        ║
+         ╚═══════════════════════════════════════════════════╝ -->
+    <div class="project-card">
+
+      <div class="project-img">
+        <!-- REPLACE: add <img src="..."> here when ready -->
+        <span class="img-placeholder">Logo not designed.</span>
+      </div>
+
+      <div class="project-body">
+
+        <div class="project-top">
+          <h2 class="project-name">Project B <span class="unnamed">(Un-named)</span></h2>
+          <div class="status-badge unavailable">UNAVAILABLE</div>
+        </div>
+
+        <p class="project-tagline">Game/proxy link generation service?</p>
+
+        <p class="project-status-note">Awaiting further discussion with the R&amp;D Director.</p>
+
+        <ul class="project-bullets">
+          <li>On demand/available on request?</li>
+        </ul>
+
+        <p class="project-cta">→ Release date &amp; price TBD</p>
+        <div class="project-card-action">
+  <button class="project-btn disabled" disabled>
+    Coming Soon
+  </button>
+</div>
+
+      </div>
+    </div>
+
+
+    <!-- ╔══════════════════════════════════════════════════════════╗
+         ║  ADD A NEW PROJECT — copy this block and fill it in     ║
+         ╠══════════════════════════════════════════════════════════╣
+         ║  1. Copy from <div class="project-card"> to its         ║
+         ║     matching END PROJECT CARD comment.                   ║
+         ║  2. Paste after the last END PROJECT CARD comment.       ║
+         ║  3. Fill in: project-name, status-badge (class + text), ║
+         ║     project-tagline, project-status-note (or delete),   ║
+         ║     bullets, and project-cta.                            ║
+         ║  4. Replace <span class="img-placeholder"> with an      ║
+         ║     <img src="..."> when you have an image — any        ║
+         ║     dimensions are fine, it will fit the box.            ║
+         ╚══════════════════════════════════════════════════════════╝
+
+    <div class="project-card">
+      <div class="project-img">
+        <span class="img-placeholder">[ IMG ]</span>
+      </div>
+      <div class="project-body">
+        <div class="project-top">
+          <h2 class="project-name">Project Name</h2>
+          <div class="status-badge unavailable">UNAVAILABLE</div>
+        </div>
+        <p class="project-tagline">Short description of what this project does.</p>
+        <p class="project-status-note">(Optional status note — delete this line if not needed.)</p>
+        <ul class="project-bullets">
+          <li>Feature or detail one.</li>
+          <li>Feature or detail two.</li>
+        </ul>
+        <p class="project-cta">→ Pricing or CTA goes here</p>
+      </div>
+    </div>
+    END PROJECT CARD TEMPLATE ─────────────────────────────── -->
+
+
+  </div>
+  <!-- END PROJECTS LIST -->
+
+
+  <!-- FOOTER -->
+  <div class="about-footer">
+    <img src="https://github.com/placeholdersystems/image-assets/blob/main/pls-logo.png?raw=true"
+         alt="Placeholder Systems Logo" />
+    <div class="about-footer-text">
+      <p class="org-name">Placeholder Systems™</p>
+      <p class="org-tagline">Entertainment, at Placeholder Systems.™</p>
+    </div>
+  </div>
+
+
+</div>
+<script>
+    
+    // do not touch this counter; this is for analytics only. do not modify any component.
+    //DEFAULT VC TEMPLATE!!!!
+    const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
+    fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
+</script>
+</body>
+</html>
