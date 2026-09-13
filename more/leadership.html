@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roster — Placeholder Systems™</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink: #FF06B5;
+            --orange: #FF6B35;
+            --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .page-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 60px 28px 100px;
+        }
+
+        /* ── HEADER (untouched — hero rule) ── */
+
+        .page-header {
+            margin-bottom: 52px;
+            padding-bottom: 28px;
+            border-bottom: 0.5px solid rgba(255,255,255,0.07);
+        }
+
+        .back-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #FF6B35; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 24px; text-decoration: none; transition: background 0.2s; }
+        .back-tag:hover { background: rgba(255,107,53,0.15); }
+
+        .page-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+
+        .page-title span {
+            color: #FF6B35;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.75;
+            max-width: 520px;
+        }
+
+        /* ── VIEW SWITCH ── */
+
+        #view-bento, #view-flow { display: none; }
+
+        .view-switch {
+            display: inline-flex;
+            gap: 4px;
+            padding: 4px;
+            background: #0B0B0B;
+            border: 0.5px solid rgba(255,255,255,0.08);
+            border-radius: 999px;
+            margin-bottom: 48px;
+        }
+
+        .switch-btn {
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.45);
+            padding: 9px 20px;
+            border-radius: 999px;
+            transition: color 0.2s, background 0.2s;
+            user-select: none;
+        }
+
+        #view-bento:checked ~ .view-switch label[for="view-bento"],
+        #view-flow:checked ~ .view-switch label[for="view-flow"] {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(255,6,181,0.22), rgba(255,107,53,0.22));
+            border: 0.5px solid rgba(255,255,255,0.1);
+        }
+
+        .view-panels .panel { display: none; }
+        #view-bento:checked ~ .view-panels .panel-bento { display: block; }
+        #view-flow:checked ~ .view-panels .panel-flow { display: block; }
+
+        /* ── SHARED TIER LABELS ── */
+
+        .tier-block {
+            margin-bottom: 56px;
+        }
+
+        .tier-head {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .tier-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px currentColor;
+        }
+
+        .tier-name {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        .tier-sub {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .tier--pink .tier-dot { background: var(--pink); color: var(--pink); }
+        .tier--orange .tier-dot { background: var(--orange); color: var(--orange); }
+
+        .role-vacant {
+            border-style: dashed !important;
+            opacity: 0.55;
+        }
+        .role-vacant .node-name,
+        .role-vacant .credit-name-b {
+            font-style: italic;
+            font-weight: 600 !important;
+        }
+
+        /* ══════════════════════════════════════════
+           BENTO LAYOUT
+           ══════════════════════════════════════════ */
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .bento-card {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%),
+                #0B0B0B;
+            border: 0.5px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            transition: border-color 0.25s ease, transform 0.2s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .bento-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+
+        .tier--pink .bento-card::before { background: var(--pink); }
+        .tier--orange .bento-card::before { background: var(--orange); }
+        .tier--pink .bento-card:hover { border-color: rgba(255,6,181,0.45); }
+        .tier--orange .bento-card:hover { border-color: rgba(255,107,53,0.45); }
+
+        /* Tier 1 — CRE: two large featured tiles */
+        .bento-grid--cre .bento-card {
+            grid-column: span 2;
+            padding: 34px 32px;
+        }
+        .bento-grid--cre .credit-name-b { font-size: 27px; font-weight: 800; letter-spacing: -0.01em; }
+        .bento-grid--cre .credit-role-b { font-size: 17px; color: rgba(255,255,255,0.45); }
+
+        /* Tier 2 — Directorial: quarter-width tiles */
+        .bento-grid--dir .bento-card {
+            grid-column: span 1;
+            padding: 26px 22px;
+            min-height: 132px;
+        }
+        .bento-grid--dir .credit-name-b { font-size: 20px; font-weight: 800; }
+        .bento-grid--dir .credit-role-b { font-size: 14.5px; color: rgba(255,255,255,0.45); }
+
+        /* Tier 3 — Management: compact tiles */
+        .bento-grid--man .bento-card {
+            grid-column: span 1;
+            padding: 20px 20px;
+            min-height: 108px;
+        }
+        .bento-grid--man .credit-name-b { font-size: 17px; font-weight: 700; }
+        .bento-grid--man .credit-role-b { font-size: 13.5px; color: rgba(255,255,255,0.4); }
+
+        /* Tier 4 — Departments: wide description tiles */
+        .bento-grid--dept .bento-card {
+            grid-column: span 2;
+            padding: 28px 30px;
+        }
+        .bento-grid--dept .credit-name-b { font-size: 21px; font-weight: 800; margin-bottom: 2px; }
+        .bento-grid--dept .credit-role-b { font-size: 15.5px; color: rgba(255,255,255,0.45); }
+
+        @media (max-width: 720px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .bento-grid--cre .bento-card,
+            .bento-grid--dept .bento-card { grid-column: span 2; }
+        }
+        @media (max-width: 480px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-grid--cre .bento-card,
+            .bento-grid--dir .bento-card,
+            .bento-grid--man .bento-card,
+            .bento-grid--dept .bento-card { grid-column: span 1; }
+        }
+
+        
+
+        /* ── NOTICE BOX (unused on this page, retained for site consistency) ── */
+
+        .notice-box {
+            position: relative;
+            overflow: hidden;
+            margin-top: 68px;
+            padding: 32px 34px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%),
+                #0B0B0B;
+            border: 0.5px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 12px 40px rgba(0,0,0,0.28);
+        }
+        .notice-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(255,107,53,0.15), transparent 42%);
+            pointer-events: none;
+        }
+        .notice-box::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 32px;
+            width: 90px; height: 1px;
+            background: rgba(255,255,255,0.18);
+        }
+        .notice-text { position: relative; z-index: 1; font-size: 17px; line-height: 1.9; color: rgba(255,255,255,0.6); letter-spacing: 0.01em; }
+        .notice-text:first-child {
+            display: inline-flex; align-items: center; gap: 10px; width: fit-content;
+            padding: 10px 18px; background: rgba(255,107,53,0.1); border: 0.5px solid rgba(255,107,53,0.28);
+            border-radius: 999px; color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 600; line-height: 1.4;
+        }
+        .notice-text:first-child::before {
+            content: ""; width: 7px; height: 7px; border-radius: 50%; background: #FF6B35;
+            box-shadow: 0 0 12px rgba(255,107,53,0.55);
+        }
+        /* ── APPLY LINK (for open positions) ── */
+.apply-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 999px;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.apply-link::after {
+    content: "↗";
+    font-size: 12px;
+    line-height: 1;
+}
+
+.apply-link:hover {
+    transform: translateY(-1px);
+}
+
+/* tier-tinted variants so the link matches its section's accent */
+.tier--pink .apply-link:hover {
+    background: rgba(255,6,181,0.15);
+    border-color: rgba(255,6,181,0.4);
+    color: #fff;
+}
+
+.tier--orange .apply-link:hover {
+    background: rgba(255,107,53,0.15);
+    border-color: rgba(255,107,53,0.4);
+    color: #fff;
+}
+        
+        
+
+        /* ── STANDARD ABOUT-FOOTER ── */
+        .divider { width: 100%; height: 1px; background: rgba(255,255,255,0.07); margin-top: 80px; }
+        .about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 48px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+        .about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+        .about-footer-text { text-align: left; }
+        .org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+
+        @media (max-width: 680px) {
+            .about-footer { flex-direction: column; text-align: center; }
+            .about-footer-text { text-align: center; }
+        }
+
+        @media (max-width: 600px) {
+            .page-wrap { padding: 40px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+    <div class="page-header">
+        <p class="page-eyebrow">Leadership</p>
+        <h1 class="page-title">Key <span>Personnel</span></h1>
+        <p class="page-subtitle">
+            Personnel identifiers and departments responsible for building and running
+            Placeholder Systems™. Personnel are identified by their EIC (Employee-Identification-Code) for privacy.
+        </p>
+    </div>
+
+   
+
+        <!-- ══════ BENTO PANEL ══════ -->
+        <div class="panel panel-bento">
+
+            <div class="tier-block tier--pink">
+                <div class="tier-head">
+                    <span class="tier-dot"></span>
+                    <span class="tier-name">Chief Regional Executives</span>
+                    <span class="tier-sub">Tier 1</span>
+                </div>
+                <div class="bento-grid bento-grid--cre">
+                    <div class="bento-card">
+                        <span class="credit-name-b">E-SG-6890</span>
+                        <span class="credit-role-b">Chief Regional Executive, Singapore Headquarters</span>
+                    </div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">E-US-9216</span>
+                        <span class="credit-role-b">Chief Regional Executive, United States</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tier-block tier--orange">
+                <div class="tier-head">
+                    <span class="tier-dot"></span>
+                    <span class="tier-name">Directorial Board Members</span>
+                    <span class="tier-sub">Tier 2</span>
+                </div>
+                <div class="bento-grid bento-grid--dir">
+                    <div class="bento-card role-vacant">
+    <span class="credit-name-b">E-SG-6890 · Open Position</span>
+    <span class="credit-role-b">(Acting) Marketing Director</span>
+    <a class="apply-link" href="https://sites.google.com/view/placeholdersystems/join-us"
+       target="_blank" rel="noopener noreferrer">Apply</a>
+</div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">E-SG-9483</span>
+                        <span class="credit-role-b">Security Director</span>
+                    </div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">E-SG-5519</span>
+                        <span class="credit-role-b">Administrative Director</span>
+                    </div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">E-SG-2487</span>
+                        <span class="credit-role-b">Research &amp; Development Director</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tier-block tier--pink">
+                <div class="tier-head">
+                    <span class="tier-dot"></span>
+                    <span class="tier-name">Management Board Members</span>
+                    <span class="tier-sub">Tier 3</span>
+                </div>
+                <div class="bento-grid bento-grid--man">
+                   <div class="bento-card role-vacant">
+    <span class="credit-name-b">Open Position</span>
+    <span class="credit-role-b">Deputy Marketing Director</span>
+    <a class="apply-link" href="https://sites.google.com/view/placeholdersystems/join-us"
+       target="_blank" rel="noopener noreferrer">Apply</a>
+</div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">E-SG-5519</span>
+                        <span class="credit-role-b">Deputy Security Director</span>
+                    </div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">E-SG-6890</span>
+                        <span class="credit-role-b">Deputy Administrative Director</span>
+                    </div>
+                   <div class="bento-card role-vacant">
+    <span class="credit-name-b">Open Position</span>
+    <span class="credit-role-b">Deputy Research &amp; Development Director</span>
+    <a class="apply-link" href="https://sites.google.com/view/placeholdersystems/join-us"
+       target="_blank" rel="noopener noreferrer">Apply</a>
+</div>
+                </div>
+            </div>
+
+            <div class="tier-block tier--orange">
+                <div class="tier-head">
+                    <span class="tier-dot"></span>
+                    <span class="tier-name">Departments</span>
+                   
+                </div>
+                <div class="bento-grid bento-grid--dept">
+                    <div class="bento-card">
+                        <span class="credit-name-b">Marketing Department</span>
+                        <span class="credit-role-b">Responsible for creating and executing promotional strategies and managing social media platforms.</span>
+                    </div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">Security Department</span>
+                        <span class="credit-role-b">Ensures security of our operations and data.</span>
+                    </div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">Administrative Department</span>
+                        <span class="credit-role-b">Manages human resource, financial and legal matters.</span>
+                    </div>
+                    <div class="bento-card">
+                        <span class="credit-name-b">Research &amp; Development Department</span>
+                        <span class="credit-role-b">Develops and maintains projects for the community.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+       
+
+    </div>
+
+    <div class="divider"></div>
+    <div class="about-footer">
+        <img src="https://github.com/placeholdersystems/image-assets/blob/main/pls-logo.png?raw=true"
+             alt="Placeholder Systems Logo" />
+        <div class="about-footer-text">
+            <p class="org-name">Placeholder Systems™</p>
+            <p class="org-tagline">Entertainment, at Placeholder Systems.™</p>
+        </div>
+    </div>
+
+</div>
+<script>
+    
+    // do not touch this counter; this is for analytics only. do not modify any component.
+    //DEFAULT VC TEMPLATE!!!!
+    const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
+    fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
+</script>
+</body>
+</html>
