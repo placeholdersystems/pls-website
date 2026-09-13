@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — Placeholder Systems™</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #000; color: #fff; font-family: 'Inter', sans-serif; line-height: 1.6; min-height: 100vh; display: flex; justify-content: center; padding: 60px 20px 100px; }
+
+:root {
+  --pink: #FF06B5;
+  --orange: #FF6B35;
+  --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
+}
+
+.wrap { width: 100%; max-width: 520px; }
+
+ .page-header {
+            margin-bottom: 52px;
+            padding-bottom: 28px;
+            border-bottom: 0.5px solid rgba(255,255,255,0.07);
+        }
+
+        .back-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #FF6B35; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 24px; text-decoration: none; transition: background 0.2s; }
+        .back-tag:hover { background: rgba(255,107,53,0.15); }
+
+        .page-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+
+        .page-title span {
+            color: #FF6B35;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.75;
+            max-width: 520px;
+        }
+
+
+.card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 26px 24px; margin-bottom: 18px; }
+.card h2 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+
+label { display: block; margin-top: 16px; margin-bottom: 7px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); }
+.req { color: var(--orange); margin-left: 2px; }
+input[type=text], input[type=email], input[type=password] {
+  width: 100%; padding: 11px 13px; background: #0A0A0A; border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 8px; color: #fff; font-size: 14px; font-family: 'Inter', sans-serif; outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+input:focus { border-color: var(--pink); background: #111; }
+input::placeholder { color: rgba(255,255,255,0.2); }
+
+.btn { display: block; width: 100%; margin-top: 18px; padding: 12px; border: none; border-radius: 8px;
+  font-weight: 700; font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.1s, opacity 0.2s; }
+.btn-primary { background: var(--orange); color: #000; }
+.btn-primary:hover { background: #ff8255; }
+.btn-danger { background: rgba(255,59,59,0.12); color: #ff6b6b; border: 0.5px solid rgba(255,59,59,0.35); }
+.btn-danger:hover { background: rgba(255,59,59,0.2); }
+.btn-secondary { background: transparent; border: 0.5px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.55); }
+.btn-secondary:hover { border-color: rgba(255,6,181,0.4); color: #fff; }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.btn:active { transform: scale(0.99); }
+
+.result { margin-top: 14px; padding: 11px 15px; border-radius: 8px; font-size: 13px; text-align: center; display: none; }
+.result.ok  { background: rgba(46,204,113,0.08); border: 0.5px solid rgba(46,204,113,0.3); color: rgba(46,204,113,0.95); display: block; }
+.result.err { background: rgba(231,76,60,0.08); border: 0.5px solid rgba(231,76,60,0.3); color: rgba(231,76,60,0.95); display: block; }
+
+/* Profile */
+.profile-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+.profile-row:last-child { border-bottom: none; }
+.pr-label { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.pr-value { font-family: monospace; font-size: 14px; color: #fff; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.22); padding: 4px 12px; border-radius: 6px; }
+.pr-value.primary { font-size: 16px; font-weight: 700; background: rgba(255,6,181,0.1); border-color: rgba(255,6,181,0.3); color: var(--pink); }
+.spoiler-wrap { display: flex; align-items: center; gap: 10px; }
+.spoiler-toggle { background: transparent; border: 0.5px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer; font-family: 'Inter', sans-serif; transition: border-color 0.2s, color 0.2s; }
+.spoiler-toggle:hover { border-color: var(--pink); color: #fff; }
+
+.badge-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 999px; background: rgba(255,6,181,0.1); border: 0.5px solid rgba(255,6,181,0.3); color: var(--pink); }
+
+.section-tabs { display: flex; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+.section-tab { flex: 1; min-width: 100px; text-align: center; padding: 10px; background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+.section-tab.active { border-color: var(--pink); color: #fff; background: rgba(255,6,181,0.08); }
+.action-panel { display: none; margin-top: 16px; }
+.action-panel.active { display: block; }
+
+.otp-input { font-size: 1.5em; letter-spacing: 8px; text-align: center; }
+
+.danger-note { font-size: 12px; color: rgba(255,107,107,0.85); background: rgba(255,59,59,0.06); border: 0.5px solid rgba(255,59,59,0.25); border-radius: 8px; padding: 12px 14px; margin-top: 14px; line-height: 1.6; }
+
+.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 48px; border-top: 0.5px solid rgba(255,255,255,0.07); margin-top: 40px; }
+.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+.about-footer-text { text-align: left; }
+.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+@media (max-width: 680px) { .about-footer { flex-direction: column; text-align: center; } .about-footer-text { text-align: center; } }
+
+.logout-link { display: block; text-align: center; margin-top: 6px; font-size: 12px; color: rgba(255,255,255,0.3); cursor: pointer; text-decoration: underline; }
+.logout-link:hover { color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-header">
+    <p class="page-eyebrow">Placeholder Accounts</p>
+    <h1 class="page-title">My <span>Account</span></h1>
+    <p class="page-subtitle">Manage your Placeholder Account™ which is used across all Placeholder Projects™.</p>
+  </div>
+
+  <!-- ══ LOGIN ══ -->
+  <div class="card" id="loginCard">
+    <h2>Log In</h2>
+    <label>Username or Email <span class="req">*</span></label>
+    <input id="login-id" type="text" placeholder="e.g. placeholder_dev or you@email.com">
+    <label>Password <span class="req">*</span></label>
+    <input id="login-pw" type="password" placeholder="Password">
+    <button class="btn btn-primary" id="login-btn" onclick="doLogin()">Log In</button>
+    <div class="result" id="login-result"></div>
+  </div>
+
+  <!-- ══ PROFILE + ACTIONS (hidden until logged in) ══ -->
+  <div id="profileArea" style="display:none">
+
+    <div class="card">
+      <h2>Profile</h2>
+      <div class="profile-row">
+        <span class="pr-label">Username</span>
+        <span class="pr-value primary" id="profile-username"></span>
+      </div>
+      <div class="profile-row">
+        <span class="pr-label">Email</span>
+        <span class="pr-value" id="profile-email"></span>
+      </div>
+      <div class="profile-row">
+        <span class="pr-label">Password</span>
+        <div class="spoiler-wrap">
+          <span class="pr-value" id="profile-pw">••••••••</span>
+          <button class="spoiler-toggle" id="pw-toggle" onclick="togglePwSpoiler()">Show</button>
+        </div>
+      </div>
+      <div class="profile-row">
+        <span class="pr-label">Status</span>
+        <span class="badge-tag" id="profile-status"></span>
+      </div>
+      <span class="logout-link" onclick="doLogout()">Log out</span>
+    </div>
+
+    <div class="card">
+      <h2>Account Actions</h2>
+      <div class="section-tabs">
+        <div class="section-tab active" id="tab-email"    onclick="switchAction('email')">Change Email</div>
+        <div class="section-tab"        id="tab-password" onclick="switchAction('password')">Change Password</div>
+        <div class="section-tab"        id="tab-delete"   onclick="switchAction('delete')">Delete Account</div>
+      </div>
+
+      <!-- Change Email -->
+      <div class="action-panel active" id="panel-email">
+        <div id="email-step1">
+          <label>New Email Address <span class="req">*</span></label>
+          <input id="email-newValue" type="email" placeholder="new@email.com">
+          <button class="btn btn-primary" onclick="requestAction('email')">Send Verification Code</button>
+        </div>
+        <div id="email-step2" style="display:none">
+          <label>Verification Code <span class="req">*</span></label>
+          <input id="email-otp" type="text" class="otp-input" maxlength="6" placeholder="000000">
+          <button class="btn btn-primary" onclick="confirmAction('email')">Confirm Email Change</button>
+          <button class="btn btn-secondary" onclick="resetAction('email')">Cancel</button>
+        </div>
+        <div class="result" id="email-result"></div>
+      </div>
+
+      <!-- Change Password -->
+      <div class="action-panel" id="panel-password">
+        <div id="password-step1">
+          <label>New Password <span class="req">*</span></label>
+          <input id="password-newValue" type="password" placeholder="New password">
+          <button class="btn btn-primary" onclick="requestAction('password')">Send Verification Code</button>
+        </div>
+        <div id="password-step2" style="display:none">
+          <label>Verification Code <span class="req">*</span></label>
+          <input id="password-otp" type="text" class="otp-input" maxlength="6" placeholder="000000">
+          <button class="btn btn-primary" onclick="confirmAction('password')">Confirm Password Change</button>
+          <button class="btn btn-secondary" onclick="resetAction('password')">Cancel</button>
+        </div>
+        <div class="result" id="password-result"></div>
+      </div>
+
+      <!-- Delete Account -->
+      <div class="action-panel" id="panel-delete">
+        <div class="danger-note">Deleting your account deactivates it (status set to terminated) and revokes access across all Placeholder-connected projects. This cannot be undone from this page.</div>
+        <div id="delete-step1">
+          <button class="btn btn-danger" onclick="requestAction('delete')">Send Verification Code</button>
+        </div>
+        <div id="delete-step2" style="display:none">
+          <label>Verification Code <span class="req">*</span></label>
+          <input id="delete-otp" type="text" class="otp-input" maxlength="6" placeholder="000000">
+          <button class="btn btn-danger" onclick="confirmAction('delete')">Confirm Account Deletion</button>
+          <button class="btn btn-secondary" onclick="resetAction('delete')">Cancel</button>
+        </div>
+        <div class="result" id="delete-result"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="about-footer">
+    <img src="https://raw.githubusercontent.com/placeholdersystems/image-assets/refs/heads/main/pls-logo.png"
+         alt="Placeholder Systems Logo" />
+    <div class="about-footer-text">
+      <p class="org-name">Placeholder Systems™</p>
+      <p class="org-tagline">Entertainment, at Placeholder Systems.™</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Set this to your deployed Code.gs Web App /exec URL (same as Join Us page).
+const API = "https://script.google.com/macros/s/AKfycbwODZAUMzVLRvXNMteW_rSAUjOEo0lQdJ3Xk44xS8syEb8pCdVw4UHxvB4BebxzsYLw/exec";
+
+let session = { username: null, password: null, email: null, type: null };
+
+async function doLogin() {
+  const id = document.getElementById("login-id").value.trim();
+  const pw = document.getElementById("login-pw").value;
+  if (!id || !pw) { loginShow("Username/email and password are required.", false); return; }
+  const btn = document.getElementById("login-btn");
+  btn.disabled = true; btn.textContent = "Logging in…";
+  try {
+    const res  = await fetch(API, { method:"POST", body:JSON.stringify({ action:"accountLogin", id, password:pw }) });
+    const data = await res.json();
+    if (data.success) {
+      session = { username: data.username, password: pw, email: data.email, type: data.type };
+      renderProfile(data);
+      document.getElementById("loginCard").style.display = "none";
+      document.getElementById("profileArea").style.display = "block";
+    } else {
+      loginShow(data.error || "Login failed.", false);
+      btn.disabled = false; btn.textContent = "Log In";
+    }
+  } catch(e) {
+    loginShow("Network error: " + e.message, false);
+    btn.disabled = false; btn.textContent = "Log In";
+  }
+}
+function loginShow(msg, ok) { const el = document.getElementById("login-result"); el.textContent = msg; el.className = "result " + (ok ? "ok" : "err"); }
+
+function renderProfile(data) {
+  document.getElementById("profile-username").textContent = data.username;
+  document.getElementById("profile-email").textContent = data.email;
+  document.getElementById("profile-pw").textContent = "••••••••";
+  document.getElementById("profile-pw").dataset.real = session.password;
+  document.getElementById("pw-toggle").textContent = "Show";
+  document.getElementById("profile-status").textContent = (data.type === "employee" ? "Employee" : "Member") + " · " + (data.status || "");
+}
+
+function togglePwSpoiler() {
+  const el = document.getElementById("profile-pw");
+  const btn = document.getElementById("pw-toggle");
+  if (el.textContent === "••••••••") { el.textContent = el.dataset.real; btn.textContent = "Hide"; }
+  else { el.textContent = "••••••••"; btn.textContent = "Show"; }
+}
+
+function doLogout() {
+  session = { username: null, password: null, email: null, type: null };
+  document.getElementById("loginCard").style.display = "block";
+  document.getElementById("profileArea").style.display = "none";
+  document.getElementById("login-id").value = "";
+  document.getElementById("login-pw").value = "";
+  document.getElementById("login-btn").disabled = false;
+  document.getElementById("login-btn").textContent = "Log In";
+}
+
+function switchAction(k) {
+  document.querySelectorAll(".section-tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".action-panel").forEach(p => p.classList.remove("active"));
+  document.getElementById("tab-" + k).classList.add("active");
+  document.getElementById("panel-" + k).classList.add("active");
+}
+
+/* ══ FIX: previously this sent { action:"requestAccountAction", ..., action, newValue } —
+   the shorthand `action` param (holding "email"/"password"/"delete") silently overwrote
+   the outer action:"requestAccountAction" key, so the backend received e.g.
+   action:"email" and returned "Unknown action". Renamed the param to actionType and
+   send it under a distinct key so both survive in the request body. ══ */
+async function requestAction(actionType) {
+  let newValue = "";
+  if (actionType === "email")    newValue = document.getElementById("email-newValue").value.trim();
+  if (actionType === "password") newValue = document.getElementById("password-newValue").value;
+  if (actionType === "email" && !newValue)    { actShow(actionType, "New email is required.", false); return; }
+  if (actionType === "password" && !newValue) { actShow(actionType, "New password is required.", false); return; }
+
+  try {
+    const res  = await fetch(API, { method:"POST", body:JSON.stringify({
+      action: "requestAccountAction",
+      id: session.username,
+      password: session.password,
+      actionType,
+      newValue
+    })});
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById(actionType + "-step1").style.display = "none";
+      document.getElementById(actionType + "-step2").style.display = "block";
+      actShow(actionType, "Verification code sent to " + session.email + ".", true);
+    } else {
+      actShow(actionType, data.error || "Request failed.", false);
+    }
+  } catch(e) {
+    actShow(actionType, "Network error: " + e.message, false);
+  }
+}
+
+async function confirmAction(actionType) {
+  const otp = document.getElementById(actionType + "-otp").value.trim();
+  if (!otp || otp.length !== 6) { actShow(actionType, "Enter the 6-digit code.", false); return; }
+  try {
+    const res  = await fetch(API, { method:"POST", body:JSON.stringify({ action:"verifyAccountAction", id: session.username, otp }) });
+    const data = await res.json();
+    if (data.success) {
+      if (actionType === "delete") {
+        actShow(actionType, "Account deleted. Logging out…", true);
+        setTimeout(doLogout, 2000);
+        return;
+      }
+      if (actionType === "password") session.password = document.getElementById("password-newValue").value;
+      if (actionType === "email")    session.email    = document.getElementById("email-newValue").value.trim();
+      actShow(actionType, "Change confirmed.", true);
+      resetAction(actionType);
+      document.getElementById("profile-email").textContent = session.email;
+      document.getElementById("profile-pw").dataset.real = session.password;
+    } else {
+      actShow(actionType, data.error || "Verification failed.", false);
+    }
+  } catch(e) {
+    actShow(actionType, "Network error: " + e.message, false);
+  }
+}
+
+function resetAction(actionType) {
+  document.getElementById(actionType + "-step1").style.display = "block";
+  document.getElementById(actionType + "-step2").style.display = "none";
+  const otpEl = document.getElementById(actionType + "-otp"); if (otpEl) otpEl.value = "";
+}
+
+function actShow(actionType, msg, ok) {
+  const el = document.getElementById(actionType + "-result");
+  el.textContent = msg; el.className = "result " + (ok ? "ok" : "err");
+}
+</script>
+</body>
+</html>
