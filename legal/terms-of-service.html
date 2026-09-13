@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Placeholder Systems™</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #FF06B5;
+  --orange: #FF6B35;
+  --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+
+/* ── PAGE SHELL ── */
+.page-wrap { max-width: 780px; margin: 0 auto; padding: 64px 32px 120px; }
+
+/* ── HEADER ── */
+.page-header { margin-bottom: 52px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(255,255,255,0.07); }
+.back-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #FF6B35; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 24px; }
+.page-eyebrow { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+.page-title { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.1; margin-bottom: 14px; }
+.page-title span { color: #FF6B35; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+.meta-pill { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 12px; font-size: 11px; color: rgba(255,255,255,0.45); }
+.meta-pill strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+/* ── SECTION HEADING ── */
+.doc-section { margin-bottom: 60px; }
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.section-heading .sh-num {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--pink);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.section-heading .sh-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ── CLAUSE BLOCKS ── */
+.clause-block { margin-bottom: 32px; }
+.clause-number { font-size: 13px; font-weight: 800; color: var(--orange); letter-spacing: 0.06em; margin-bottom: 8px; }
+.clause-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.01em; }
+.clause-body { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.8; }
+.clause-body p { margin-bottom: 12px; }
+.clause-body p:last-child { margin-bottom: 0; }
+
+/* ── SUB-ITEMS ── */
+.sub-list { margin-top: 12px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sub-list li { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.75; padding-left: 24px; position: relative; }
+.sub-list li::before { content: "—"; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
+
+/* ── DIVIDERS ── */
+.section-divider { border: 0; height: 0.5px; background: rgba(255,255,255,0.07); margin: 56px 0; }
+.divider { height: 0.5px; background: rgba(255,255,255,0.07); margin: 48px 0 0; }
+
+/* ── CALLOUT BOX ── */
+.callout { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-left: 3px solid var(--pink); border-radius: 10px; padding: 20px 24px; margin: 28px 0; }
+.callout p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+.callout strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+/* ── CODE / MONO BLOCK ── */
+.mono-block { background: #0A0A0A; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px 24px; margin: 20px 0; font-family: monospace; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+
+/* ── LINKS ── */
+.legal-link { color: var(--orange); text-decoration: none; font-weight: 600; transition: color 0.2s, text-decoration 0.2s; }
+.legal-link:hover { color: var(--pink); text-decoration: underline; }
+
+/* ── CREDITS GRID ── */
+.credits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+.credit-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+.credit-role { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; margin-bottom: 6px; }
+.credit-name { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.5; }
+
+/* ── ADDENDUM BADGE ── */
+.addendum-badge { display: inline-block; background: rgba(55,138,221,0.1); border: 0.5px solid rgba(55,138,221,0.25); border-radius: 6px; padding: 6px 12px; font-size: 12px; color: #378ADD; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 16px; }
+
+/* ── STANDARD ABOUT-FOOTER ── */
+.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 48px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+.about-footer-text { text-align: left; }
+.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+
+@media (max-width: 680px) {
+  .about-footer { flex-direction: column; text-align: center; }
+  .about-footer-text { text-align: center; }
+}
+@media (max-width: 540px) {
+  .credits-grid { grid-template-columns: 1fr; }
+  .meta-row { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="page-header">
+    <p class="page-eyebrow">Legal</p>
+    <h1 class="page-title">Terms of <span>Service</span></h1>
+    <div class="meta-row">
+      <div class="meta-pill"><strong>Effective:</strong> 07 January 2026</div>
+      <div class="meta-pill"><strong>Last Revised:</strong> 30 April 2026</div>
+      <div class="meta-pill"><strong>Jurisdiction:</strong> Singapore</div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">01</span><span class="sh-title">Introduction and Acceptance</span></div>
+    <div class="clause-block">
+      <div class="clause-number">1.1</div>
+      <p class="clause-body">These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you") and Placeholder Systems ("The Company", "We", "Us"). These Terms govern access to and use of all digital platforms, applications, tools, web services, and entertainment repositories operated by The Company ("The Services"), which include without limitation:</p>
+      <ul class="sub-list">
+        <li>Placeholder HR</li>
+        <li>Colourfull™</li>
+        <li>Steak™</li>
+        <li>Digital Repository™</li>
+        <li>All future platforms, subdomains, and software modules published by The Company</li>
+      </ul>
+    </div>
+    <div class="clause-block">
+      <div class="clause-number">1.2</div>
+      
+       
+         <p class="clause-body">By accessing, viewing, interacting with, or using our Services, you acknowledge that you have read, understood, and agreed to be bound by these Terms and our associated policies. If you do not agree with any part of these Terms, you must immediately discontinue all access to and use of the Services.</p>
+     
+    </div>
+  </div>
+   <div class="clause-block">
+      <div class="clause-number">1.3</div>
+      <div class="callout">
+        <p>The Services are intended for users aged 13 and above. Users under the age of 13 must not access or use the Services. Certain content available through the Services may be subject to higher age thresholds; applicable age requirements are stated on the respective pages or content.</p>
+      </div>
+    </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">02</span><span class="sh-title">Role and Discretion of The Company</span></div>
+    <div class="clause-block">
+      <div class="clause-number">2.1</div>
+      <p class="clause-body">The Company operates free and premium browser-based entertainment platforms, software tools, and digital resources designed for personal and educational engagement. All Services are provided at the sole legal discretion of The Company.</p>
+    </div>
+    <div class="clause-block">
+      <div class="clause-number">2.2</div>
+      <p class="clause-body">The Company reserves the absolute right to modify, suspend, restrict, or terminate any component of the Services, including features, availability, or content offerings, at any time without prior notice or liability to any user.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">03</span><span class="sh-title">Permitted Use and Institutional Compliance</span></div>
+    <div class="clause-block">
+      <div class="clause-number">3.1</div>
+      <p class="clause-body">Access to the Services is granted strictly as a revocable privilege, not a legal right. We reserve the right to suspend or revoke access to any user operating in an unauthorized, improper, or illegal manner. By accessing or using our Services, you warrant that:</p>
+      <ul class="sub-list">
+        <li>Your use of the Services complies fully with all Acceptable Use Policies (AUP) established by your academic institution, workplace, or network service provider.</li>
+        <li>You will not use the Services in violation of any local, national, or international laws, rules, or statutory regulations applicable in your jurisdiction.</li>
+        <li>You assume sole responsibility for ensuring compliance with all institutional rules, codes of conduct, and administrative directives before initiating activity through the Services.</li>
+      </ul>
+    </div>
+  
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">04</span><span class="sh-title">Third-Party Content and Sourcing</span></div>
+    <div class="clause-block">
+      <div class="clause-number">4.1</div>
+      <p class="clause-body">Certain software modules, games, and media accessible through the Services are sourced from independent third-party developers and external platforms. The Company does not own, develop, maintain, or control third-party content unless expressly specified. The Company disclaims all responsibility for:</p>
+      <ul class="sub-list">
+        <li>The accuracy, performance, ongoing availability, or lawfulness of third-party content.</li>
+        <li>Data processing, tracking, or privacy practices conducted independently by third-party providers.</li>
+      </ul>
+    </div>
+    <div class="clause-block">
+      <div class="clause-number">4.2</div>
+      <p class="clause-body">Users are strongly advised to exercise caution and avoid submitting personally identifiable information (PII), confidential credentials, or financial details into any third-party content interface embedded within the Services.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">05</span><span class="sh-title">Enforcement and Sanctions</span></div>
+    <div class="clause-block">
+      <div class="clause-number">5.1</div>
+      <p class="clause-body">The Company reserves full authority to enforce compliance with these Terms at its sole discretion. Upon finding reasonable evidence of a breach or improper activity, administrative remedies and sanctions may include, without limitation:</p>
+      <ul class="sub-list">
+        <li>Immediate temporary suspension or permanent revocation of access to the Services;</li>
+        <li>Removal or downgrade of account roles, system permissions, or elevated privileges;</li>
+        <li>Forfeiture of virtual credits, accrued points, or non-monetary entitlements (where applicable);</li>
+        <li>Issuance of formal warning strikes under our internal compliance tracking framework;</li>
+        <li>Permanent disqualification from employment, internship, or contributor eligibility within Placeholder Systems;</li>
+        <li>Formal referral to institutional authorities, administrative bodies, or legal representation for legal remedies.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">06</span><span class="sh-title">Limitation of Liability</span></div>
+    <div class="clause-block">
+      <div class="clause-number">6.1</div>
+      <p class="clause-body">To the fullest extent permitted by applicable law, Placeholder Systems, its officers, directors, employees, and agents shall not be liable for any direct, indirect, incidental, consequential, special, or exemplary damages or losses arising out of or in connection with your access to, use of, or inability to use the Services.</p>
+    </div>
+    <div class="clause-block">
+      <div class="clause-number">6.2</div>
+      <p class="clause-body">The Company shall not be liable for any misuse, unauthorized reliance, or policy non-compliance stemming from materials accessed through the Services. Users assume full responsibility and legal liability for all actions taken while utilizing the Services.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">07</span><span class="sh-title">Intellectual Property</span></div>
+    <div class="clause-block">
+      <div class="clause-number">7.1</div>
+      <p class="clause-body">All original software code, visual design, documentation, technical architectures, and media resources made available through the Services remain the exclusive intellectual property of Placeholder Systems unless explicitly stated otherwise. All rights not expressly granted herein are reserved strictly by The Company under statutory and common law provisions.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">08</span><span class="sh-title">Trademarks and Branding</span></div>
+    <div class="clause-block">
+      <div class="clause-number">8.1</div>
+      <p class="clause-body">All logos, visual identifiers, product names, trade dress, slogans, and branding assets displayed on the site and associated portals are unregistered trademarks™ or service marks™ of The Company. These unregistered trademarks are protected under common law principles. Nothing in these Terms grants any license or authorization to use any such mark without prior explicit written consent from The Company.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">09</span><span class="sh-title">Disclaimer of Warranties</span></div>
+    <div class="clause-block">
+      <div class="clause-number">9.1</div>
+      <p class="clause-body">The Services are provided strictly on an "as is" and "as available" basis without warranties of any kind, whether express, implied, or statutory, including but not limited to implied warranties of merchantability, fitness for a particular purpose, security, or non-infringement. The Company makes no warranty regarding the accuracy, continuity, uptime, or error-free performance of the Services.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">10</span><span class="sh-title">Governing Law and Jurisdiction</span></div>
+    <div class="clause-block">
+      <div class="clause-number">10.1</div>
+      <p class="clause-body">These Terms shall be governed by, construed, and enforced in accordance with the laws of the Republic of Singapore, without giving effect to any conflict of laws principles. Any dispute or claim arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of Singapore.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-heading"><span class="sh-num">11</span><span class="sh-title">Contact and Legal Inquiries</span></div>
+    <div class="clause-block">
+      <div class="clause-number">11.1</div>
+      <p class="clause-body">If you have questions regarding these Terms, please contact us at <a href="mailto:placeholdersystems@gmail.com" class="legal-link">placeholdersystems@gmail.com</a> using the following format:</p>
+      <div class="mono-block">Subject: [Legal] 
+Body: Specify your full name, organization, relevant service, and detailed inquiry.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p> These Terms apply in conjunction with the <a href="https://sites.google.com/view/placeholdersystems/legal/privacy-policy" target="_blank" class="legal-link">Privacy Policy</a> and any other notices, contractual clauses and consent clauses. We may revise these Terms from time to time without any prior notice. Your continued use of our services constitutes your acknowledgement and acceptance of such changes.</p>
+  </div>
+
+  <div class="divider"></div>
+  <div class="about-footer">
+    <img src="https://github.com/placeholdersystems/image-assets/blob/main/pls-logo.png?raw=true"
+         alt="Placeholder Systems Logo" />
+    <div class="about-footer-text">
+      <p class="org-name">Placeholder Systems™</p>
+      <p class="org-tagline">Entertainment, at Placeholder Systems.™</p>
+    </div>
+  </div>
+
+</div>
+<script>
+    
+    // do not touch this counter; this is for analytics only. do not modify any component.
+    //DEFAULT VC TEMPLATE!!!!
+    const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
+    fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
+</script>
+</body>
+</html>
