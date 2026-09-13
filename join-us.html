@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join Us — Placeholder Systems™</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+
+/* ── BRAND ── */
+:root {
+  --pink: #FF06B5;
+  --orange: #FF6B35;
+  --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
+}
+
+.page-wrap { max-width: 840px; margin: 0 auto; padding: 60px 28px 100px; }
+
+/* ── HEADER (unchanged — do not restyle) ── */
+.page-header { margin-bottom: 52px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(255,255,255,0.07); }
+.back-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #FF6B35; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 24px; }
+.page-eyebrow { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+.page-title { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.1; margin-bottom: 14px; }
+.page-title span { color: #FF6B35; }
+.page-subtitle { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 560px; }
+
+/* ── SECTIONS (bumped) ── */
+.section-block { margin-bottom: 64px; }
+.section-heading { display: flex; align-items: baseline; gap: 12px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+.sh-num   { font-size: 13px; font-weight: 700; color: var(--orange); letter-spacing: 0.08em; flex-shrink: 0; }
+.sh-title { font-size: 21px; font-weight: 800; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
+.section-divider { border: 0; height: 0.5px; background: rgba(255,255,255,0.07); margin: 56px 0; }
+
+.info-label { font-size: 12px; font-weight: 700; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 13px; }
+
+/* ── REQUIREMENTS (bumped) ── */
+.req-body { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 18px; }
+.req-body strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+.req-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; margin: 12px 0 18px; }
+.req-list li { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.7; padding-left: 22px; position: relative; }
+.req-list li::before { content: "—"; position: absolute; left: 0; color: rgba(255,107,53,0.6); font-weight: 700; }
+.req-list li strong { color: rgba(255,255,255,0.7); font-weight: 600; }
+
+/* ── TRACK CARDS (bumped, pink accent for the active/primary track) ── */
+.track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+.track-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 22px 18px; position: relative; overflow: hidden; }
+.track-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--brand-gradient); opacity: 0.7; }
+.track-card .track-badge { display: inline-block; background: rgba(255,6,181,0.12); border: 0.5px solid rgba(255,6,181,0.3); border-radius: 999px; padding: 3px 12px; font-size: 11px; color: var(--pink); font-weight: 700; letter-spacing: 0.06em; margin-bottom: 12px; }
+.track-card .track-name { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 8px; }
+.track-card .track-status { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; margin-bottom: 12px; font-style: italic; }
+.track-card .track-body { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+.track-card .track-list { list-style: none; padding: 0; margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
+.track-card .track-list li { font-size: 14px; color: rgba(255,255,255,0.4); padding-left: 16px; position: relative; }
+.track-card .track-list li::before { content: "·"; position: absolute; left: 0; color: var(--orange); }
+.track-card .track-list li strong { color: rgba(255,255,255,0.65); }
+
+/* ── FLOWCHART (bumped labels) ── */
+.flowchart-wrap { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; margin-top: 6px; }
+.flowchart-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 18px 12px; border-bottom: 0.5px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+.flowchart-expand-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25);
+  border-radius: 999px; padding: 4px 12px;
+  font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 0.06em;
+  cursor: pointer; font-family: 'Inter', sans-serif;
+  transition: background 0.2s, border-color 0.2s;
+}
+.flowchart-expand-btn:hover { background: rgba(255,107,53,0.15); border-color: rgba(255,107,53,0.5); }
+.flowchart-img-area { width: 100%; min-height: 480px; display: flex; align-items: center; justify-content: center; padding: 26px; }
+.flowchart-img-area img { width: 100%; height: auto; border-radius: 8px; cursor: zoom-in; }
+
+/* ── LIGHTBOX ── */
+.lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 24px; }
+.lightbox-overlay.active { display: flex; }
+.lightbox-inner { position: relative; max-width: 92vw; max-height: 90vh; }
+.lightbox-inner img { display: block; max-width: 100%; max-height: 90vh; height: auto; border-radius: 8px; border: 0.5px solid rgba(255,255,255,0.1); }
+.lightbox-close { position: absolute; top: -14px; right: -14px; width: 30px; height: 30px; border-radius: 999px; background: #1a1a1a; border: 0.5px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.lightbox-close:hover { background: var(--pink); color: #000; border-color: var(--pink); }
+.lightbox-hint { position: absolute; bottom: -26px; left: 50%; transform: translateX(-50%); font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; white-space: nowrap; }
+
+/* ── DOCUMENT BUTTON (bumped) ── */
+.doc-btn-row { margin-bottom: 26px; }
+.doc-btn { display: inline-flex; align-items: center; gap: 12px; background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 20px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.75); text-decoration: none; font-family: 'Inter', sans-serif; transition: border-color 0.2s, background 0.2s, color 0.2s; cursor: pointer; }
+.doc-btn:hover { background: #151515; border-color: rgba(255,6,181,0.4); color: #fff; }
+.doc-btn:hover .doc-btn-icon { color: var(--pink); }
+.doc-btn-icon { font-size: 18px; color: rgba(255,255,255,0.3); transition: color 0.2s; flex-shrink: 0; }
+.doc-btn-text { display: flex; flex-direction: column; gap: 2px; }
+.doc-btn-title { font-size: 14px; font-weight: 600; color: inherit; line-height: 1.3; }
+.doc-btn-sub { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; letter-spacing: 0.04em; }
+.doc-btn-arrow { margin-left: auto; font-size: 13px; color: rgba(255,255,255,0.2); transition: color 0.2s, transform 0.2s; }
+.doc-btn:hover .doc-btn-arrow { color: var(--pink); transform: translateX(2px); }
+
+/* ── FORM CARD WRAPPER ── */
+.form-embed-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; width: 100%; max-width: 760px; margin: 4px auto 0; }
+.form-embed-label { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px 12px; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+.form-embed-label .fel-title { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; }
+.form-embed-label .fel-tag { font-size: 11px; background: rgba(255,6,181,0.12); border: 0.5px solid rgba(255,6,181,0.3); border-radius: 999px; padding: 3px 10px; color: var(--pink); font-weight: 600; letter-spacing: 0.04em; }
+
+@media (max-width: 600px) { .track-grid { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════════════════════════════
+   EMBEDDED FORM STYLES — bumped type scale, pink/orange brand
+════════════════════════════════════════════════════════════════ */
+.ef-wrap { font-family: 'Inter', sans-serif; color: #fff; padding: 28px 22px 24px; }
+.ef-wrap h2 { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: -0.01em; text-transform: none; border-bottom: 0.5px solid rgba(255,255,255,0.08); padding-bottom: 14px; margin: 0 0 8px; }
+.ef-wrap .subtitle { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.28); letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 16px; text-align: left; }
+.ef-wrap .official-tag { display: inline-block; background: rgba(255,107,53,0.1); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 14px; font-size: 11px; color: var(--orange); font-weight: 700; letter-spacing: 0.06em; text-align: left; margin: 0 0 22px; }
+.ef-wrap .fsec { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin: 26px 0 14px; padding-bottom: 9px; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+.ef-wrap .rules-box { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-left: 2px solid var(--pink); border-radius: 0 10px 10px 0; padding: 16px 18px; font-size: 13px; color: rgba(255,255,255,0.38); margin-bottom: 22px; line-height: 1.75; }
+.ef-wrap .rules-box ul { margin: 9px 0 0 18px; padding: 0; }
+.ef-wrap .rules-box li { margin-bottom: 6px; }
+.ef-wrap .rules-box strong { color: rgba(255,255,255,0.65); font-weight: 600; }
+.ef-wrap label { display: block; margin-top: 18px; margin-bottom: 7px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.ef-wrap .req { color: var(--orange); margin-left: 2px; }
+.ef-wrap .opt { color: rgba(255,255,255,0.22); font-size: 12px; font-weight: 400; margin-left: 4px; }
+.ef-wrap input[type=text], .ef-wrap input[type=email], .ef-wrap input[type=password], .ef-wrap select, .ef-wrap textarea {
+  width: 100%; padding: 12px 14px; background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 8px; color: #fff; font-size: 14px; font-family: 'Inter', sans-serif;
+  outline: none; transition: border-color 0.2s, background 0.2s;
+}
+.ef-wrap input[type=text], .ef-wrap input[type=email], .ef-wrap input[type=password], .ef-wrap select { height: 44px; }
+.ef-wrap textarea { height: auto; min-height: 108px; resize: vertical; line-height: 1.6; }
+.ef-wrap input::placeholder, .ef-wrap textarea::placeholder { color: rgba(255,255,255,0.2); }
+.ef-wrap input:focus, .ef-wrap select:focus, .ef-wrap textarea:focus { border-color: var(--pink); background: #111; }
+.ef-wrap select option { background: #111; color: #fff; }
+.ef-wrap .field-optional input, .ef-wrap .field-optional select { border-color: rgba(255,255,255,0.07); background: #0A0A0A; }
+.ef-wrap .mic-field { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-left: 2px solid rgba(46,204,113,0.4); border-radius: 0 10px 10px 0; padding: 16px 18px; margin-top: 18px; }
+.ef-wrap .mic-field .mic-label { font-size: 11px; font-weight: 700; color: rgba(46,204,113,0.85); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 9px; }
+.ef-wrap .mic-field .mic-note { font-size: 12px; color: rgba(255,255,255,0.28); margin-top: 7px; line-height: 1.6; }
+.ef-wrap .mic-field input { background: #0A0A0A; border-color: rgba(46,204,113,0.25); }
+.ef-wrap .mic-field input:focus { border-color: rgba(46,204,113,0.55); }
+.ef-wrap .check-group { display: grid; gap: 7px; margin-top: 9px; }
+.ef-wrap .check-option { display: flex; align-items: flex-start; gap: 11px; background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 15px; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.5; }
+.ef-wrap .check-option:has(input:checked) { border-color: rgba(255,6,181,0.45); background: rgba(255,6,181,0.06); color: rgba(255,255,255,0.75); }
+.ef-wrap .check-option input { width: auto; height: auto; accent-color: var(--pink); margin-top: 2px; flex-shrink: 0; }
+.ef-wrap .radio-group { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 9px; }
+.ef-wrap .radio-option { display: flex; align-items: center; gap: 9px; background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 11px 16px; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.4; }
+.ef-wrap .radio-option:has(input:checked) { border-color: rgba(255,6,181,0.45); background: rgba(255,6,181,0.06); color: rgba(255,255,255,0.8); }
+.ef-wrap .radio-option input { width: auto; height: auto; accent-color: var(--pink); }
+.ef-wrap .track-pick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.ef-wrap .track-pick label { margin: 0; }
+.ef-wrap .track-opt { display: block; background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 16px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.ef-wrap .track-opt:has(input:checked) { border-color: var(--pink); background: rgba(255,6,181,0.06); }
+.ef-wrap .track-opt input { accent-color: var(--pink); margin-right: 8px; }
+.ef-wrap .track-opt .to-title { font-size: 13px; font-weight: 700; color: #fff; }
+.ef-wrap .track-opt .to-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 3px; }
+.ef-wrap .char-count { font-size: 11px; color: rgba(255,255,255,0.22); text-align: right; margin-top: 5px; letter-spacing: 0.04em; }
+.ef-wrap .btn-primary { width: 100%; margin-top: 22px; padding: 13px; border: none; border-radius: 8px; background: var(--orange); color: #000; font-weight: 700; font-size: 14px; font-family: 'Inter', sans-serif; letter-spacing: 0.02em; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+.ef-wrap .btn-primary:hover { background: #ff8255; }
+.ef-wrap .btn-primary:active { transform: scale(0.98); }
+.ef-wrap .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
+.ef-wrap .btn-secondary { width: 100%; margin-top: 9px; padding: 11px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 8px; background: transparent; color: rgba(255,255,255,0.45); font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.ef-wrap .btn-secondary:hover { border-color: rgba(255,6,181,0.4); color: rgba(255,255,255,0.8); }
+.ef-wrap .result { margin-top: 14px; padding: 12px 16px; border-radius: 8px; font-size: 13px; text-align: center; display: none; }
+.ef-wrap .result.ok  { background: rgba(46,204,113,0.07); border: 0.5px solid rgba(46,204,113,0.3); color: rgba(46,204,113,0.95); display: block; }
+.ef-wrap .result.err { background: rgba(231,76,60,0.07); border: 0.5px solid rgba(231,76,60,0.3); color: rgba(231,76,60,0.95); display: block; }
+.ef-wrap .notice-box { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px; font-size: 13px; color: rgba(255,255,255,0.32); margin-bottom: 16px; line-height: 1.7; }
+.ef-wrap .criteria-box { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 14px 16px; margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.7; }
+.ef-wrap .criteria-box .ct { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 7px; }
+.ef-wrap .criteria-box ul { margin: 5px 0 0 18px; padding: 0; }
+
+.centered-section-content { width: 100%; max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* ── ABOUT FOOTER (verbatim per brand skill — do not modify) ── */
+.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding-top: 48px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+.about-footer-text { text-align: left; }
+.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+
+@media (max-width: 680px) {
+  .track-grid { grid-template-columns: 1fr; }
+  .ef-wrap .track-pick { grid-template-columns: 1fr; }
+  .about-footer { flex-direction: column; text-align: center; }
+  .about-footer-text { text-align: center; }
+}
+.legal-link { color: var(--orange); text-decoration: none; font-weight: 600; transition: color 0.2s, text-decoration 0.2s; }
+.legal-link:hover { color: var(--pink); text-decoration: underline; }
+.agree-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-left: 2px solid var(--pink); border-radius: 0 12px 12px 0; padding: 20px 20px 18px; margin: 4px 0 18px; transition: border-color 0.2s, background 0.2s; }
+.agree-card.shake { animation: agreeShake 0.4s ease; border-color: rgba(255,107,53,0.6); }
+@keyframes agreeShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+.agree-row { display: flex; align-items: flex-start; gap: 12px; }
+.agree-row input[type=checkbox] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--pink); flex-shrink: 0; cursor: pointer; }
+.agree-row label { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; cursor: pointer; }
+.agree-row label strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+
+.agree-btn-row { display: flex; gap: 10px; margin-top: 16px; padding-top: 16px; border-top: 0.5px solid rgba(255,255,255,0.07); flex-wrap: wrap; }
+.agree-info-btn { flex: 1; min-width: 160px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 8px; padding: 10px 14px; font-size: 13px; font-weight: 600; color: var(--orange); font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+.agree-info-btn:hover { background: rgba(255,107,53,0.16); border-color: rgba(255,107,53,0.5); }
+
+@media (max-width: 480px) { .agree-btn-row { flex-direction: column; } }
+/* ── TOAST NOTIFICATION ── */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #151515;
+  border: 1px solid var(--orange);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ══════════════════════════════════
+       PAGE HEADER (unchanged)
+  ══════════════════════════════════ -->
+  <div class="page-header">
+    <p class="page-eyebrow">Recruitment</p>
+    <h1 class="page-title">Join <span>Us</span></h1>
+    <p class="page-subtitle">Join Placeholder Systems™!. Read all requirements carefully before registering for an account or applying.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       01 — RECRUITMENT DETAILS
+  ══════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-heading">
+      <span class="sh-num">01</span>
+      <span class="sh-title">Details</span>
+    </div>
+
+    <p class="info-label">General Requirements</p>
+    <p class="req-body">Before registering for <strong>Membership</strong> or applying for any <strong>Employee</strong> position, make sure you meet every requirement below.</p>
+    <ul class="req-list">
+      <li>You must be <strong>at least 13 years of age</strong> to register for membership or hold a position in Placeholder Systems. </li>
+      <li> You must have <strong>read and agreed </strong>to our <a href="https://sites.google.com/view/placeholdersystems/legal/privacy-policy" target="_blank" class="legal-link">Privacy Policy</a> and <a href="https://sites.google.com/view/placeholdersystems/legal/terms-of-service" target="_blank" class="legal-link">Terms of Service</a> in full before submitting either form on this page. By registering or submitting the application form, you affirm that you have read and accepted both documents.</li>
+      <li> You may hold <strong>only one Placeholder Account™ </strong> and, separately, <strong>only one active Employee record </strong>. Duplicate or alt accounts discovered during review will be <strong>merged or terminated.</strong></li>
+     
+     
+      <li> Your application(s) are typically reviewed within <strong> seven business days</strong>. You'll be contacted at the email address you provided.</li>
+    </ul>
+    <div class="agree-card" id="agree-card">
+  <div class="agree-row">
+    <input type="checkbox" id="agree-checkbox" onchange="onAgreeChange()">
+    <label for="agree-checkbox">
+      I have read and agree to the <strong>General Requirements</strong> above, the
+      <a href="https://sites.google.com/view/placeholdersystems/legal/terms-of-service" target="_blank" class="legal-link">Terms of Service</a>,
+      and the
+      <a href="https://sites.google.com/view/placeholdersystems/legal/privacy-policy" target="_blank" class="legal-link">Privacy Policy</a>.
+      <span class="req">*</span>
+    </label>
+  </div>
+  <div class="agree-btn-row">
+    <button type="button" class="agree-info-btn" onclick="scrollToSection('sec-flowchart')">More information on the career ladder &amp; progression in Placeholder Systems</button>
+    
+  </div>
+</div>
+<hr class="section-divider">
+<!-- section 03 wrapper -->
+<div class="section-block" >
+
+
+    <p class="info-label" style="margin-top:32px;">Membership</p>
+    <div class="track-grid" style="grid-template-columns:1fr;">
+      <div class="track-card">
+       
+        <div class="track-name">Membership</div>
+        <div class="track-status">Placeholder Account™</div>
+        <div class="track-body">Create a Placeholder Account™ for yourself. This is a <strong>free, universal account</strong> linked across all Placeholder Projects™, meaning you sign up once and carry the same identity, and data, into every project we run.</div>
+      
+      </div>
+    </div>
+    </div>
+    <hr class="section-divider">
+    <!-- section 04 wrapper -->
+<div class="section-block" >
+    <p class="info-label" style="margin-top:32px;">Track A (Via Membership)</p>
+    <div class="track-grid" style="grid-template-columns:1fr;">
+      <div class="track-card">
+        <div class="track-badge">TRACK A</div>
+        <div class="track-name">Via Membership</div>
+        <div class="track-status">For existing Placeholder Account™ holders</div>
+        <div class="track-body">Best for users who already hold a Placeholder Account™. Your Member account and Employee record stay linked under the same account.</div>
+        
+      </div>
+    </div>
+
+    <p class="info-label" style="margin-top:32px;">Track B (Direct)</p>
+    <div class="track-grid" style="grid-template-columns:1fr;">
+      <div class="track-card">
+        <div class="track-badge">TRACK B</div>
+        <div class="track-name">Direct</div>
+        <div class="track-status">For applicants without a prior Placeholder Account™</div>
+        <div class="track-body">If you don't have an existing membership, you may directly apply here. This track is also used for individuals who have been reccommended to join by executives.</div>
+       
+      </div>
+    </div>
+
+    <p class="info-label" style="margin-top:32px;">Departments</p>
+    <p class="req-body">Every standard position sits within one of the four departments below. Pick the one that matches your skills and interests when filling out the application. You may change departments if you later think that it was unsuitable for you.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="track-card">
+        <div class="track-name" style="font-size:14px;">Marketing Department</div>
+        <div class="track-body">Responsible for creating and executing promotional strategies and managing our social media platforms. </div>
+        <ul class="track-list">
+        <li> seeking <strong> social media manager</strong> who will also be the marketing director</li>
+        </ul>
+        
+      </div>
+      <div class="track-card">
+        <div class="track-name" style="font-size:14px;">Security Department</div>
+        <div class="track-body">Ensures the security of our operations and data. Covers account security reviews, monitoring for abuse of our projects or copyright violations.</div>
+        <ul class="track-list">
+        <li> <strong> no open positions</strong></li>
+        
+        <ul>
+        
+      </div>
+      <div class="track-card">
+        <div class="track-name" style="font-size:14px;">Administrative Department</div>
+        <div class="track-body">Manages human resource, financial and legal matters. </div>
+        <ul class="track-list">
+        <li>due to the sensitive nature of this dept, application without a direct reccommendation is <strong> strongly discouraged</strong>.</li>
+        
+        </ul>
+       
+      </div>
+      <div class="track-card">
+        <div class="track-name" style="font-size:14px;">Research &amp; Development Department</div>
+        <div class="track-body">Develops, maintains and updates projects and internal systems.</div>
+        <ul class="track-list">
+        <li> looking for people with experience in <strong>google apps script, css/html/js and proxy networks</strong></li>
+        
+        <ul>
+       
+      </div>
+      <div class="track-card" style="grid-column:1/-1;">
+        <div class="track-name" style="font-size:14px;">Executive Board (not really a department)</div>
+        <div class="track-body">People in charge of running Placeholder Systems make up this board, including Chief Regional Executives, Directors and Managers (deputy directors).
+        </div>
+        <ul class="track-list">
+        <li> application for executive roles is restricted to employees only</li>
+        
+        <ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  <hr class="section-divider">
+
+
+  <!-- ══════════════════════════════════
+       02 — EMPLOYMENT FLOWCHART
+  ══════════════════════════════════ -->
+  <div class="section-block" id="sec-flowchart">
+    <div class="section-heading">
+      <span class="sh-num">02</span>
+      <span class="sh-title">Human Resource Progression Flowchart</span>
+    </div>
+
+    <div class="flowchart-wrap">
+      <div class="flowchart-label">
+        <span>HR PROGRESSION FLOWCHART</span>
+        <button class="flowchart-expand-btn" onclick="openLightbox()" id="fc-expand-btn" style="display:none">⤢ EXPAND</button>
+      </div>
+      <div class="flowchart-img-area" id="fc-img-area">
+        <img id="fc-img" src="https://raw.githubusercontent.com/placeholdersystems/image-assets/refs/heads/main/hr-chart-dark.png"
+             alt="Employment Flowchart" style="width:100%;height:auto;border-radius:8px;" onclick="openLightbox()" />
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX OVERLAY -->
+  <div class="lightbox-overlay" id="fc-lightbox" onclick="closeLightboxOnBg(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="fc-lightbox-img" src="" alt="Employment Flowchart — Full View">
+      <div class="lightbox-hint">PRESS ESC OR CLICK OUTSIDE TO CLOSE</div>
+    </div>
+  </div>
+
+
+  <hr class="section-divider">
+
+
+  <!-- ══════════════════════════════════
+       03 — MEMBERSHIP
+  ══════════════════════════════════ -->
+  <div class="centered-section-content">
+  <div class="section-block">
+    <div class="section-heading">
+      <span class="sh-num">03</span>
+      <span class="sh-title">Membership</span>
+    </div>
+   
+
+    <div class="form-embed-card">
+      <div class="form-embed-label">
+        <span class="fel-title">Membership Application Form</span>
+        <span class="fel-tag">OFFICIAL — PUBLIC RELEASE</span>
+      </div>
+
+      <div class="ef-wrap" id="mem-form-wrap">
+        <h2>Create Member Account</h2>
+        <p class="subtitle">Membership</p>
+        <span class="official-tag">OFFICIAL — PUBLIC RELEASE</span>
+
+        <div class="rules-box">
+          <ul>
+            <li>One account per person. Do not create duplicate or alt accounts.</li>
+            <li>Your username &amp; email can both be used interchangeably at login.</li>
+            <li>A 6-digit OTP (one time password) will be emailed to you for verification. </li>
+          </ul>
+        </div>
+
+        <div id="mem-step1">
+          <p class="fsec">Your Details</p>
+          <label>Choose a Username <span class="req">*</span></label>
+          <input id="mem-username" type="text" placeholder="e.g. placeholder_dev">
+        
+          <label>Email address <span class="req">*</span> </label>
+          <input id="mem-email" type="email" placeholder="e.g. your@email.com">
+          <label>Choose a Password <span class="req">*</span></label>
+          <input id="mem-password" type="password" placeholder="Choose a secure password">
+          <button class="btn-primary" id="mem-sendBtn" onclick="memSendCode()">Send Verification Code</button>
+          <div class="result" id="mem-step1Result"></div>
+        </div>
+
+        <div id="mem-step2" style="display:none">
+          <p class="fsec">Verify Your Email</p>
+          <div style="background:#0D0D0D;border:0.5px solid rgba(46,204,113,0.25);border-left:2px solid rgba(46,204,113,0.4);border-radius:0 8px 8px 0;padding:16px 18px;margin-bottom:16px;font-size:13px;color:rgba(255,255,255,0.38);line-height:1.7">
+            A 6-digit verification code has been sent to <strong id="mem-emailDisplay" style="color:rgba(255,255,255,0.8)"></strong>.<br>
+            Enter it below to activate your account. The code expires in <strong style="color:var(--orange)">15 minutes</strong>.
+          </div>
+          <label>Verification Code <span class="req">*</span></label>
+          <input id="mem-otpInput" type="text" placeholder="e.g. 676767" maxlength="6" style="font-size:1.6em;letter-spacing:8px;text-align:center">
+          <button class="btn-primary" id="mem-verifyBtn" onclick="memVerifyCode()">Verify &amp; Create Account</button>
+          <button class="btn-secondary" onclick="memResendCode()" id="mem-resendBtn">Back</button>
+          <div class="result" id="mem-step2Result"></div>
+        </div>
+
+        <div id="mem-step3" style="display:none">
+          <p class="fsec">Account Created</p>
+          <div style="background:#0D0D0D;border:0.5px solid rgba(46,204,113,0.3);border-radius:10px;padding:20px;margin-bottom:18px">
+            <div style="color:rgba(46,204,113,0.95);font-weight:700;font-size:14px;margin-bottom:16px">✓ Your account has been created successfully.</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.38);line-height:2.2">
+              <div><span style="color:rgba(255,255,255,0.28)">Username:</span>&ensp;<span id="mem-credUsername" style="font-family:monospace;background:rgba(255,107,53,0.1);border:0.5px solid rgba(255,107,53,0.25);padding:2px 10px;border-radius:5px;color:var(--orange)"></span></div>
+              <div><span style="color:rgba(255,255,255,0.28)">Password:</span>&ensp;<span id="mem-credPW" style="font-family:monospace;background:rgba(255,107,53,0.1);border:0.5px solid rgba(255,107,53,0.25);padding:2px 10px;border-radius:5px;color:var(--orange)"></span></div>
+            </div>
+          </div>
+          <div style="background:#0D0D0D;border:0.5px solid rgba(255,255,255,0.07);border-left:2px solid rgba(255,107,53,0.45);border-radius:0 8px 8px 0;padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.32);line-height:1.7">
+            Your username and email can both be used interchangeably at login. 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <hr class="section-divider">
+
+
+  <!-- ══════════════════════════════════
+       04 — STANDARD ROLE APPLICATION (public)
+  ══════════════════════════════════ -->
+  <div class="section-block">
+    <div class="section-heading">
+      <span class="sh-num">04</span>
+      <span class="sh-title">Standard Role Application</span>
+    </div>
+
+    <div class="form-embed-card">
+      <div class="form-embed-label">
+        <span class="fel-title">Standard Role Application Form</span>
+        <span class="fel-tag">OFFICIAL — PUBLIC RELEASE</span>
+      </div>
+
+      <div class="ef-wrap" id="std-form-wrap">
+        <h2>Apply for an Employee Role</h2>
+        <p class="subtitle">Standard Role</p>
+        <span class="official-tag">OFFICIAL — PUBLIC RELEASE</span>
+
+        <div class="rules-box">
+          We assume you are up-to-date with all information.
+          <ul>
+            <li>Be sure of your choice. No troll applications (you may be blacklisted from applying again.)</li>
+            <li>You may only apply for one role at a time.</li>
+            <li>Existing employees may use this form to apply for a different role.</li>
+          </ul>
+        </div>
+
+        <p class="fsec">Choose Your Track</p>
+        <div class="track-pick">
+          <label class="track-opt">
+            <input type="radio" name="std-track" value="A" onchange="stdShowTrack('A')">
+            <div class="to-title">Track A (Via Membership)</div>
+            <div class="to-sub">You're an existing Member</div>
+          </label>
+          <label class="track-opt">
+            <input type="radio" name="std-track" value="B" onchange="stdShowTrack('B')">
+            <div class="to-title">Track B (Direct/Existing Employee)</div>
+            <div class="to-sub">You're applying directly or are an existing employee already.</div>
+          </label>
+        </div>
+
+        <div class="mic-field" id="std-username-field">
+          <div class="mic-label">Username</div>
+          <label style="margin-top:0">Your Username <span class="req">*</span></label>
+          <input id="std-username" type="text" placeholder="e.g. placeholder_dev">
+          <div class="mic-note" id="std-username-note">Select a track above to see instructions for this field.</div>
+        </div>
+
+        <p class="fsec">Identification</p>
+        <label>Email address <span class="req">*</span></label>
+        <input id="std-email" type="email" placeholder="your@email.com">
+
+
+        <p class="fsec">Dept Selection</p>
+        <label>What department would you like to join? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="std-role" value="Marketing Department"><span><strong>Marketing Department</strong></span></label>
+          <label class="radio-option"><input type="radio" name="std-role" value="Security Department"><span><strong>Security Department</strong></span></label>
+          <label class="radio-option"><input type="radio" name="std-role" value="Administrative Department"><span><strong>Administrative Department</strong></span></label>
+          <label class="radio-option"><input type="radio" name="std-role" value="Research and Development Department"><span><strong>R&amp;D Department</strong></span></label>
+        </div>
+
+        <p class="fsec">Rationale</p>
+        <label>Why do you want to take on this role? <span class="req">*</span></label>
+        <textarea id="std-rationale" placeholder="Describe your motivation and suitability for this role." oninput="stdCC('std-rationale','std-rc')"></textarea>
+        <div class="char-count" id="std-rc">0 chars</div>
+
+        <button class="btn-primary" id="std-submitBtn" onclick="stdSubmit()">Submit Application</button>
+        <div class="result" id="std-result"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       ABOUT FOOTER
+  ══════════════════════════════════ -->
+  <div class="divider" style="border:0;height:0.5px;background:rgba(255,255,255,0.07);"></div>
+  <div class="about-footer">
+    <img src="https://github.com/placeholdersystems/image-assets/blob/main/pls-logo.png?raw=true"
+         alt="Placeholder Systems Logo" />
+    <div class="about-footer-text">
+      <p class="org-name">Placeholder Systems™</p>
+      <p class="org-tagline">Entertainment, at Placeholder Systems.™</p>
+    </div>
+  </div>
+
+  </div><!-- /centered-section-content -->
+</div>
+
+<script>
+// Set this to your deployed Code.gs Web App /exec URL.
+const API = "https://script.google.com/macros/s/AKfycbwODZAUMzVLRvXNMteW_rSAUjOEo0lQdJ3Xk44xS8syEb8pCdVw4UHxvB4BebxzsYLw/exec";
+
+/* ── MEMBERSHIP FORM ── */
+async function memSendCode() {
+ if (!requireAgreement()) return;
+  const username = document.getElementById("mem-username").value.trim();
+  const email    = document.getElementById("mem-email").value.trim();
+  const password = document.getElementById("mem-password").value;
+  if (!username) { memShow1("Choose a username.", false); return; }
+  if (!email)    { memShow1("Email address is required.", false); return; }
+  if (!password) { memShow1("Choose a password.", false); return; }
+  const btn = document.getElementById("mem-sendBtn");
+  btn.disabled = true; btn.textContent = "Sending…";
+  try {
+    const res  = await fetch(API, { method:"POST", body:JSON.stringify({ action:"sendOTP", email, username, password }) });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById("mem-step1").style.display = "none";
+      document.getElementById("mem-step2").style.display = "block";
+      document.getElementById("mem-emailDisplay").textContent = email;
+    } else {
+      memShow1("Error: " + (data.error || "Unknown"), false);
+      btn.disabled = false; btn.textContent = "Send Verification Code";
+    }
+  } catch(e) {
+    memShow1("Network error: " + e.message, false);
+    btn.disabled = false; btn.textContent = "Send Verification Code";
+  }
+}
+async function memResendCode() {
+  document.getElementById("mem-step2").style.display = "none";
+  document.getElementById("mem-step1").style.display = "block";
+  document.getElementById("mem-sendBtn").disabled = false;
+  document.getElementById("mem-sendBtn").textContent = "Send Verification Code";
+  document.getElementById("mem-step1Result").className = "result";
+  document.getElementById("mem-step1Result").textContent = "";
+}
+async function memVerifyCode() {
+  const email = document.getElementById("mem-email").value.trim();
+  const otp   = document.getElementById("mem-otpInput").value.trim();
+  if (!otp || otp.length !== 6) { memShow2("Enter the 6-digit code.", false); return; }
+  const btn = document.getElementById("mem-verifyBtn");
+  btn.disabled = true; btn.textContent = "Verifying…";
+  try {
+    const res  = await fetch(API, { method:"POST", body:JSON.stringify({ action:"verifyMember", email, otp }) });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById("mem-step2").style.display = "none";
+      document.getElementById("mem-step3").style.display = "block";
+      document.getElementById("mem-credUsername").textContent = data.username;
+      document.getElementById("mem-credPW").textContent = data.password;
+    } else {
+      memShow2("Error: " + (data.error || "Unknown"), false);
+      btn.disabled = false; btn.textContent = "Verify & Create Account";
+    }
+  } catch(e) {
+    memShow2("Network error: " + e.message, false);
+    btn.disabled = false; btn.textContent = "Verify & Create Account";
+  }
+}
+function memShow1(msg, ok) { const el = document.getElementById("mem-step1Result"); el.textContent = msg; el.className = "result " + (ok ? "ok" : "err"); }
+function memShow2(msg, ok) { const el = document.getElementById("mem-step2Result"); el.textContent = msg; el.className = "result " + (ok ? "ok" : "err"); }
+
+/* ── STANDARD ROLE FORM (public, Track A/B) ── */
+function stdShowTrack(track) {
+  const note = document.getElementById("std-username-note");
+  if (track === "A") {
+    note.textContent = "Enter your existing Member username. This identifies your Member account so it can be linked to your new Employee record — your username, email and password will carry over unchanged.";
+  } else {
+    note.textContent = "Choose a username for your new Employee account. If you're already an Employee applying for a different role, enter your current username instead.";
+  }
+}
+function stdCC(fid, cid) { document.getElementById(cid).textContent = document.getElementById(fid).value.length + " chars"; }
+async function stdSubmit() {
+ if (!requireAgreement()) return;
+  const trackEl   = document.querySelector('input[name="std-track"]:checked');
+  const username  = document.getElementById("std-username").value.trim();
+  const email     = document.getElementById("std-email").value.trim();
+  const roleEl    = document.querySelector('input[name="std-role"]:checked');
+  const rationale = document.getElementById("std-rationale").value.trim();
+
+  if (!trackEl)   { stdShow("Select a track.", false); return; }
+  if (!username)  { stdShow("Username is required.", false); return; }
+  if (!email)     { stdShow("Email address is required.", false); return; }
+  if (!roleEl)    { stdShow("Select a role.", false); return; }
+  if (!rationale) { stdShow("Rationale is required.", false); return; }
+
+  const btn = document.getElementById("std-submitBtn");
+  btn.disabled = true; btn.textContent = "Submitting…";
+  try {
+    const res  = await fetch(API, { method:"POST", body:JSON.stringify({
+      action:"submitApp", formType:"standard",
+      email, username,
+      track: trackEl.value === "A" ? "A (Membership)" : "B (Recommendation)",
+      roleApplied: roleEl.value, rationale
+    })});
+    const data = await res.json();
+    if (data.success) {
+      stdShow("Application submitted successfully.", true);
+      btn.textContent = "Submitted ✓";
+    } else {
+      stdShow("Error: " + (data.error || "Unknown"), false);
+      btn.disabled = false; btn.textContent = "Submit Application";
+    }
+  } catch(e) {
+    stdShow("Network error: " + e.message, false);
+    btn.disabled = false; btn.textContent = "Submit Application";
+  }
+}
+function stdShow(msg, ok) { const el = document.getElementById("std-result"); el.textContent = msg; el.className = "result " + (ok ? "ok" : "err"); }
+
+/* ── FLOWCHART LIGHTBOX ── */
+function openLightbox() {
+  const src = document.getElementById("fc-img") ? document.getElementById("fc-img").src : null;
+  if (!src) return;
+  document.getElementById("fc-lightbox-img").src = src;
+  document.getElementById("fc-lightbox").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+function closeLightbox() {
+  document.getElementById("fc-lightbox").classList.remove("active");
+  document.body.style.overflow = "";
+}
+function closeLightboxOnBg(e) {
+  if (e.target === document.getElementById("fc-lightbox")) closeLightbox();
+}
+document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeLightbox(); });
+(function() {
+  const img = document.getElementById("fc-img");
+  if (img) {
+    document.getElementById("fc-expand-btn").style.display = "inline-flex";
+    img.style.cursor = "zoom-in";
+    img.title = "Click to expand";
+  }
+})();
+/* ── AGREEMENT CHECKBOX GATE & TOAST ── */
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function isAgreed() {
+  const box = document.getElementById("agree-checkbox");
+  return !!(box && box.checked);
+}
+
+// Function to trigger the custom toast notification
+function showToast(message) {
+  let toast = document.getElementById("custom-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "custom-toast";
+    toast.className = "toast-notification";
+    document.body.appendChild(toast);
+  }
+  
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  // Automatically hide after 3.5 seconds
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3500);
+}
+
+function requireAgreement() {
+  if (isAgreed()) return true;
+
+  // 1. Show the warning toast
+  showToast("Please check the tickbox above to affirm your agreement to requirements");
+
+  // 2. Scroll up to the checkbox section
+  const card = document.getElementById("agree-card");
+  if (card) {
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.classList.add("shake");
+    setTimeout(() => card.classList.remove("shake"), 400);
+  }
+  
+  return false;
+}
+
+// Keep buttons active so users can click them to trigger validation & toast
+function onAgreeChange() {
+  const memBtn = document.getElementById("mem-sendBtn");
+  const stdBtn = document.getElementById("std-submitBtn");
+  if (memBtn) memBtn.disabled = false;
+  if (stdBtn) stdBtn.disabled = false;
+}
+
+// Ensure buttons stay enabled on initial page load
+document.addEventListener("DOMContentLoaded", onAgreeChange);
+</script>
+<script>
+    
+    // do not touch this counter; this is for analytics only. do not modify any component.
+    //DEFAULT VC TEMPLATE!!!!
+    const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
+    fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
+</script>
+</body>
+</html>
