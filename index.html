@@ -15,9 +15,9 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 /* ── BRAND ── */
 :root {
-  --brand-pink: #FF06B5;
-  --brand-orange: #ff6b35;
-  --brand-gradient: linear-gradient(135deg, var(--brand-pink), var(--brand-orange));
+  --pink: #FF06B5;
+  --orange: #ff6b35;
+  --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
   --line: rgba(255,255,255,0.09);
   --panel: #0D0D0D;
   --radius: 18px;
@@ -146,7 +146,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .mk-next { background: repeating-linear-gradient(135deg, #090909 0 12px, #0c0c0c 12px 24px); color:#fff; }
 .mk-next.on { display:flex; align-items:center; justify-content:center; }
 .mk-next .nx-shell { border:0.5px dashed rgba(255,255,255,.18); border-radius:14px; padding:26px 16px; text-align:center; width:100%; }
-.mk-next .nx-tag { display:inline-block; font-size:8.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-pink); background:rgba(255,6,181,.12); border:0.5px solid rgba(255,6,181,.3); border-radius:999px; padding:4px 10px; }
+.mk-next .nx-tag { display:inline-block; font-size:8.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink); background:rgba(255,6,181,.12); border:0.5px solid rgba(255,6,181,.3); border-radius:999px; padding:4px 10px; }
 .mk-next .nx-title { font-size:20px; font-weight:800; letter-spacing:-.03em; margin:10px 0 6px; }
 .mk-next .nx-sub { font-size:10px; color:rgba(255,255,255,.38); line-height:1.6; max-width:38ch; margin:0 auto; }
 .mk-next .nx-bars { display:grid; gap:6px; margin:13px auto 0; max-width:300px; }
@@ -171,7 +171,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .about-card-body { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.75; }
 .about-card-body p { margin-bottom: 4px; }
 .about-card-body p:last-child { margin-bottom: 0; }
-.about-card-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--brand-orange); text-decoration: none; }
+.about-card-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--orange); text-decoration: none; }
 
 .about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 48px 24px; border-top: 0.5px solid rgba(255,255,255,0.07); }
 .about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
@@ -211,10 +211,10 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .s-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.32); letter-spacing: 0.08em; margin-bottom: 8px; }
 .s-value { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
 .s-sub   { font-size: 12px; color: rgba(255,255,255,0.26); margin-top: 6px; }
-.s-value.accent { color: var(--brand-pink); } .s-value.blue { color: #378ADD; }
+.s-value.accent { color: var(--pink); } .s-value.blue { color: #378ADD; }
 .counters-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .counter-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 14px; text-align: center; }
-.site-tag { display: inline-block; background: rgba(255,6,181,0.12); border: 0.5px solid rgba(255,6,181,0.3); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: var(--brand-pink); margin-bottom: 8px; letter-spacing: 0.05em; font-weight: 600; }
+.site-tag { display: inline-block; background: rgba(255,6,181,0.12); border: 0.5px solid rgba(255,6,181,0.3); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: var(--pink); margin-bottom: 8px; letter-spacing: 0.05em; font-weight: 600; }
 .site-tag.dr { background: rgba(55,138,221,0.1); border-color: rgba(55,138,221,0.22); color: #378ADD; }
 .site-tag.steak { background: rgba(63,227,115,0.1); border-color: rgba(63,227,115,0.22); color: #3fe373; }
 .site-tag.instmsg { background: rgba(255,180,0,0.1); border-color: rgba(255,180,0,0.22); color: #FFB400; }
@@ -231,7 +231,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .faq-list summary { list-style: none; cursor: pointer; display: flex; align-items: center; padding: 24px 4px; font-weight: 600; font-size: 17px; letter-spacing: -.015em; gap: 14px; color: #fff; }
 .faq-list summary::-webkit-details-marker { display: none; }
 .faq-list summary .pl { margin-left: auto; color: rgba(255,255,255,.4); font-size: 22px; font-weight: 200; transition: transform .3s; flex: 0 0 auto; line-height: 1; }
-.faq-list details[open] summary .pl { transform: rotate(45deg); color: var(--brand-pink); }
+.faq-list details[open] summary .pl { transform: rotate(45deg); color: var(--pink); }
 .faq-list .ans { color: rgba(255,255,255,.45); font-size: 14.5px; line-height: 1.72; padding: 0 44px 24px 4px; }
 .faq-list .ans b { color: rgba(255,255,255,.85); font-weight: 600; }
 
@@ -258,9 +258,9 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .social-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(255,6,181,0.22); }
 .social-btn:hover::before { opacity: 1; transform: scale(1); }
 .social-btn .sb-dots { display: inline-flex; gap: 4px; }
-.social-btn .sb-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--brand-pink); transition: background .25s ease; }
+.social-btn .sb-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--pink); transition: background .25s ease; }
 .social-btn .sb-dots i:nth-child(2) { background: #ff3d8b; }
-.social-btn .sb-dots i:nth-child(3) { background: var(--brand-orange); }
+.social-btn .sb-dots i:nth-child(3) { background: var(--orange); }
 .social-btn:hover .sb-dots i { background: #fff; }
 .social-btn .sb-arrow { transition: transform .25s cubic-bezier(.16,.7,.2,1); }
 .social-btn:hover .sb-arrow { transform: translateX(4px); }
@@ -321,7 +321,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
             transition: color 0.2s, text-decoration-color 0.2s;
             word-break: break-all;
         }
-        .contact-link:hover { color: var(--brand-pink); text-decoration-color: var(--brand-pink); }
+        .contact-link:hover { color: var(--pink); text-decoration-color: var(--pink); }
 </style>
 </head>
 <body>
