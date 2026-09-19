@@ -541,7 +541,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     <p class="section-label">STATS</p>
     <div class="stats-grid">
       <div class="stat-card"><p class="s-label">DATE ESTABLISHED</p><p class="s-value" id="est-date">—</p><p class="s-sub" id="est-year"></p></div>
-      <div class="stat-card"><p class="s-label">UPTIME RELIABILITY</p><p class="s-value accent-1" id="uptime-val">—</p><p class="s-sub">last 90 days</p></div>
+      <div class="stat-card"><p class="s-label">COMPANY UPTIME</p><p class="s-value accent-1" id="uptime-val">—</p><p class="s-sub">last 90 days</p></div>
       <div class="stat-card"><p class="s-label">MEMBER COUNT</p><p class="s-value accent-2" id="member-count">—</p><p class="s-sub">registered members</p></div>
       <div class="stat-card"><p class="s-label">DAYS ACTIVE</p><p class="s-value" id="days-active">—</p><p class="s-sub">and counting</p></div>
     </div>
@@ -641,9 +641,22 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 </div>
 
 <script>
+/*remove on 7 oct TEMP uptime script */
+
+  const START_DATE = new Date(2026, 8, 18);
+
+ 
+  const TODAY = new Date();
+  const startDateOnly = new Date(START_DATE.getFullYear(), START_DATE.getMonth(), START_DATE.getDate());
+  const todayOnly = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate());
+  const daysElapsed = Math.floor((todayOnly - startDateOnly) / (1000 * 60 * 60 * 24)) + 1;
+  const UPTIME = Number((100 - (daysElapsed / 90) * 100 ).toFixed(1));
+
+ 
+
 /* ── config ── */
 const ESTABLISHED            = "2025-09-23";
-const UPTIME_PCT             = 97.7;
+const UPTIME_PCT             = UPTIME;
 const MEMBER_COUNT           = "—";
 const OPSTAT_API             = "https://script.google.com/macros/s/AKfycbwENqiIDpeiFs7-eYIi1EAW4dkPeGgK2ha3hR0zEWU3J_Jy6T9T6R7Zywu_kt6KuN_8Bw/exec";
 const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
