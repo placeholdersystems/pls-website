@@ -582,7 +582,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     </details>
     <details>
       <summary>What are Placeholder Accounts, and how do I create one? <span class="pl">+</span></summary>
-      <div class="ans">A Placeholder Account is basically a membership, and you can use that account to login and get access to more features from our projects. Create ne by heading to the Join Us page.</div>
+      <div class="ans">A Placeholder Account is basically a membership, and you can use that account to login and get access to more features from our projects. Create one by heading to the Join Us page.</div>
     </details>
      <details>
       <summary>What was the rationale behind our brand colours and logo?<span class="pl">+</span></summary>
@@ -641,20 +641,15 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 </div>
 
 <script>
+  
 /*remove on 7 oct TEMP uptime script */
-
-  const START_DATE = new Date(2026, 8, 18);
-
- 
-  const TODAY = new Date();
-  const startDateOnly = new Date(START_DATE.getFullYear(), START_DATE.getMonth(), START_DATE.getDate());
-  const todayOnly = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate());
-  const daysElapsed = Math.floor((todayOnly - startDateOnly) / (1000 * 60 * 60 * 24)) + 1;
-  const UPTIME = Number((100 - (daysElapsed / 90) * 100 ).toFixed(1));
-
- 
-
-/* ── config ── */
+const START_DATE = new Date(2026, 8, 18);
+const TODAY = new Date();
+const startDateOnly = new Date(START_DATE.getFullYear(), START_DATE.getMonth(), START_DATE.getDate());
+const todayOnly = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate());
+const daysElapsed = Math.floor((todayOnly - startDateOnly) / (1000 * 60 * 60 * 24)) + 1;
+const UPTIME = Number((100 - (daysElapsed / 90) * 100 ).toFixed(1));
+/*perma;no remove*/
 const ESTABLISHED            = "2025-09-23";
 const UPTIME_PCT             = UPTIME;
 const MEMBER_COUNT           = "—";
@@ -662,21 +657,18 @@ const OPSTAT_API             = "https://script.google.com/macros/s/AKfycbwENqiID
 const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
 const COUNTER_SITE2_READONLY = "https://script.google.com/macros/s/AKfycbyXFTcX7kalhx2KhbYbf23SySEwn2FJdWu8OX9dX6r_hLoq1MBiMzVZ0vB8IP7ZG--x/exec";
 const COUNTER_SITE3_READONLY = "https://script.google.com/macros/s/AKfycbzcgak-fj_XaxruiCBBxPpNeI3eUi19ZYkmVBzum0OWglolceDTCbpsxyIS0pZ9e-G70g/exec";
-
-/* ── PROJECT PREVIEWS · edit these three lines to point at the real sites ── */
 const PROJECTS = {
   overview: { addr: "placeholdersystems.pages.dev",                   url: "https://www.placeholdersystems.pages.dev" },
-  dr:       { addr: "sites.google.com/view/pls-digitalrepository", url: "https://www.sites.google.com/view/pls-digitalrepository" },   /* ← placeholder link */
-  steak:    { addr: "sites.google.com/view/pls-steak",              url: "https://sites.google.com/view/pls-steak" },   /* ← placeholder link */
-  next:     { addr: "placeholdersystems.pages.dev/placeholder",         url: "placeholdersystems.pages.dev/placeholder" }    /* ← placeholder link */
+  dr:       { addr: "sites.google.com/view/pls-digitalrepository/live-tv", url: "https://www.sites.google.com/view/pls-digitalrepository/live-tv" },  
+  steak:    { addr: "sites.google.com/view/pls-steak",              url: "https://sites.google.com/view/pls-steak" },   
+  next:     { addr: "placeholdersystems.pages.dev/placeholder",         url: "https://placeholdersystems.pages.dev/placeholder" }    
 };
 
-/* Stage preview switcher — loads each project page into a scaled frame on first view */
 (function(){
   const addr  = document.getElementById('stageAddr');
   const navs  = document.querySelectorAll('.stage-nav');
   const mocks = document.querySelectorAll('.mock');
-  const FRAME_W = 1440, FRAME_H = 1000;   /* virtual desktop viewport for previews */
+  const FRAME_W = 1440, FRAME_H = 1000;  
 
   document.querySelectorAll('[data-project-link]').forEach(a => {
     const key = a.getAttribute('data-project-link');
