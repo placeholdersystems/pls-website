@@ -47,21 +47,6 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .cycle-word.exit   { opacity: 0; transform: translateY(-40px); }
 .hero-desc { color: rgba(255,255,255,0.35); font-size: 15px; line-height: 1.7; max-width: 360px; margin: 0 auto; }
 
-.orb3d {
-  position: absolute; top: 12%; right: 8%; width: 260px; height: 260px; border-radius: 50%; z-index: 0; pointer-events: none;
-  background: radial-gradient(circle at 32% 30%, rgba(255,107,53,.55), rgba(255,6,181,.28) 45%, transparent 72%);
-  filter: blur(2px); opacity: .8;
-  will-change: transform, opacity;
-  transition: transform 0.1s linear, opacity 0.1s linear;
-}
-.orb3d.orb3d-low {
-  top: 75%; left: 20%; right: auto; width: 200px; height: 200px; opacity: .62;
-  background: radial-gradient(circle at 36% 28%, rgba(255,6,181,.5), rgba(255,107,53,.24) 46%, transparent 73%);
-  will-change: transform, opacity;
-  transition: transform 0.1s linear, opacity 0.1s linear;
-}
-@keyframes orbFloat { 0%,100%{ transform: translate3d(0,0,0) rotate(0deg); } 50%{ transform: translate3d(-14px,22px,0) rotate(12deg); } }
-@keyframes orbFloatLow { 0%,100%{ transform: translate3d(0,0,0) rotate(0deg); } 50%{ transform: translate3d(18px,-18px,0) rotate(-14deg); } }
 
 /* ── HERO STAGE SECTION ── */
 .stage-section {
@@ -311,7 +296,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
   .about-footer { flex-direction: column; text-align: center; }
   .about-footer-text { text-align: center; }
   .stage-section { padding: 70px 18px; }
-  .orb3d { display: none; }
+  
   .faq-section { padding: 70px 20px; }
   .mk-dr .dr-grid { grid-template-columns: 1fr; }
 }
@@ -332,8 +317,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 <!-- ════════ 1 · HERO (own full page) ════════ -->
 <section class="hero-section">
-  <div class="orb3d" aria-hidden="true"></div>
-  <div class="orb3d orb3d-low" aria-hidden="true"></div>
+
   <div class="hero-inner">
     
     <h1 class="headline">
@@ -596,10 +580,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
       <summary>How many people are involved in this? <span class="pl">+</span></summary>
       <div class="ans">Across all branches, we have about 10 individuals supporting Placeholder Systems. How about you make that number increase and join us?</div>
     </details>
-    <details>
-      <summary>Why are there 2 mysterious orbs ominously floating around the top of this page? <span class="pl">+</span></summary>
-      <div class="ans"><b>ball.</b></div>
-    </details>
+   
   </div>
 </section>
 
@@ -883,19 +864,7 @@ function scrollToStage(e) {
     const scrollY = window.scrollY;
     const vh = window.innerHeight;
 
-    // 1. Orbs smooth movement away on scroll
-    const orb1 = document.querySelector('.orb3d:not(.orb3d-low)');
-    const orb2 = document.querySelector('.orb3d.orb3d-low');
-   
-    if (orb1 && orb2) {
-      const progress = Math.min(scrollY / vh, 1);
-      orb1.style.transform = `translate3d(${progress * 80}px, ${progress * -150}px, 0) scale(${1 - progress * 0.3})`;
-      orb1.style.opacity = `${0.8 * (1 - progress)}`;
-     
-      orb2.style.transform = `translate3d(${progress * -100}px, ${progress * -120}px, 0) scale(${1 - progress * 0.3})`;
-      orb2.style.opacity = `${0.62 * (1 - progress)}`;
-    }
-
+    
    
   });
 </script>
