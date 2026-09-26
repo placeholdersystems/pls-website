@@ -26,6 +26,10 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.16,.7,.2,1); transition-delay: var(--d,0s); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+.heading-orange { font-size: clamp(34px, 5vw, 52px); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; color: #fff; margin-bottom: 24px; }
+.heading-orange span { background: var(--orange); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.heading-pink { font-size: clamp(34px, 5vw, 52px); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; color: #fff; margin-bottom: 24px; }
+.heading-pink span { background: var(--pink); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* ── HERO (own full page) ── */
 .hero-section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 24px 64px; text-align: center; scroll-snap-align: start; position: relative; }
@@ -158,8 +162,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 /* ── ABOUT US ── */
 .about-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 100px 32px; scroll-snap-align: start; }
 .about-intro { max-width: 720px; margin: 0 auto 64px; text-align: center; }
-.mission-heading { font-size: clamp(34px, 5vw, 52px); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; color: #fff; margin-bottom: 24px; }
-.mission-heading span { background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
 .mission-body { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 16px; }
 .mission-body:last-child { margin-bottom: 0; }
 .mission-body strong { color: rgba(255,255,255,0.85); font-weight: 600; }
@@ -351,7 +354,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
   <p class="section-label reveal">ABT US</p>
 
   <div class="about-intro reveal">
-    <h2 class="mission-heading">Independent<br><span>  entertainment.</span></h2>
+    <h2 class="heading-pink">Independent<br><span>  entertainment.</span></h2>
     <p class="mission-body">Placeholder Systems is a small team building entertainment services, which include gaming, cinema and TV (more to come)</p>
     <p class="mission-body">Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client. It's part time work,but held to the same bar as anything sold.</p>
   </div>
@@ -378,13 +381,13 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     <div class="about-card reveal" style="--d:.12s">
       <p class="about-card-title">Projects</p>
       <div class="about-card-body">
-          <p>Colourfull</p>
+          
           <p>Steak</p>
         <p>Digital Repository...</p>
       </div>
       <a class="about-card-cta" href="./projects.html">View All Projects →</a>
      
-       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View project previews →</a>
+       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View Project Previews →</a>
     </div>
 
     <div class="about-card reveal" style="--d:.18s">
@@ -404,7 +407,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 <section class="stage-section" id="stageSection">
   <div class="stage-intro reveal">
     <p class="section-label">PROJECTS</p>
-    <h2 class="stage-heading">Public <span>previews</span></h2>
+    <h2 class="heading-orange">Public <span>previews</span></h2>
     <p class="stage-sub">Pick a project on the left to load its preview. Previews are uninteractable; to use, visit the respective projects' website.</p>
   </div>
 
@@ -432,7 +435,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
           <!-- overview · concise descriptions + preview buttons -->
           <div class="mock on" data-mock="overview">
-            <div class="stage-title">Projects <span class="pill-btn">Live</span></div>
+            <div class="stage-title">Projects</div>
             <div class="ov-list">
              
               <div class="ov-item">
@@ -446,8 +449,8 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
                 <button class="ov-btn" type="button" data-goto="dr">Preview</button>
               </div>
               <div class="ov-item">
-                <div class="ov-top"><span class="ov-name">Project X</span><span class="stage-pill sp-sync">Soon</span></div>
-                <p class="ov-desc">Unannounced. Trade dress, layout will be here once we have something to show.</p>
+                <div class="ov-top"><span class="ov-name">Project A</span><span class="stage-pill sp-sync">Soon</span></div>
+                <p class="ov-desc">Nothing here yet. We will put stuff here once we have announced it.</p>
                 <button class="ov-btn" type="button" data-goto="next">Preview </button>
               </div>
             </div>
@@ -480,9 +483,9 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
           <!-- Project 03 · placeholder -->
           <div class="mock mk-next" data-mock="next">
             <div class="nx-shell">
-              <span class="nx-tag">Unannounced</span>
-              <div class="nx-title">Project X</div>
-              <p class="nx-sub">Placeholder preview. Trade dress, copy and screens land here once this project is announced.</p>
+             
+              <div class="nx-title">Project A</div>
+              <p class="nx-sub">Nothing here yet. We will put stuff here once we have announced it.</p>
               <div class="nx-bars">
                 <div class="nx-bar"><i style="width:72%"></i></div>
                 <div class="nx-bar"><i style="width:46%"></i></div>
@@ -560,7 +563,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 <section class="faq-section">
   <p class="section-label reveal">FAQ</p>
   <div class="reveal" style="text-align:center">
-    <h2 class="mission-heading" style="font-size:clamp(28px,4vw,40px)">Questions, answered.</h2>
+    <h2 class="heading-pink" >Questions, <span> answered.</span></h2>
   </div>
   <div class="faq-list reveal">
    <details>
@@ -605,7 +608,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 <section class="contact-section">
   <p class="section-label reveal">CONTACT</p>
   <div class="reveal" style="text-align:center">
-    <h2 class="mission-heading" style="font-size:clamp(28px,4vw,40px)">Questions, unanswered?</h2>
+    <h2 class="heading-orange" >Questions, <span>unanswered?</span></h2>
      <p class="stage-sub">Contact us via email here:</p>
  <a href="mailto:placeholdersystems@gmail.com" class="contact-link">placeholdersystems@gmail.com</a>
 
