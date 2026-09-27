@@ -619,9 +619,17 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
   }
 
   .nav-links,
+ 
   .nav-cta {
-    display: none;
-  }
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-cta-hidden {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.95);
+  visibility: hidden;
+  pointer-events: none;
+}
 
   .nav-mobile-toggle {
     display: inline-flex;
@@ -1558,12 +1566,22 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
   }
 
 });
-    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+   // Only one dropdown open at a time
+document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
   const btn = dropdown.querySelector('.nav-dropdown-button');
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isOpen = dropdown.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
+    const isOpen = dropdown.classList.contains('open');
+
+    document.querySelectorAll('.nav-dropdown.open').forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      dropdown.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
   });
 });
 
@@ -1584,6 +1602,22 @@ document.addEventListener('keydown', (e) => {
     });
   }
 });
+
+// Hide Join Us CTA when final-section is in view
+const navCta = document.querySelector('.nav-cta');
+const finalSection = document.querySelector('.final-section');
+
+if (navCta && finalSection) {
+  const ctaObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        navCta.classList.toggle('nav-cta-hidden', entry.isIntersecting);
+      });
+    },
+    { threshold: 0.1 }
+  );
+  ctaObserver.observe(finalSection);
+}
   
 /*remove on 7 oct TEMP uptime script */
 const START_DATE = new Date(2026, 8, 18);
