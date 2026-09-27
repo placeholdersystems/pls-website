@@ -1225,5 +1225,54 @@ Body: Specify your full name, organization, relevant service, and detailed inqui
     const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
     fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
 </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+  const year = document.getElementById("footer-year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+});
+   // Only one dropdown open at a time
+document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+  const btn = dropdown.querySelector('.nav-dropdown-button');
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = dropdown.classList.contains('open');
+
+    document.querySelectorAll('.nav-dropdown.open').forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      dropdown.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
+      dropdown.classList.remove('open');
+      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
+    });
+  }
+});
+
+
+</script>
 </body>
 </html>
