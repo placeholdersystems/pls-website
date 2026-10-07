@@ -636,14 +636,17 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
     document.getElementById(id).innerHTML = await res.text();
   }
 
-  Promise.all([
-    include("site-header", "header.html"),
-    include("site-footer", "footer.html")
-  ]).then(() => {
-    const s = document.createElement("script");
-    s.src = base + "shared.js";
-    document.body.appendChild(s);
-  }).catch(console.error);
+ Promise.allSettled([
+  include("site-header", "header.html"),
+  include("site-footer", "footer.html")
+]).then(() => {
+  const y = document.getElementById("footer-year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  const s = document.createElement("script");
+  s.src = base + "shared.js";
+  document.body.appendChild(s);
+});
 </script>
 
 <script>
@@ -2281,7 +2284,9 @@ Not for unauthorised personal or commercial redistribution -->
     </main>
   </div>
 
-
+  <!-- -------------------------------------------------------------------------
+       PLATFORM COGNITION, TAB ROUTING & SYNCHRONIZATION INTERFACE LOGIC
+       ------------------------------------------------------------------------- -->
   <script>
         const VISITOR_API = "https://script.google.com/macros/s/AKfycbzcgak-fj_XaxruiCBBxPpNeI3eUi19ZYkmVBzum0OWglolceDTCbpsxyIS0pZ9e-G70g/exec";
 
