@@ -7,36 +7,12 @@
 <link rel="icon" type="image/png" href="./favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-hf@main/shared.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-css@main/standard.css">
  
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
 
-/* ── BRAND ── */
-:root {
-  --pink: #FF06B5;
-  --orange: #FF6B35;
-  --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
-}
 
-.page-wrap { max-width: 840px; margin: 0 auto; padding: 170px 28px 100px; }
 
-/* ── HEADER (unchanged — do not restyle) ── */
-.page-header { margin-bottom: 52px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(255,255,255,0.07); }
-.back-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #FF6B35; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 24px; }
-.page-eyebrow { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
-.page-title { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.1; margin-bottom: 14px; }
-.page-title span { color: #FF6B35; }
-.page-subtitle { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 560px; }
-
-/* ── SECTIONS (bumped) ── */
-.section-block { margin-bottom: 64px; }
-.section-heading { display: flex; align-items: baseline; gap: 12px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
-.sh-num   { font-size: 13px; font-weight: 700; color: var(--orange); letter-spacing: 0.08em; flex-shrink: 0; }
-.sh-title { font-size: 21px; font-weight: 800; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
-.section-divider { border: 0; height: 0.5px; background: rgba(255,255,255,0.07); margin: 56px 0; }
-
-.info-label { font-size: 12px; font-weight: 700; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 13px; }
 
 /* ── REQUIREMENTS (bumped) ── */
 .req-body { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 18px; }
@@ -184,7 +160,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
 
 @media (max-width: 480px) { .agree-btn-row { flex-direction: column; } }
 /* ── TOAST NOTIFICATION ── */
-.toast-notification {
+.toast {
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -203,7 +179,7 @@ body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow
   pointer-events: none;
 }
 
-.toast-notification.show {
+.toast.show {
   opacity: 1;
   transform: translateY(0);
 }
@@ -723,7 +699,7 @@ function showToast(message) {
   if (!toast) {
     toast = document.createElement("div");
     toast.id = "custom-toast";
-    toast.className = "toast-notification";
+    toast.className = "toast";
     document.body.appendChild(toast);
   }
   
