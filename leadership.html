@@ -7,109 +7,12 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-hf@main/shared.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-css@main/standard.css">
     <link rel="icon" type="image/png" href="./favicon.png">
 
     <style>
-        :root {
-            --pink: #FF06B5;
-            --orange: #FF6B35;
-            --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
-        }
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: #000;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        .page-wrap {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 170px 28px 100px;
-        }
-
-        /* ── HEADER (untouched — hero rule) ── */
-
-        .page-header {
-            margin-bottom: 52px;
-            padding-bottom: 28px;
-            border-bottom: 0.5px solid rgba(255,255,255,0.07);
-        }
-
-        .back-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #FF6B35; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 24px; text-decoration: none; transition: background 0.2s; }
-        .back-tag:hover { background: rgba(255,107,53,0.15); }
-
-        .page-eyebrow {
-            font-size: 11px;
-            font-weight: 500;
-            color: rgba(255,255,255,0.25);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .page-title {
-            font-size: clamp(28px, 5vw, 44px);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: #fff;
-            line-height: 1.1;
-            margin-bottom: 14px;
-        }
-
-        .page-title span {
-            color: #FF6B35;
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            color: rgba(255,255,255,0.4);
-            line-height: 1.75;
-            max-width: 520px;
-        }
-
-        /* ── VIEW SWITCH ── */
-
-        #view-bento, #view-flow { display: none; }
-
-        .view-switch {
-            display: inline-flex;
-            gap: 4px;
-            padding: 4px;
-            background: #0B0B0B;
-            border: 0.5px solid rgba(255,255,255,0.08);
-            border-radius: 999px;
-            margin-bottom: 48px;
-        }
-
-        .switch-btn {
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.45);
-            padding: 9px 20px;
-            border-radius: 999px;
-            transition: color 0.2s, background 0.2s;
-            user-select: none;
-        }
-
-        #view-bento:checked ~ .view-switch label[for="view-bento"],
-        #view-flow:checked ~ .view-switch label[for="view-flow"] {
-            color: #fff;
-            background: linear-gradient(135deg, rgba(255,6,181,0.22), rgba(255,107,53,0.22));
-            border: 0.5px solid rgba(255,255,255,0.1);
-        }
-
-        .view-panels .panel { display: none; }
-        #view-bento:checked ~ .view-panels .panel-bento { display: block; }
-        #view-flow:checked ~ .view-panels .panel-flow { display: block; }
+        
+       
 
         /* ── SHARED TIER LABELS ── */
 
