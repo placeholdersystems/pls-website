@@ -7,78 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-hf@main/shared.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-css@main/standard.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-css@main/legals.css">
 
   <link rel="icon" type="image/png" href="./favicon.png">
-<style>
 
-.meta-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
-.meta-pill { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 12px; font-size: 11px; color: rgba(255,255,255,0.45); }
-.meta-pill strong { color: rgba(255,255,255,0.7); font-weight: 500; }
-
-/* ── SECTION HEADING (BUMPED TYPE & BRAND PALETTE) ── */
-.doc-section { margin-bottom: 60px; }
-.section-heading {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 0.5px solid rgba(255,255,255,0.08);
-}
-.section-heading .sh-num {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--pink);
-  letter-spacing: 0.08em;
-  flex-shrink: 0;
-}
-.section-heading .sh-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-}
-.legal-link { color: var(--orange); text-decoration: none; font-weight: 600; transition: color 0.2s, text-decoration 0.2s; }
-.legal-link:hover { color: var(--pink); text-decoration: underline; }
-
-/* ── CLAUSE BLOCKS ── */
-.clause-block { margin-bottom: 32px; }
-.clause-number { font-size: 13px; font-weight: 800; color: var(--orange); letter-spacing: 0.06em; margin-bottom: 8px; }
-.clause-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.01em; }
-.clause-body { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.8; }
-.clause-body p { margin-bottom: 12px; }
-.clause-body p:last-child { margin-bottom: 0; }
-
-/* ── SUB-ITEMS ── */
-.sub-list { margin-top: 12px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.sub-list li { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 22px; position: relative; }
-.sub-list li::before { content: "—"; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
-
-/* ── DIVIDER ── */
-.section-divider { border: 0; height: 0.5px; background: rgba(255,255,255,0.07); margin: 56px 0; }
-.divider { height: 0.5px; background: rgba(255,255,255,0.07); margin: 48px 0 0; }
-
-/* ── CALLOUT BOX ── */
-.callout { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-left: 3px solid var(--pink); border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
-.callout p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; }
-.callout strong { color: rgba(255,255,255,0.9); font-weight: 600; }
-
-/* ── CODE / MONO BLOCK ── */
-.mono-block { background: #0A0A0A; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 20px 24px; margin: 20px 0; font-family: monospace; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
-
-/* ── CREDITS GRID ── */
-.credits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
-.credit-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
-.credit-role { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; margin-bottom: 6px; }
-.credit-name { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.5; }
-
-/* ── ADDENDUM BADGE ── */
-.addendum-badge { display: inline-block; background: rgba(55,138,221,0.12); border: 0.5px solid rgba(55,138,221,0.3); border-radius: 8px; padding: 6px 12px; font-size: 12px; color: #378ADD; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 20px; }
-
-
-@media (max-width: 540px) { .credits-grid { grid-template-columns: 1fr; } .meta-row { flex-direction: column; gap: 8px; } }
-</style>
 
 </head>
 <body>
