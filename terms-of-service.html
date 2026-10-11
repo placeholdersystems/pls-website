@@ -8,27 +8,11 @@
    <link rel="icon" type="image/png" href="./favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-hf@main/shared.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-css@main/standard.css">
 
  
 <style>
-:root {
-  --pink: #FF06B5;
-  --orange: #FF6B35;
-  --brand-gradient: linear-gradient(135deg, var(--pink), var(--orange));
-}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
-
-/* ── PAGE SHELL ── */
-.page-wrap { max-width: 780px; margin: 0 auto; padding: 170px 32px 120px; }
-
-/* ── HEADER ── */
-.page-header { margin-bottom: 52px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(255,255,255,0.07); }
-.back-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,53,0.08); border: 0.5px solid rgba(255,107,53,0.25); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #FF6B35; letter-spacing: 0.05em; font-weight: 500; margin-bottom: 24px; }
-.page-eyebrow { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
-.page-title { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.1; margin-bottom: 14px; }
-.page-title span { color: #FF6B35; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
 .meta-pill { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 12px; font-size: 11px; color: rgba(255,255,255,0.45); }
 .meta-pill strong { color: rgba(255,255,255,0.7); font-weight: 500; }
@@ -256,7 +240,7 @@ Body: Specify your full name, organization, relevant service, and detailed inqui
   </div>
 
   <div class="callout">
-    <p> These Terms apply in conjunction with the <a href="https://sites.google.com/view/placeholdersystems/privacy-policy" target="_blank" class="legal-link">Privacy Policy</a> and any other notices, contractual clauses and consent clauses. We may revise these Terms from time to time without any prior notice. Your continued use of our services constitutes your acknowledgement and acceptance of such changes.</p>
+    <p> These Terms apply in conjunction with the <a href="/privacy-policy" target="_blank" class="legal-link">Privacy Policy</a> and any other notices, contractual clauses and consent clauses. We may revise these Terms from time to time without any prior notice. Your continued use of our services constitutes your acknowledgement and acceptance of such changes.</p>
   </div>
 
  
@@ -291,54 +275,6 @@ Body: Specify your full name, organization, relevant service, and detailed inqui
     const COUNTER_SITE1          = "https://script.google.com/macros/s/AKfycbwih3vOFwfK9ZdLqcHvyzLPg02hDx5sOTOB1GqP6ZtJtBubZXTwYQr9SEjUW7yzvShc4A/exec";
     fetch(COUNTER_SITE1).then(r=>r.text()).then(t=>{const n=parseInt(t.trim(),10);document.getElementById("counter-s1").textContent=isNaN(n)?"—":n.toLocaleString();}).catch(()=>{document.getElementById("counter-s1").textContent="—";});
 </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-  const year = document.getElementById("footer-year");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
-
-});
-   // Only one dropdown open at a time
-document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-  const btn = dropdown.querySelector('.nav-dropdown-button');
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = dropdown.classList.contains('open');
-
-    document.querySelectorAll('.nav-dropdown.open').forEach(other => {
-      other.classList.remove('open');
-      other.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    });
-
-    if (!isOpen) {
-      dropdown.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-document.addEventListener('click', (e) => {
-  document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    }
-  });
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    });
-  }
-});
-
-
-</script>
+ 
 </body>
 </html>
