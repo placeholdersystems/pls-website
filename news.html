@@ -19,16 +19,12 @@
 /* ══════════════════════════════════════════════════════
    NEWS ACCORDION
 ══════════════════════════════════════════════════════ */
-.news-list { display: flex; flex-direction: column; gap: 10px; }
+.card-grid--news { grid-template-columns: 1fr; }
 
-.news-item {
-  background: #0D0D0D;
-  border: 0.5px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: border-color 0.25s;
+.card--news {
+  transition: box-shadow 0.25s;
 }
-.news-item.is-open { border-color: rgba(255,6,181,0.35); }
+.card--news.is-open { box-shadow: inset 0 0 0 0.5px rgba(255,6,181,0.35); }
 
 /* ── TRIGGER (clickable header row) ── */
 .news-trigger {
@@ -42,22 +38,41 @@
 
 .nt-left { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; }
 
-/* Date badge */
+/* Date badge: square calendar tile */
 .nt-date {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: stretch;
   flex-shrink: 0;
-  width: 54px; height: 64px;
+  width: 80px; height: 80px;
   background: rgba(255,255,255,0.04);
-  border: 0.5px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
+  border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 0;
+  overflow: hidden;
+  text-align: center;
   transition: background 0.25s, border-color 0.25s;
 }
-.is-open .nt-date { background: rgba(255,6,181,0.1); border-color: rgba(255,6,181,0.3); }
-.nt-date .nd-day   { font-size: 18px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.02em; }
-.nt-date .nd-month { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
-.is-open .nt-date .nd-month { color: var(--pink); }
-.nt-date .nd-year { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.18); letter-spacing: 0.04em; margin-top: 1px; }
-.is-open .nt-date .nd-year { color: rgba(255,6,181,0.5); }
+.nt-date .nd-month {
+  order: 1; padding: 5px 0 4px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.08);
+  transition: background 0.25s, color 0.25s;
+}
+.nt-date .nd-day {
+  order: 2; flex: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: #fff;
+}
+.nt-date .nd-year {
+  order: 3; padding-bottom: 6px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);
+}
+.is-open .nt-date { background: rgba(255,6,181,0.1); border-color: rgba(255,6,181,0.45); }
+.is-open .nt-date .nd-month { background: var(--pink); color: #fff; }
+.is-open .nt-date .nd-year { color: rgba(255,6,181,0.8); }
+@media (max-width: 520px) {
+  .nt-date { width: 72px; height: 72px; }
+  .nt-date .nd-month { font-size: 11px; padding: 4px 0 3px; }
+  .nt-date .nd-day { font-size: 28px; }
+  .nt-date .nd-year { font-size: 11px; padding-bottom: 4px; }
+}
 
 /* Title + meta */
 .nt-info { flex: 1; min-width: 0; }
@@ -85,12 +100,14 @@
   overflow: hidden; text-overflow: ellipsis; max-width: 280px;
 }
 
-/* Arrow */
+
+/* Arrow → plus / close (matches the FAQ on index.html) */
 .nt-arrow {
-  flex-shrink: 0; font-size: 13px; color: rgba(255,255,255,0.25);
+  flex-shrink: 0; font-size: 22px; font-weight: 200; line-height: 1;
+  color: rgba(255,255,255,0.4);
   transition: color 0.25s, transform 0.3s;
 }
-.is-open .nt-arrow { color: var(--pink); transform: rotate(180deg); }
+.is-open .nt-arrow { color: var(--pink); transform: rotate(45deg); }
 
 /* ── BODY (collapsed / expanded) ── */
 .news-body {
@@ -163,7 +180,7 @@
   text-align: center;
   padding: 56px 24px;
   border: 1px dashed rgba(255,255,255,0.08);
-  border-radius: 10px;
+  border-radius: 0;
   color: rgba(255,255,255,0.15);
 }
 .news-empty .ne-icon  { font-size: 24px; margin-bottom: 10px; opacity: 0.4; }
@@ -189,9 +206,9 @@
     <p class="page-subtitle">Official updates, announcements, and notices. (listed most recent first.)</p>
   </div>
 
-  <p class="section-eyebrow">All Posts</p>
-  <div class="news-list" id="news-list">
-    <div class="news-item">
+ 
+  <div class="card-grid card-grid--news" id="news-list">
+    <div class="card card--news">
 
   <button class="news-trigger"
           onclick="toggleNews(this)"
@@ -225,7 +242,7 @@
       </div>
     </div>
 
-    <span class="nt-arrow">▾</span>
+    <span class="nt-arrow">+</span>
 
   </button>
 
@@ -247,7 +264,7 @@
   </div>
 
 </div>
-<div class="news-item">
+<div class="card card--news">
 
   <button class="news-trigger"
           onclick="toggleNews(this)"
@@ -281,7 +298,7 @@
       </div>
     </div>
 
-    <span class="nt-arrow">▾</span>
+    <span class="nt-arrow">+</span>
 
   </button>
 
@@ -321,7 +338,7 @@
   </div>
 
 </div>
-<div class="news-item">
+<div class="card card--news">
 
   <button class="news-trigger"
           onclick="toggleNews(this)"
@@ -355,7 +372,7 @@
       </div>
     </div>
 
-    <span class="nt-arrow">▾</span>
+    <span class="nt-arrow">+</span>
 
   </button>
 
@@ -384,7 +401,7 @@
   </div>
 
 </div>
-<div class="news-item">
+<div class="card card--news">
 
   <button class="news-trigger"
           onclick="toggleNews(this)"
@@ -418,7 +435,7 @@
       </div>
     </div>
 
-    <span class="nt-arrow">▾</span>
+    <span class="nt-arrow">+</span>
 
   </button>
 
@@ -442,7 +459,7 @@
 </div>
 </div>
 
- <div class="news-item">
+ <div class="card card--news">
 
   <button class="news-trigger"
           onclick="toggleNews(this)"
@@ -476,7 +493,7 @@
       </div>
     </div>
 
-    <span class="nt-arrow">▾</span>
+    <span class="nt-arrow">+</span>
 
   </button>
 
@@ -508,7 +525,7 @@
 
 </div>   
     
-<div class="news-item">
+<div class="card card--news">
 
   <button class="news-trigger"
           onclick="toggleNews(this)"
@@ -543,7 +560,7 @@
       </div>
     </div>
 
-    <span class="nt-arrow">▾</span>
+    <span class="nt-arrow">+</span>
 
   </button>
 
@@ -565,7 +582,7 @@
 
 </div>
 
-    <div class="news-item">
+    <div class="card card--news">
 
       <button class="news-trigger" onclick="toggleNews(this)" aria-expanded="false">
         <div class="nt-left">
@@ -589,7 +606,7 @@
           </div>
 
         </div>
-        <span class="nt-arrow">▾</span>
+        <span class="nt-arrow">+</span>
       </button>
 
       <div class="news-body">
@@ -652,11 +669,11 @@
 
 <script>
 function toggleNews(trigger) {
-  const item = trigger.closest('.news-item');
+  const item = trigger.closest('.card--news');
   const isOpen = item.classList.contains('is-open');
 
   /* Close all open items first */
-  document.querySelectorAll('.news-item.is-open').forEach(el => {
+  document.querySelectorAll('.card--news.is-open').forEach(el => {
     el.classList.remove('is-open');
     el.querySelector('.news-trigger').setAttribute('aria-expanded', 'false');
   });
@@ -691,7 +708,7 @@ function toggleNews(trigger) {
 PASTE BLOCK BELOW
 ──────────────────────────────────────────────────────────────────────
 
-<div class="news-item">
+<div class="card card--news">
 
   <button class="news-trigger"
           onclick="toggleNews(this)"
@@ -725,7 +742,7 @@ PASTE BLOCK BELOW
       </div>
     </div>
 
-    <span class="nt-arrow">▾</span>
+    <span class="nt-arrow">+</span>
 
   </button>
 
