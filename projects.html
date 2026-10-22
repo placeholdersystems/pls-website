@@ -35,41 +35,16 @@
 }
 
 /* ── PROJECT LIST ── */
-.projects-list {
-  display: grid;
+.card-grid--projects {
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 20px;
-  align-items: stretch; /* Updated from align-items: start */
+  align-items: stretch;
 }
 
 /* ── PROJECT CARD ── */
-.project-card {
-  background: var(--card-bg);
-  border: 0.5px solid var(--card-border);
-  border-radius: 16px;
+.card--project {
   display: grid;
   grid-template-columns: 1fr;
   overflow: hidden;
-  transition: border-color 0.2s;
-  position: relative;
-}
-
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--brand-gradient);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.project-card:hover {
-  border-color: rgba(255,6,181,0.25);
-}
-
-.project-card:hover::before {
-  opacity: 1;
 }
 
 /* ── IMAGE AREA ── */
@@ -289,7 +264,7 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 580px) {
-  .project-card {
+  .card--project {
     grid-template-columns: 1fr;
   }
   .project-img {
@@ -365,8 +340,8 @@
 
   <!-- ═══════════════════════════════════════════════════════
        PROJECTS LIST
-       Each .project-card = one project tile.
-       To add a new project, copy one full .project-card block,
+       Each .card--project = one project tile.
+       To add a new project, copy one full .card--project block,
        paste it after the last one, and fill in the fields.
 
        IMAGE BOX NOTE: .project-img is a fixed, centered box.
@@ -375,17 +350,15 @@
        (object-fit: contain + max-width/max-height: 100%). It is
        never cropped and never upscaled past its real size.
   ══════════════════════════════════════════════════════════ -->
-  <div class="projects-list">
+  <div class="card-grid card-grid--projects">
 
 
-  
-        
-      
+    
 
     <!-- ╔══════════════════════════════════════════╗
          ║  PROJECT CARD — Steak                    ║
          ╚══════════════════════════════════════════╝ -->
-    <div class="project-card">
+    <div class="card card--project">
       <div class="project-img">
         <img src="https://github.com/placeholdersystems/image-assets/blob/main/stk-logo.png?raw=true" alt="Steak Logo" />
       </div>
@@ -413,7 +386,7 @@
     <!-- ╔══════════════════════════════════════════╗
          ║  PROJECT CARD — Digital Repository       ║
          ╚══════════════════════════════════════════╝ -->
-    <div class="project-card">
+    <div class="card card--project">
 
       <!-- IMAGE AREA
            Option A — Real image:
@@ -477,7 +450,7 @@
     <!-- ╔═══════════════════════════════════════════════════╗
          ║  PROJECT CARD — Placeholder Intelligence         ║
          ╚═══════════════════════════════════════════════════╝ -->
-    <div class="project-card">
+    <div class="card card--project">
 
       <div class="project-img">
         <!-- REPLACE: add <img src="..."> here when ready -->
@@ -508,7 +481,7 @@
 
       </div>
     </div>
- <div class="project-card">
+ <div class="card card--project">
 
       <div class="project-img">
         <!-- REPLACE: add <img src="..."> here when ready -->
@@ -544,7 +517,7 @@
     <!-- ╔═══════════════════════════════════════════════════╗
          ║  PROJECT CARD — Project X                        ║
          ╚═══════════════════════════════════════════════════╝ -->
-    <div class="project-card">
+    <div class="card card--project">
 
       <div class="project-img">
         <!-- REPLACE: add <img src="..."> here when ready -->
@@ -580,7 +553,7 @@
     <!-- ╔══════════════════════════════════════════════════════════╗
          ║  ADD A NEW PROJECT — copy this block and fill it in     ║
          ╠══════════════════════════════════════════════════════════╣
-         ║  1. Copy from <div class="project-card"> to its         ║
+         ║  1. Copy from <div class="card card--project"> to its         ║
          ║     matching END PROJECT CARD comment.                   ║
          ║  2. Paste after the last END PROJECT CARD comment.       ║
          ║  3. Fill in: project-name, status-badge (class + text), ║
@@ -591,7 +564,7 @@
          ║     dimensions are fine, it will fit the box.            ║
          ╚══════════════════════════════════════════════════════════╝
 
-    <div class="project-card">
+    <div class="card card--project">
       <div class="project-img">
         <span class="img-placeholder">[ IMG ]</span>
       </div>
