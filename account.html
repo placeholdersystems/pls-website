@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +17,7 @@
   --line: rgba(255, 255, 255, 0.09);
   
 }
-
-
-
-
-.card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 26px 24px; margin-bottom: 18px; }
+.card { padding: 26px 24px; margin-bottom: 18px; }
 .card h2 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
 
 label { display: block; margin-top: 16px; margin-bottom: 7px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); }
@@ -275,11 +272,6 @@ function switchAction(k) {
   document.getElementById("panel-" + k).classList.add("active");
 }
 
-/* ══ FIX: previously this sent { action:"requestAccountAction", ..., action, newValue } —
-   the shorthand `action` param (holding "email"/"password"/"delete") silently overwrote
-   the outer action:"requestAccountAction" key, so the backend received e.g.
-   action:"email" and returned "Unknown action". Renamed the param to actionType and
-   send it under a distinct key so both survive in the request body. ══ */
 async function requestAction(actionType) {
   let newValue = "";
   if (actionType === "email")    newValue = document.getElementById("email-newValue").value.trim();
@@ -344,55 +336,6 @@ function actShow(actionType, msg, ok) {
   const el = document.getElementById(actionType + "-result");
   el.textContent = msg; el.className = "result " + (ok ? "ok" : "err");
 }
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-  const year = document.getElementById("footer-year");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
-
-});
-   // Only one dropdown open at a time
-document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-  const btn = dropdown.querySelector('.nav-dropdown-button');
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = dropdown.classList.contains('open');
-
-    document.querySelectorAll('.nav-dropdown.open').forEach(other => {
-      other.classList.remove('open');
-      other.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    });
-
-    if (!isOpen) {
-      dropdown.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-document.addEventListener('click', (e) => {
-  document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    }
-  });
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    });
-  }
-});
-
-
 </script>
 </body>
 </html>
