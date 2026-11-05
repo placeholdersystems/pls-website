@@ -1,3 +1,4 @@
+
 <!-- Copyright (c) Placeholder Systems, 2025-2026 All Rights Reserved
 Not for unauthorised personal or commercial redistribution -->
 <!DOCTYPE html>
@@ -89,7 +90,7 @@ Not for unauthorised personal or commercial redistribution -->
 .stage-stat .l { font-size:7.5px; font-weight:700; color:rgba(255,255,255,.32); text-transform:uppercase; letter-spacing:.7px; }
 .stage-stat .v { font-size:14px; font-weight:800; margin-top:3px; }
 .stage-row2 { display:grid; grid-template-columns:1fr; gap:8px; }
-.stage-card { background:#0D0D0D; border:0.5px solid var(--line); border-radius:10px; padding:11px 13px; }
+.stage-card { background:#0D0D0D; border:0.5px solid var(--line); border-radius:0; padding:11px 13px; }
 .stage-card .h { font-size:10.5px; font-weight:700; margin-bottom:9px; color:rgba(255,255,255,.6); }
 .stage-line { display:flex; justify-content:space-between; gap:10px; font-size:10.5px; padding:6px 0; border-bottom:0.5px solid rgba(255,255,255,.05); color:rgba(255,255,255,.65); }
 .stage-line:last-child { border-bottom:none; }
@@ -141,10 +142,9 @@ Not for unauthorised personal or commercial redistribution -->
 .mission-body:last-child { margin-bottom: 0; }
 .mission-body strong { color: rgba(255,255,255,0.85); font-weight: 600; }
 
-.about-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 64px; }
-.about-card { background: var(--panel); border: 0.5px solid var(--line); border-radius: var(--radius); padding: 28px 22px; position: relative; overflow: hidden; transform-style: preserve-3d; transition: transform .35s ease, border-color .35s ease; }
-.about-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--brand-gradient); }
-.about-card:hover { border-color: rgba(255,255,255,.22); }
+.card-grid--about { grid-template-columns: repeat(4, 1fr); margin-bottom: 64px; }
+.card--about { padding: 28px 22px; overflow: hidden; transform-style: preserve-3d; transition: transform .35s ease; }
+.card--about::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--brand-gradient); }
 .about-card-title { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em; margin-bottom: 14px; }
 .about-card-body { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.75; }
 .about-card-body p { margin-bottom: 4px; }
@@ -184,14 +184,13 @@ Not for unauthorised personal or commercial redistribution -->
 .last-fetched-pill { background: var(--panel); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 9px 14px; text-align: center; margin-top: 10px; }
 #lastUpdated { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
 #fetchStatus { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 8px; min-height: 1em; }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-.stat-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 14px; text-align: center; }
+.card-grid--stats { grid-template-columns: 1fr 1fr; margin-bottom: 10px; }
+.card--stat { padding: 18px 14px; text-align: center; }
 .s-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.32); letter-spacing: 0.08em; margin-bottom: 8px; }
 .s-value { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
 .s-sub   { font-size: 12px; color: rgba(255,255,255,0.26); margin-top: 6px; }
 .s-value.accent-1 { color: var(--pink); } .s-value.accent-2 { color: var(--orange); }
-.counters-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.counter-card { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 14px; text-align: center; }
+.card-grid--counters { grid-template-columns: 1fr 1fr; }
 .site-tag { display: inline-block; background: rgba(255,6,181,0.12); border: 0.5px solid rgba(255,6,181,0.3); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: var(--pink); margin-bottom: 8px; letter-spacing: 0.05em; font-weight: 600; }
 .site-tag.dr { background: rgba(55,138,221,0.1); border-color: rgba(55,138,221,0.22); color: #378ADD; }
 .site-tag.steak { background: rgba(63,227,115,0.1); border-color: rgba(63,227,115,0.22); color: #3fe373; }
@@ -268,7 +267,7 @@ Not for unauthorised personal or commercial redistribution -->
 
 
 @media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr 1fr; }
+  .card-grid--about { grid-template-columns: 1fr 1fr; }
   .stage-body { grid-template-columns: 1fr; min-height: 0; }
   .stage-side { border-right: none; border-bottom: 0.5px solid var(--line); flex-direction: row; flex-wrap: wrap; gap: 6px; }
   .stage-logo { width: 100%; padding-bottom: 8px; }
@@ -281,7 +280,7 @@ Not for unauthorised personal or commercial redistribution -->
   .two-col-section .col:first-child { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,0.07); padding-bottom: 40px; padding-left: 0; }
   .two-col-section .col { padding: 24px 0 0; }
   .about-section { padding: 70px 20px; }
-  .about-grid { grid-template-columns: 1fr; }
+  .card-grid--about { grid-template-columns: 1fr; }
   .about-footer { flex-direction: column; text-align: center; }
   .about-footer-text { text-align: center; }
   .stage-section { padding: 70px 18px; }
@@ -340,8 +339,8 @@ Not for unauthorised personal or commercial redistribution -->
     <p class="mission-body">Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client. It's part time work,but held to the same bar as anything sold.</p>
   </div>
 
-  <div class="about-grid">
-    <div class="about-card reveal">
+  <div class="card-grid card-grid--about">
+    <div class="card card--about reveal">
       <p class="about-card-title">Regions</p>
       <div class="about-card-body">
         <p>Singapore (Headquarters)</p>
@@ -350,7 +349,7 @@ Not for unauthorised personal or commercial redistribution -->
     </div>
 
 
-    <div class="about-card reveal" style="--d:.06s">
+    <div class="card card--about reveal" style="--d:.06s">
       <p class="about-card-title">Operational Hours</p>
       <div class="about-card-body">
         <p>UTC+8 (SGT)</p>
@@ -360,7 +359,7 @@ Not for unauthorised personal or commercial redistribution -->
     <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">View current OPSTAT →</a>
     </div>
 
-    <div class="about-card reveal" style="--d:.12s">
+    <div class="card card--about reveal" style="--d:.12s">
       <p class="about-card-title">Projects</p>
       <div class="about-card-body">
           
@@ -373,7 +372,7 @@ Not for unauthorised personal or commercial redistribution -->
        <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View Project Previews →</a>
     </div>
 
-    <div class="about-card reveal" style="--d:.18s">
+    <div class="card card--about reveal" style="--d:.18s">
       <p class="about-card-title">Now Hiring</p>
       <div class="about-card-body">
         <p>Marketing: social media, graphic design</p>
@@ -525,17 +524,17 @@ Not for unauthorised personal or commercial redistribution -->
 
   <div class="col">
     <p class="section-label">STATS</p>
-    <div class="stats-grid">
-      <div class="stat-card"><p class="s-label">DATE ESTABLISHED</p><p class="s-value" id="est-date">—</p><p class="s-sub" id="est-year"></p></div>
-      <div class="stat-card"><p class="s-label">COMPANY UPTIME</p><p class="s-value accent-1" id="uptime-val">—</p><p class="s-sub">last 90 days</p></div>
-      <div class="stat-card"><p class="s-label">MEMBER COUNT</p><p class="s-value accent-2" id="member-count">—</p><p class="s-sub">registered members</p></div>
-      <div class="stat-card"><p class="s-label">DAYS ACTIVE</p><p class="s-value" id="days-active">—</p><p class="s-sub">and counting</p></div>
+    <div class="card-grid card-grid--stats">
+      <div class="card card--stat"><p class="s-label">DATE ESTABLISHED</p><p class="s-value" id="est-date">—</p><p class="s-sub" id="est-year"></p></div>
+      <div class="card card--stat"><p class="s-label">COMPANY UPTIME</p><p class="s-value accent-1" id="uptime-val">—</p><p class="s-sub">last 90 days</p></div>
+      <div class="card card--stat"><p class="s-label">MEMBER COUNT</p><p class="s-value accent-2" id="member-count">—</p><p class="s-sub">registered members</p></div>
+      <div class="card card--stat"><p class="s-label">DAYS ACTIVE</p><p class="s-value" id="days-active">—</p><p class="s-sub">and counting</p></div>
     </div>
-    <div class="counters-row">
-      <div class="counter-card"><div class="site-tag">This Site</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s1">—</p><p class="c-sub">lifetime visits</p></div>
-      <div class="counter-card"><div class="site-tag dr">Digital Repository</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s2">—</p><p class="c-sub">lifetime visits</p></div>
-       <div class="counter-card"><div class="site-tag steak">Steak</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s3">—</p><p class="c-sub">lifetime visits</p></div>
-        <div class="counter-card"><div class="site-tag instmsg">[nothing here yet]</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s4">—</p><p class="c-sub">lifetime visits</p></div>
+    <div class="card-grid card-grid--counters">
+      <div class="card card--stat"><div class="site-tag">This Site</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s1">—</p><p class="c-sub">lifetime visits</p></div>
+      <div class="card card--stat"><div class="site-tag dr">Digital Repository</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s2">—</p><p class="c-sub">lifetime visits</p></div>
+       <div class="card card--stat"><div class="site-tag steak">Steak</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s3">—</p><p class="c-sub">lifetime visits</p></div>
+        <div class="card card--stat"><div class="site-tag instmsg">[nothing here yet]</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s4">—</p><p class="c-sub">lifetime visits</p></div>
     </div>
   </div>
 </div>
@@ -853,7 +852,7 @@ function scrollToStage(e) {
   }, 900);
 
   if (!reduced && window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.about-card').forEach(card => {
+    document.querySelectorAll('.card--about').forEach(card => {
       card.addEventListener('mousemove', ev => {
         const r = card.getBoundingClientRect();
         const x = (ev.clientX - r.left) / r.width - 0.5;
@@ -1050,7 +1049,7 @@ body {
 }
 .channel-card{
   border:1px solid var(--line);
-  border-radius:22px;
+  border-radius:0;
   background:var(--panel);
   overflow:hidden;
   cursor:pointer;
@@ -1058,11 +1057,6 @@ body {
   padding:0;
   color:inherit;
   transition:transform .2s ease, border-color .2s ease, background .2s ease;
-}
-.channel-card:hover{
-  transform:translateY(-2px);
-  border-color:rgba(255,180,0,.22);
-  background:var(--panel-2);
 }
 .channel-art {
   aspect-ratio: 16 / 9;
@@ -1142,10 +1136,6 @@ body {
   font-size:14px;
   transition:transform .2s ease, color .2s ease;
 }
-.channel-card:hover .channel-arrow{
-  transform:translateX(2px);
-  color:var(--yellow);
-}
 .footer-block{
   padding:0 28px 28px;
   display:grid;
@@ -1156,7 +1146,7 @@ body {
 }
 .note-card{
   padding:18px;
-  border-radius:22px;
+  border-radius:0;
   border:1px solid var(--line);
   background:var(--panel);
 }
@@ -1797,7 +1787,7 @@ Not for unauthorised personal or commercial redistribution -->
     backdrop-filter: blur(28px) saturate(150%);
     -webkit-backdrop-filter: blur(28px) saturate(150%);
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
+    border-radius:0;
     box-shadow: var(--shadow), inset 0 1px 1px rgba(255, 255, 255, 0.14), inset 0 -1px 12px rgba(0,0,0,0.15);
   }
 
@@ -2047,7 +2037,7 @@ Not for unauthorised personal or commercial redistribution -->
     .platform-main { grid-template-columns: 1fr; padding: 16px; }
     .game-container { grid-template-columns: 1fr; gap: 16px; }
     .board-container { min-height: 560px; padding: 18px 16px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-grid--stats { grid-template-columns: repeat(2, 1fr); }
     .widget-body { grid-template-columns: 1fr; }
     .home-hero { grid-template-columns: 1fr; }
   }
@@ -2236,10 +2226,6 @@ Not for unauthorised personal or commercial redistribution -->
 
     </main>
   </div>
-
-  <!-- -------------------------------------------------------------------------
-       PLATFORM COGNITION, TAB ROUTING & SYNCHRONIZATION INTERFACE LOGIC
-       ------------------------------------------------------------------------- -->
   <script>
         const VISITOR_API = "https://script.google.com/macros/s/AKfycbzcgak-fj_XaxruiCBBxPpNeI3eUi19ZYkmVBzum0OWglolceDTCbpsxyIS0pZ9e-G70g/exec";
 
