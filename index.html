@@ -162,27 +162,33 @@ Not for unauthorised personal or commercial redistribution -->
 .two-col-section .col { padding: 0 24px; }
 .two-col-section .col:first-child { border-right: 0.5px solid rgba(255,255,255,0.07); padding-left: 0; }
 .two-col-section .col:last-child  { padding-right: 0; }
-.info-pill { background: var(--panel); border: 0.5px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; text-align: center; }
+.info-pill { padding: 14px 16px; text-align: center; }
+.card-grid--optime { grid-template-columns: 1fr; }
 .pill-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; margin-bottom: 6px; }
 .pill-value { font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.9); }
 #pld-time-display { font-size: 46px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
-#pld-time-toggle { display: block; margin: 12px auto 28px; padding: 8px 18px; background: transparent; color: rgba(255,255,255,0.5); border: 0.5px solid rgba(255,255,255,0.18); border-radius: 8px; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif; transition: border-color 0.2s, color 0.2s; }
+#pld-time-toggle { display: block; margin: 12px auto 28px; padding: 8px 18px; background: transparent; color: rgba(255,255,255,0.5); border: 0.5px solid rgba(255,255,255,0.18); border-radius: 0px; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif; transition: border-color 0.2s, color 0.2s; }
 #pld-time-toggle:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.9); }
 .opstat-bar-container { position: relative; height: 84px; display: flex; align-items: center; margin-bottom: 44px; padding: 0 2px; }
 .opstat-bar-line { position: absolute; top: 50%; left: 0; right: 0; height: 3px; background: rgba(255,255,255,0.07); transform: translateY(-50%); border-radius: 2px; z-index: 1; }
 .opstat-bar-squares { display: flex; justify-content: space-between; position: relative; z-index: 3; width: 100%; }
-.opstat-square { width: 38px; height: 38px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 15px; font-family: 'Inter', sans-serif; color: #fff; z-index: 4; position: relative; transition: transform 0.3s; cursor: default; user-select: none; flex-shrink: 0; }
+.opstat-square { width: 38px; height: 38px; border-radius: 0px; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 15px; font-family: 'Inter', sans-serif; color: #fff; z-index: 4; position: relative; transition: transform 0.3s; cursor: default; user-select: none; flex-shrink: 0; }
 .opstat-square.glow { transform: scale(1.18); box-shadow: 0 0 16px 4px rgba(255,255,255,0.2); }
 .sq-5 { background: #00cc44; color: #000; } .sq-4 { background: #378ADD; } .sq-3 { background: #FFD700; color: #000; } .sq-2 { background: #FF6B35; } .sq-1 { background: #ff0000; } .sq-0 { background: rgba(255,255,255,0.14); }
 .half-tick { position: absolute; width: 2px; height: 10px; background: rgba(255,255,255,0.12); border-radius: 1px; transform: translate(-50%,-50%); top: 50%; z-index: 2; }
-.opstat-indicator { position: absolute; width: 48px; height: 28px; background: #fff; text-align: center; color: #000; font-weight: 700; font-size: 13px; font-family: 'Inter', sans-serif; line-height: 28px; transform: translateX(-50%); z-index: 5; border-radius: 6px; transition: left 0.5s cubic-bezier(0.4,0,0.2,1), top 0.3s; pointer-events: none; }
+.opstat-indicator { position: absolute; width: 48px; height: 28px; background: #fff; text-align: center; color: #000; font-weight: 700; font-size: 13px; font-family: 'Inter', sans-serif; line-height: 28px; transform: translateX(-50%); z-index: 5; border-radius: 0px; transition: left 0.5s cubic-bezier(0.4,0,0.2,1), top 0.3s; pointer-events: none; }
 .opstat-indicator::after { content: ""; position: absolute; bottom: -8px; left: 50%; margin-left: -6px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid #fff; }
-.opstat-info-box { border-radius: 14px; padding: 22px 18px; text-align: center; margin-bottom: 14px; transition: background 0.5s; }
+.opstat-info-box { border-radius: 0px; padding: 22px 18px; text-align: center; margin-bottom: 14px; transition: background 0.5s; }
 #opstatLevelLabel { font-size: 32px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.02em; }
 #opstatNameLabel  { font-size: 14px; font-weight: 600; margin: 0 0 5px; letter-spacing: 0.06em; }
 #opstatDescLabel  { font-size: 13px; margin: 0; opacity: 0.75; }
-.last-fetched-pill { background: var(--panel); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 9px 14px; text-align: center; margin-top: 10px; }
-#lastUpdated { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); }
+.last-fetched-pill {
+  display: flex; justify-content: space-between; align-items: baseline;
+  background: none; border: 0; border-top: 0.5px solid var(--line-soft);
+  border-radius: 0; padding: 8px 0 0; margin-top: 10px; text-align: left;
+}
+.last-fetched-pill .pill-label { font-size: 10px; margin: 0; }
+#lastUpdated { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.45); }
 #fetchStatus { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 8px; min-height: 1em; }
 .card-grid--stats { grid-template-columns: 1fr 1fr; margin-bottom: 10px; }
 .card--stat { padding: 18px 14px; text-align: center; }
@@ -489,14 +495,16 @@ Not for unauthorised personal or commercial redistribution -->
 <div class="two-col-section reveal">
   <div class="col" id="opstat" style="scroll-margin-top: 40px;">
     <p class="section-label">OPS INFO</p>
-    <div class="info-pill" style="margin-bottom:8px;">
-      <p class="pill-label">CURRENT TIME (UTC+8)</p>
-      <div id="pld-date-display" class="pill-value"></div>
-    </div>
-    <div class="info-pill" style="margin-bottom:0;">
-      <div id="pld-time-display"></div>
-    </div>
-    <button id="pld-time-toggle">Toggle 24h / AM–PM</button>
+    <div class="card-grid card-grid--optime">
+  <div class="card info-pill">
+    <p class="pill-label">current time (utc+8)</p>
+    <div id="pld-date-display" class="pill-value"></div>
+  </div>
+  <div class="card info-pill">
+    <div id="pld-time-display"></div>
+  </div>
+</div>
+    <button id="pld-time-toggle">24h / 12h</button>
     <div class="opstat-bar-container">
       <div class="opstat-bar-line"></div>
       <div id="half-ticks"></div>
@@ -516,7 +524,7 @@ Not for unauthorised personal or commercial redistribution -->
       <p id="opstatDescLabel"  style="color:rgba(255,255,255,0.3)"></p>
     </div>
     <div class="last-fetched-pill">
-      <p class="pill-label">LAST FETCHED</p>
+      <p class="pill-label">last fetched</p>
       <p id="lastUpdated">—</p>
     </div>
     <p id="fetchStatus"></p>
@@ -1452,7 +1460,7 @@ const channels = [
     name: "CNA",
     description: "Channel News Asia Singapore shows live and updated news from an Asian perspective to the world. ",
     image: "https://github.com/placeholdersystems/image-assets/blob/main/cna-logo.png?raw=true",
-    url: "https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8",
+    url: "https://poopy.com",
     tag: "News"
   },
    {
