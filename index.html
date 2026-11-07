@@ -741,12 +741,17 @@ setTimeout(cwAdvance, 1800);
 
 /* Clock */
 let is24h = false;
+try { is24h = localStorage.getItem("pld-is24h") === "1"; } catch (e) {}
 function updateClock() {
   const now = new Date();
   document.getElementById("pld-date-display").textContent = now.toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric", timeZone:"Asia/Singapore" });
   document.getElementById("pld-time-display").textContent = now.toLocaleTimeString("en-US", { hour:"numeric", minute:"numeric", second:"numeric", timeZone:"Asia/Singapore", hourCycle: is24h ? "h23" : "h12" });
 }
-document.getElementById("pld-time-toggle").addEventListener("click", () => { is24h = !is24h; updateClock(); });
+document.getElementById("pld-time-toggle").addEventListener("click", () => {
+  is24h = !is24h;
+  try { localStorage.setItem("pld-is24h", is24h ? "1" : "0"); } catch (e) {}
+  updateClock();
+});
 updateClock(); setInterval(updateClock, 1000);
 
 /* OPSTAT */
@@ -806,7 +811,8 @@ window.addEventListener("resize", () => { if (currentOPSTAT !== null) renderOPST
 /* Stats */
 const estDate = new Date(ESTABLISHED);
 const daysActive = Math.floor((new Date()-estDate)/86400000).toLocaleString();
-document.getElementById("est-date").textContent     = ESTABLISHED2
+document.getElementById("est-date").textContent     = estDate.toLocaleDateString("en-US", { month:"short", day:"numeric" });
+document.getElementById("est-year").textContent     = estDate.getFullYear();
 document.getElementById("uptime-val").textContent   = UPTIME_PCT.toFixed(1) + "%";
 document.getElementById("member-count").textContent = MEMBER_COUNT;
 document.getElementById("days-active").textContent  = daysActive;
@@ -877,6 +883,7 @@ function scrollToStage(e) {
     });
   }
 })();
+
 </script>
 <script>
   window.addEventListener('scroll', () => {
