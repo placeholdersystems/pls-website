@@ -192,19 +192,21 @@ Not for unauthorised personal or commercial redistribution -->
 #fetchStatus { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 8px; min-height: 1em; }
 .card-grid--stats { grid-template-columns: 1fr 1fr; margin-bottom: 10px; }
 .card--stat { padding: 18px 14px; text-align: center; }
-.s-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.32); letter-spacing: 0.08em; margin-bottom: 8px; }
-.s-value { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
-.s-sub   { font-size: 12px; color: rgba(255,255,255,0.26); margin-top: 6px; }
-.s-value.accent-1 { color: var(--pink); } .s-value.accent-2 { color: var(--orange); }
-.card-grid--counters { grid-template-columns: 1fr 1fr; }
-.site-tag { display: inline-block; background: rgba(255,6,181,0.12); border: 0.5px solid rgba(255,6,181,0.3); border-radius: 999px; padding: 3px 10px; font-size: 11px; color: var(--pink); margin-bottom: 8px; letter-spacing: 0.05em; font-weight: 600; }
-.site-tag.dr { background: rgba(55,138,221,0.1); border-color: rgba(55,138,221,0.22); color: #378ADD; }
-.site-tag.steak { background: rgba(63,227,115,0.1); border-color: rgba(63,227,115,0.22); color: #3fe373; }
-.site-tag.instmsg { background: rgba(255,180,0,0.1); border-color: rgba(255,180,0,0.22); color: #FFB400; }
-.c-label { font-size: 11px; color: rgba(255,255,255,0.32); letter-spacing: 0.08em; margin-bottom: 6px; }
-.c-value { font-size: 34px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
-.c-sub   { font-size: 12px; color: rgba(255,255,255,0.26); margin-top: 6px; }
-
+.stat-group { font-size: 12px; font-weight: 700; letter-spacing: 0.1em;  color: var(--text-muted); margin: 0 0 10px; }
+.stat-group:not(:first-of-type) { margin-top: 28px; }
+.stat-grid { grid-template-columns: 1fr 1fr; }
+.stat-grid > .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.stat { --site: rgba(255,255,255,0.18); padding: 18px; text-align: left; }
+.stat-label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+.stat-value { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; color: #fff; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.stat-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+.stat--pink .stat-value   { color: var(--pink); }
+.stat--orange .stat-value { color: var(--orange); }
+.stat-grid--f { grid-template-columns: 1fr; }
+.stat-grid--f .stat { display: grid; grid-template-columns: 1fr 42%; padding: 0; }
+.stat-grid--f .stat-label { grid-column: 1; margin: 0; padding: 16px 18px 0; }
+.stat-grid--f .stat-note  { grid-column: 1; margin: 0; padding: 4px 18px 16px; }
+.stat-grid--f .stat-value { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; font-size: 30px; background: var(--panel-hover); border-left: 0.5px solid var(--card-line); box-shadow: inset 0 -2px 0 var(--site); }
 
 /* ── FAQ ── */
 .faq-section { width: 100%; max-width: 760px; margin: 0 auto; padding: 100px 32px; }
@@ -530,21 +532,25 @@ Not for unauthorised personal or commercial redistribution -->
     <p id="fetchStatus"></p>
   </div>
 
-  <div class="col">
-    <p class="section-label">STATS</p>
-    <div class="card-grid card-grid--stats">
-      <div class="card card--stat"><p class="s-label">DATE ESTABLISHED</p><p class="s-value" id="est-date">—</p><p class="s-sub" id="est-year"></p></div>
-      <div class="card card--stat"><p class="s-label">COMPANY UPTIME</p><p class="s-value accent-1" id="uptime-val">—</p><p class="s-sub">last 90 days</p></div>
-      <div class="card card--stat"><p class="s-label">MEMBER COUNT</p><p class="s-value accent-2" id="member-count">—</p><p class="s-sub">registered members</p></div>
-      <div class="card card--stat"><p class="s-label">DAYS ACTIVE</p><p class="s-value" id="days-active">—</p><p class="s-sub">and counting</p></div>
-    </div>
-    <div class="card-grid card-grid--counters">
-      <div class="card card--stat"><div class="site-tag">This Site</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s1">—</p><p class="c-sub">lifetime visits</p></div>
-      <div class="card card--stat"><div class="site-tag dr">Digital Repository</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s2">—</p><p class="c-sub">lifetime visits</p></div>
-       <div class="card card--stat"><div class="site-tag steak">Steak</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s3">—</p><p class="c-sub">lifetime visits</p></div>
-        <div class="card card--stat"><div class="site-tag instmsg">[nothing here yet]</div><p class="c-label">VISITOR COUNT</p><p class="c-value" id="counter-s4">—</p><p class="c-sub">lifetime visits</p></div>
-    </div>
+ <div class="col">
+  <p class="section-label">STATS</p>
+
+  <p class="stat-group">general info</p>
+  <div class="card-grid stat-grid stat-grid--f">
+    <div class="card stat stat--orange"><p class="stat-label">Date established</p><p class="stat-value" id="est-date">—</p><p class="stat-note" id="est-year"></p></div>
+    <div class="card stat stat--pink"><p class="stat-label">Company uptime</p><p class="stat-value" id="uptime-val">—</p></div>
+    <div class="card stat stat--orange"><p class="stat-label">Member count</p><p class="stat-value" id="member-count">—</p><p class="stat-note">not available</p></div>
+    <div class="card stat stat--pink"><p class="stat-label">Days active</p><p class="stat-value" id="days-active">—</p></div>
   </div>
+
+  <p class="stat-group">visitor count</p>
+  <div class="card-grid stat-grid stat-grid--f">
+    <div class="card stat" style="--site:#FF06B5"><p class="stat-label"> This Site</p><p class="stat-value" id="counter-s1">—</p></div>
+    <div class="card stat" style="--site:#FFB400"><p class="stat-label"> Digital Repository</p><p class="stat-value" id="counter-s2">—</p></div>
+    <div class="card stat" style="--site:#3fe373"><p class="stat-label"> Steak</p><p class="stat-value" id="counter-s3">—</p></div>
+    <div class="card stat" style="--site:#378ADD"><p class="stat-label">[unreleased project]</p><p class="stat-value" id="counter-s4">—</p><p class="stat-note">not available</p></div>
+  </div>
+</div>
 </div>
 
 <div class="divider"></div>
@@ -648,6 +654,7 @@ Not for unauthorised personal or commercial redistribution -->
   
 /*perma;no remove*/
 const ESTABLISHED            = "2025-09-15";
+const ESTABLISHED2           = "15/09/25"
 const UPTIME_PCT             = 99.9;
 const MEMBER_COUNT           = "—";
 const OPSTAT_API             = "https://script.google.com/macros/s/AKfycbwENqiIDpeiFs7-eYIi1EAW4dkPeGgK2ha3hR0zEWU3J_Jy6T9T6R7Zywu_kt6KuN_8Bw/exec";
@@ -799,8 +806,7 @@ window.addEventListener("resize", () => { if (currentOPSTAT !== null) renderOPST
 /* Stats */
 const estDate = new Date(ESTABLISHED);
 const daysActive = Math.floor((new Date()-estDate)/86400000).toLocaleString();
-document.getElementById("est-date").textContent     = estDate.toLocaleDateString("en-US", { month:"short", day:"numeric" });
-document.getElementById("est-year").textContent     = estDate.getFullYear();
+document.getElementById("est-date").textContent     = ESTABLISHED2
 document.getElementById("uptime-val").textContent   = UPTIME_PCT.toFixed(1) + "%";
 document.getElementById("member-count").textContent = MEMBER_COUNT;
 document.getElementById("days-active").textContent  = daysActive;
