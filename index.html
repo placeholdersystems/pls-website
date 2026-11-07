@@ -250,28 +250,6 @@ Not for unauthorised personal or commercial redistribution -->
 .social-btn .sb-arrow { transition: transform .25s cubic-bezier(.16,.7,.2,1); }
 .social-btn:hover .sb-arrow { transform: translateX(4px); }
 
-/* ── JOIN US · FINAL CTA ── */
-.final-section { width: 100%; max-width: 1080px; margin: 0 auto; padding: 40px 24px 112px; }
-.final-box {
-  text-align: center; border-radius: 28px; padding: 96px 30px; color: #fff; position: relative; overflow: hidden;
-  background: radial-gradient(120% 150% at 50% 0%, rgba(0,0,0,.30), rgba(0,0,0,0) 62%), var(--brand-gradient);
-  box-shadow: 0 40px 90px rgba(255,6,181,0.16);
-}
-.final-box::after {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
-}
-.final-box h2 { font-size: clamp(34px,4.7vw,60px); letter-spacing: -.032em; line-height: 1.07; font-weight: 700; position: relative; }
-.final-box .sub { color: rgba(255,255,255,.88); margin: 20px auto 34px; max-width: 520px; font-size: 16px; line-height: 1.6; position: relative; }
-.final-box .micro { color: rgba(255,255,255,.8); font-size: 12.5px; letter-spacing: .04em; margin-top: 20px; position: relative; }
-.pill { display: inline-flex; align-items: center; gap: 9px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 14px; padding: 13px 24px; position: relative; }
-.pill-lg { font-size: 15.5px; padding: 17px 34px; }
-.pill-solid { background: #fff; color: #16020e; transition: transform .25s cubic-bezier(.16,.7,.2,1), box-shadow .25s ease; }
-.pill-solid:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,.28); }
-@media (max-width: 680px) {
-  .final-section { padding: 24px 16px 80px; }
-  .final-box { padding: 64px 22px; border-radius: 22px; }
-}
 
 
 @media (max-width: 900px) {
@@ -617,14 +595,7 @@ Not for unauthorised personal or commercial redistribution -->
 </section>
 
 <!-- ════════ JOIN US · FINAL CTA ════════ -->
-<section class="final-section">
-  <div class="final-box reveal">
-    <h2>Be part of Placeholder Systems <br> today.</h2>
-    <p class="sub">Create a Placeholder Account™; it's free, or apply for a position here!</p>
-    <a class="pill pill-lg pill-solid" href="./join-us.html">Join Us</a>
-    <div class="micro">Remote, (UTC+8) SGT</div>
-  </div>
-</section>
+
 
 </main>
 <div id="site-footer"></div>
@@ -871,17 +842,7 @@ function scrollToStage(e) {
     });
   }, 900);
 
-  if (!reduced && window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.card--about').forEach(card => {
-      card.addEventListener('mousemove', ev => {
-        const r = card.getBoundingClientRect();
-        const x = (ev.clientX - r.left) / r.width - 0.5;
-        const yy = (ev.clientY - r.top) / r.height - 0.5;
-        card.style.transform = 'perspective(900px) rotateY(' + (x*5) + 'deg) rotateX(' + (-yy*5) + 'deg) translateY(-2px)';
-      });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-    });
-  }
+ 
 })();
 
 </script>
