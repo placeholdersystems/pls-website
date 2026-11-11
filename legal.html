@@ -34,13 +34,12 @@
 
             
 
-            <div class="social-grid">
-
+            <div class="card-grid card-grid--social">
             
                 
 
                 <a href="./privacy-policy.html"
-                   class="social-card"
+                  class="card card--social"
                    target="_blank">
 
                     <span class="social-name">
@@ -55,7 +54,7 @@
                 </a>
 
                 <a href="./terms-of-service.html"
-                   class="social-card"
+                  class="card card--social"
                    target="_blank">
 
                     <span class="social-name">
@@ -118,43 +117,6 @@
     year.textContent = new Date().getFullYear();
   }
 
-});
-   // Only one dropdown open at a time
-document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-  const btn = dropdown.querySelector('.nav-dropdown-button');
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = dropdown.classList.contains('open');
-
-    document.querySelectorAll('.nav-dropdown.open').forEach(other => {
-      other.classList.remove('open');
-      other.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    });
-
-    if (!isOpen) {
-      dropdown.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-document.addEventListener('click', (e) => {
-  document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    }
-  });
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-button').setAttribute('aria-expanded', 'false');
-    });
-  }
-});
 
 </script>
 </body>
