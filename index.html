@@ -74,7 +74,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .stage-nav:hover { background: rgba(255,255,255,.04); color: rgba(255,255,255,.75); }
 .stage-nav.on { background: rgba(255,255,255,.05); color:#fff; border-left-color: var(--pink); }
 .stage-nav:focus-visible, .ov-btn:focus-visible, .pv-test:focus-visible, .mock-cta:focus-visible { outline:1px solid var(--pink); outline-offset:-1px; }
-.stage-side-note { margin-top:auto; padding:10px 16px 2px; font-size:9.5px; line-height:1.5; color:rgba(255,255,255,.22); letter-spacing:.06em; text-transform:uppercase; }
+.stage-side-note { margin-top:auto; padding:10px 16px 2px; font-size:9.5px; line-height:1.5; color:rgba(255,255,255,.22); letter-spacing:.06em;  }
 .stage-main { background:#080808; color:#fff; min-width:0; }
 .stage-sub { margin-bottom: 2rem; }
 
@@ -94,18 +94,21 @@ Not for unauthorised personal or commercial redistribution. -->
 .ov-logo img { display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
 .ov-id { min-width:0; display:flex; flex-direction:column; gap:3px; }
 .ov-name { font-size:13px; font-weight:800; color:#fff; letter-spacing:-.01em; line-height:1.2; }
-.stage-status { font-size:8.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.stage-status { font-size:8.5px; font-weight:700; letter-spacing:.12em;  }
 .ss-live { color:#00cc44; } .ss-test { color:#ffb302; } .ss-soon { color:#ff3b30; }
 .ov-desc { flex:1; font-size:10.5px; line-height:1.6; color:rgba(255,255,255,.45); padding:12px 14px 14px; }
-.ov-btn { font-family:'Inter',sans-serif; cursor:pointer; width:100%; border:0; border-top:0.5px solid rgba(255,255,255,0.08); background:transparent; color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:0; padding:11px 14px; text-align:left; transition: background .2s, color .2s; }
+.ov-btn { font-family:'Inter',sans-serif; cursor:pointer; width:100%; border:0; border-top:0.5px solid rgba(255,255,255,0.08); background:transparent; color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.1em;  border-radius:0; padding:11px 14px; text-align:left; transition: background .2s, color .2s; }
 .ov-btn:hover { background:rgba(255,6,181,.12); }
 
-/* project previews — each pane holds a slot for a custom interactive preview */
+/* project previews sectino */
 .mock.mk-pv { padding:0; }
 .mock.mk-pv.on { display:flex; flex-direction:column; }
 .pv-slot { flex:1; display:flex; align-items:center; justify-content:center; padding:28px 24px; min-height:300px; position:relative; }
 .pv-slot.pv-fill { padding:0; align-items:stretch; justify-content:stretch; }
 .pv-frame { display:block; width:100%; height:100%; min-height:360px; border:0; background:#000; }
+
+
+
 /* PLACEHOLDER — delete .pv-ph inside a slot and mount the custom preview there */
 .pv-ph { text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px; width:100%; max-width:340px; border:0.5px dashed rgba(255,255,255,.18); border-radius:0; padding:28px 20px; }
 .pv-ph-t { font-size:15px; font-weight:800; letter-spacing:-.02em; }
@@ -116,6 +119,9 @@ Not for unauthorised personal or commercial redistribution. -->
 .pv-test.hit { background:var(--pink); }
 .pv-out { font-size:10px; letter-spacing:.06em; color:rgba(255,255,255,.4); min-height:1.4em; font-variant-numeric:tabular-nums; }
 .pv-out.hit { color:#3fe373; }
+
+
+
 
 .site-bar { display:flex; align-items:center; gap:12px; padding:12px 24px; background:#0A0A0A; border-top:0.5px solid var(--line); }
 .site-bar .sb-name { font-size:11.5px; font-weight:700; color:#fff; letter-spacing:-.01em; }
@@ -144,12 +150,6 @@ Not for unauthorised personal or commercial redistribution. -->
 .about-card-body p { margin-bottom: 4px; }
 .about-card-body p:last-child { margin-bottom: 0; }
 .about-card-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--orange); text-decoration: none; }
-
-.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 48px 24px; border-top: 0.5px solid rgba(255,255,255,0.07); }
-.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
-.about-footer-text { text-align: left; }
-.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
-.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
 
 /* ── TWO-COL OPSTAT + STATS ── */
 .two-col-section { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 90px 32px; max-width: 1100px; margin: 0 auto; box-sizing: border-box; scroll-snap-align: start; }
@@ -191,7 +191,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .stat-grid { grid-template-columns: 1fr 1fr; }
 .stat-grid > .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .stat { --site: rgba(255,255,255,0.18); padding: 18px; text-align: left; }
-.stat-label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+.stat-label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
 .stat-value { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; color: #fff; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .stat-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; }
 .stat--pink .stat-value   { color: var(--pink); }
@@ -201,8 +201,6 @@ Not for unauthorised personal or commercial redistribution. -->
 .stat-grid--f .stat-label { grid-column: 1; margin: 0; padding: 16px 18px 0; }
 .stat-grid--f .stat-note  { grid-column: 1; margin: 0; padding: 4px 18px 16px; }
 .stat-grid--f .stat-value { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; font-size: 30px; background: var(--panel-hover); border-left: 0.5px solid var(--card-line); box-shadow: inset 0 -2px 0 var(--site); }
-
-/* ── FAQ ── */
 .faq-section { width: 100%; max-width: 760px; margin: 0 auto; padding: 100px 32px; }
 .faq-list { max-width: 740px; margin: 46px auto 0; }
 .faq-list details { border-bottom: 0.5px solid var(--line); }
@@ -216,7 +214,6 @@ Not for unauthorised personal or commercial redistribution. -->
 
 .contact-section { width: 100%; max-width: 760px; margin: 0 auto; padding: 100px 32px; }
 
-/* ── SOCIALS BUTTON (gradient-ring capsule) ── */
 .socials-row { margin-top: 34px; }
 .socials-lead { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 18px; }
 .social-btn {
@@ -336,7 +333,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Weekdays: 7:00am to 10:00pm</p>
         <p>Weekends: 10:00am to 10:00pm</p>
       </div>
-    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">View current OPSTAT →</a>
+    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">View OPSTAT</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.12s">
@@ -346,10 +343,10 @@ Not for unauthorised personal or commercial redistribution. -->
           <p>Steak</p>
         <p>Digital Repository...</p>
       </div>
-      <a class="about-card-cta" href="./projects.html">View All Projects →</a>
+      <a class="about-card-cta" href="./projects.html">View All Projects</a>
      
      
-       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View Project Previews →</a>
+       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View Project Previews</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.18s">
@@ -358,7 +355,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Marketing: social media, graphic design</p>
         <p>Development: HTML, Google Apps Script</p>
       </div>
-      <a class="about-card-cta" href="./join-us.html">Apply on Join Us →</a>
+      <a class="about-card-cta" href="./join-us.html">Apply on Join Us</a>
     </div>
   </div>
 </section>
@@ -392,8 +389,8 @@ Not for unauthorised personal or commercial redistribution. -->
           <button class="stage-nav on" type="button" data-mock="overview">Overview</button>
           <button class="stage-nav" type="button" data-mock="steak">Steak</button>
           <button class="stage-nav" type="button" data-mock="dr">Digital Repository</button>
-          <button class="stage-nav" type="button" data-mock="next">Project X</button>
-          <p class="stage-side-note">Interactive previews</p>
+          <button class="stage-nav" type="button" data-mock="next">Unreleased Project</button>
+          <p class="stage-side-note">all previews are interactive stripped down versions of the real thing</p>
         </div>
 
         <!-- PREVIEW PANE -->
@@ -406,26 +403,26 @@ Not for unauthorised personal or commercial redistribution. -->
               <div class="ov-item">
                 <div class="ov-head">
                   <div class="ov-logo"><img src="https://github.com/placeholdersystems/image-assets/blob/main/stk-logo.png?raw=true" alt="Steak logo" onerror="this.replaceWith(document.createTextNode('S'))"></div>
-                  <div class="ov-id"><span class="ov-name">Steak™</span><span class="stage-status ss-live">Available</span></div>
+                  <div class="ov-id"><span class="ov-name">Steak™</span><span class="stage-status ss-live">(available)</span></div>
                 </div>
-                <p class="ov-desc">A simulated casino with popular betting games, more to come. No real money.</p>
-                <button class="ov-btn" type="button" data-goto="steak">Preview →</button>
+                <p class="ov-desc">A simulated casino with popular betting games; more to come.</p>
+                <button class="ov-btn" type="button" data-goto="steak">Preview</button>
               </div>
               <div class="ov-item">
                 <div class="ov-head">
                   <div class="ov-logo"><img src="https://github.com/placeholdersystems/image-assets/blob/main/dgr-logo.png?raw=true" alt="Digital Repository logo" onerror="this.replaceWith(document.createTextNode('D'))"></div>
-                  <div class="ov-id"><span class="ov-name">Digital Repository™</span><span class="stage-status ss-test">Partially available</span></div>
+                  <div class="ov-id"><span class="ov-name">Digital Repository™</span><span class="stage-status ss-test">(partially available)</span></div>
                 </div>
-                <p class="ov-desc">Movies, TV and games in one place. Only Live TV is open for testing.</p>
-                <button class="ov-btn" type="button" data-goto="dr">Preview →</button>
+                <p class="ov-desc">Movies, radio, TV and games in one place. Only Live TV is open for testing atm.</p>
+                <button class="ov-btn" type="button" data-goto="dr">Preview</button>
               </div>
               <div class="ov-item">
                 <div class="ov-head">
                   <div class="ov-logo">?</div>
-                  <div class="ov-id"><span class="ov-name">Project A</span><span class="stage-status ss-soon">Coming soon</span></div>
+                  <div class="ov-id"><span class="ov-name">Unreleased Project</span><span class="stage-status ss-soon">(coming soon)</span></div>
                 </div>
                 <p class="ov-desc">Nothing here yet. We will put stuff here once we have announced it.</p>
-                <button class="ov-btn" type="button" data-goto="next">Preview →</button>
+                <button class="ov-btn" type="button" data-goto="next">Preview</button>
               </div>
             </div>
           </div>
@@ -477,7 +474,7 @@ Not for unauthorised personal or commercial redistribution. -->
           <div class="mock mk-pv" data-mock="next">
             <div class="pv-slot" data-preview="next">
               <div class="pv-ph">
-                <p class="pv-ph-t">Project A</p>
+                <p class="pv-ph-t">Unreleased Project</p>
                 <p class="pv-ph-s">Placeholder. Custom interactive preview goes here.</p>
                 <button class="pv-test" type="button">Test interactivity</button>
                 <p class="pv-out" aria-live="polite">Not clicked yet</p>
@@ -555,7 +552,7 @@ Not for unauthorised personal or commercial redistribution. -->
     <div class="card stat" style="--site:#FF06B5"><p class="stat-label"> This Site</p><p class="stat-value" id="counter-s1">—</p></div>
     <div class="card stat" style="--site:#FFB400"><p class="stat-label"> Digital Repository</p><p class="stat-value" id="counter-s2">—</p></div>
     <div class="card stat" style="--site:#3fe373"><p class="stat-label"> Steak</p><p class="stat-value" id="counter-s3">—</p></div>
-    <div class="card stat" style="--site:#378ADD"><p class="stat-label">[unreleased project]</p><p class="stat-value" id="counter-s4">—</p><p class="stat-note">not available</p></div>
+    <div class="card stat" style="--site:#378ADD"><p class="stat-label">Unreleased Project</p><p class="stat-value" id="counter-s4">—</p><p class="stat-note">not available</p></div>
   </div>
 </div>
 </div>
