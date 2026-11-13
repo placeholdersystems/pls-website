@@ -1,3 +1,4 @@
+
 <!-- Copyright (c) Placeholder Systems, 2025-2026 All Rights Reserved
 Not for unauthorised personal or commercial redistribution. -->
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .stage-heading { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; color: #fff; margin-bottom: 14px; }
 .stage-heading span { background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .stage-sub { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7; }
-.hero-stage-wrap { width: 100%; max-width: 980px; perspective: 1600px; position: relative; z-index: 1; }
+.hero-stage-wrap { width: 100%; max-width: 980px; perspective: 400px; position: relative; z-index: 1; }
 .hero-stage {
   transform-style: preserve-3d;
   transform: rotateX(55deg) scale(0.85); /* Initial flat/tilted back state */
@@ -56,83 +57,82 @@ Not for unauthorised personal or commercial redistribution. -->
   overflow: hidden;
   transition: transform 0.05s linear;
 }
-/* ── STAGE UI · square-cornered, minimal. (Outer stage + address bar keep their rounding.) ── */
-.stage-chrome { display:flex; align-items:center; gap:12px; padding:0 0 0 16px; height:38px; background:#0f0f0f; border-bottom:0.5px solid var(--line); }
-.stage-chrome-l { flex:1 1 0; min-width:0; }
-.stage-addr { flex:0 1 320px; min-width:0; background:#000; border:0.5px solid var(--line); border-radius:7px; font-size:11px; color:rgba(255,255,255,.4); padding:4px 12px; text-align:center; letter-spacing:.02em; transition: color .25s; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-.stage-winctl { flex:1 1 0; display:flex; justify-content:flex-end; align-self:stretch; }
-.wc { width:46px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.55); border-radius:0; transition: background .15s, color .15s; cursor:default; }
-.wc svg { width:10px; height:10px; display:block; fill:none; stroke:currentColor; stroke-width:1; shape-rendering:crispEdges; }
-.wc:hover { background:rgba(255,255,255,.08); color:#fff; }
-.wc.wc-x:hover { background:#e81123; color:#fff; }
-
+.stage-chrome { display:flex; align-items:center; gap:8px; padding:12px 16px; background:#0f0f0f; border-bottom:0.5px solid var(--line); }
+.stage-dot { width:10px; height:10px; border-radius:50%; }
+.stage-addr { flex:1; max-width:320px; margin:0 auto; background:#000; border:0.5px solid var(--line); border-radius:7px; font-size:11px; color:rgba(255,255,255,.4); padding:4px 12px; text-align:center; letter-spacing:.02em; transition: color .25s; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 .stage-body { display:grid; grid-template-columns:178px 1fr; min-height:420px; text-align:left; }
-.stage-side { background:#050505; padding:16px 0; display:flex; flex-direction:column; gap:2px; border-right:0.5px solid var(--line); }
-.stage-logo { display:flex; flex-direction:column; gap:3px; font-weight:800; font-size:12.5px; color:#fff; padding:2px 16px 16px; letter-spacing:-.01em; }
-.stage-logo span { opacity:.4; font-weight:500; font-size:10.5px; letter-spacing:0; }
-.stage-nav { display:block; color:rgba(255,255,255,.4); font-size:11.5px; font-weight:500; padding:10px 16px 10px 14px; border-radius:0; background:transparent; border:0; border-left:2px solid transparent; width:100%; text-align:left; font-family:'Inter',sans-serif; cursor:pointer; transition: background .2s, color .2s, border-color .2s; }
-.stage-nav:hover { background: rgba(255,255,255,.04); color: rgba(255,255,255,.75); }
-.stage-nav.on { background: rgba(255,255,255,.05); color:#fff; border-left-color: var(--pink); }
-.stage-nav:focus-visible, .ov-btn:focus-visible, .pv-test:focus-visible, .mock-cta:focus-visible { outline:1px solid var(--pink); outline-offset:-1px; }
-.stage-side-note { margin-top:auto; padding:10px 16px 2px; font-size:9.5px; line-height:1.5; color:rgba(255,255,255,.22); letter-spacing:.06em;  }
+.stage-side { background:#050505; padding:16px 12px; display:flex; flex-direction:column; gap:4px; border-right:0.5px solid var(--line); }
+.stage-logo { display:flex; align-items:center; gap:7px; font-weight:800; font-size:12.5px; color:#fff; padding:2px 6px 14px; letter-spacing:-.01em; }
+.stage-nav { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.4); font-size:11.5px; font-weight:500; padding:9px 8px; border-radius:7px; background:transparent; border:0; width:100%; text-align:left; font-family:'Inter',sans-serif; cursor:pointer; transition: background .2s, color .2s; }
+.stage-nav:hover { background: rgba(255,255,255,.05); color: rgba(255,255,255,.75); }
+.stage-nav.on { background: rgba(255,6,181,.12); color:#fff; }
+.stage-nav i { width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.6; flex-shrink:0; }
+.stage-side-note { margin-top:auto; padding:10px 8px 2px; font-size:9.5px; line-height:1.5; color:rgba(255,255,255,.22); letter-spacing:.04em; }
 .stage-main { background:#080808; color:#fff; min-width:0; }
-.stage-sub { margin-bottom: 2rem; }
+.stage-sub {
+  margin-bottom: 2rem; /* Adjust the 2rem (approx. 32px) to whatever size you need */
+}
+
+
 
 /* preview switcher */
-.mock { display:none; padding:22px 24px; min-height:100%; }
+.mock { display:none; padding:18px 20px; min-height:100%; }
 .mock.on { display:block; animation: mockIn .35s cubic-bezier(.16,.7,.2,1); }
 @keyframes mockIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform:none; } }
-.mock-cta { display:inline-block; text-decoration:none; font-weight:700; border-radius:0; padding:8px 14px; font-size:10px; letter-spacing:.06em; text-transform:uppercase; transition: background .2s, border-color .2s, color .2s; }
+.mock-cta { display:inline-block; text-decoration:none; font-weight:700; border-radius:7px; padding:7px 12px; font-size:10px; letter-spacing:.04em; transition: transform .2s, box-shadow .2s; }
+.mock-cta:hover { transform: translateY(-1px); }
 
-/* overview — compact project cards (styled after projects.html, square corners) */
-.stage-title { font-weight:700; font-size:14px; margin-bottom:14px; letter-spacing:-.01em; }
-.ov-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
-.ov-item { display:flex; flex-direction:column; background:#111; border:0.5px solid rgba(255,255,255,0.08); border-radius:0; transition: border-color .2s; }
-.ov-item:hover { border-color:rgba(255,255,255,0.2); }
-.ov-head { display:flex; align-items:center; gap:12px; padding:14px 14px 0; }
-.ov-logo { width:44px; height:44px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#0d0d0d; border:0.5px solid rgba(255,255,255,0.08); border-radius:0; padding:5px; overflow:hidden; font-size:15px; font-weight:800; color:rgba(255,255,255,.22); user-select:none; }
-.ov-logo img { display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
-.ov-id { min-width:0; display:flex; flex-direction:column; gap:3px; }
-.ov-name { font-size:13px; font-weight:800; color:#fff; letter-spacing:-.01em; line-height:1.2; }
-.stage-status { font-size:8.5px; font-weight:700; letter-spacing:.12em;  }
-.ss-live { color:#00cc44; } .ss-test { color:#ffb302; } .ss-soon { color:#ff3b30; }
-.ov-desc { flex:1; font-size:10.5px; line-height:1.6; color:rgba(255,255,255,.45); padding:12px 14px 14px; }
-.ov-btn { font-family:'Inter',sans-serif; cursor:pointer; width:100%; border:0; border-top:0.5px solid rgba(255,255,255,0.08); background:transparent; color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.1em;  border-radius:0; padding:11px 14px; text-align:left; transition: background .2s, color .2s; }
-.ov-btn:hover { background:rgba(255,6,181,.12); }
+/* mock 1 — PLS console (homepage trade dress) */
+.stage-title { font-weight:700; font-size:14px; margin-bottom:12px; display:flex; align-items:center; gap:10px; letter-spacing:-.01em; }
+.stage-title .pill-btn { margin-left:auto; background: var(--brand-gradient); color:#fff; font-size:9.5px; font-weight:700; border-radius:6px; padding:6px 10px; text-decoration:none; }
+.stage-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px; }
+.stage-stat { background:#0D0D0D; border:0.5px solid var(--line); border-radius:10px; padding:9px 10px; }
+.stage-stat .l { font-size:7.5px; font-weight:700; color:rgba(255,255,255,.32); text-transform:uppercase; letter-spacing:.7px; }
+.stage-stat .v { font-size:14px; font-weight:800; margin-top:3px; }
+.stage-row2 { display:grid; grid-template-columns:1fr; gap:8px; }
+.stage-card { background:#0D0D0D; border:0.5px solid var(--line); border-radius:0; padding:11px 13px; }
+.stage-card .h { font-size:10.5px; font-weight:700; margin-bottom:9px; color:rgba(255,255,255,.6); }
+.stage-line { display:flex; justify-content:space-between; gap:10px; font-size:10.5px; padding:6px 0; border-bottom:0.5px solid rgba(255,255,255,.05); color:rgba(255,255,255,.65); }
+.stage-line:last-child { border-bottom:none; }
+.stage-pill { font-size:8px; font-weight:700; border-radius:8px; padding:2px 7px; white-space:nowrap; }
+.sp-live { background:rgba(0,204,68,.12); color:#3fe373; } .sp-deploy { background:rgba(55,138,221,.14); color:#7cb3ee; } .sp-sync { background:rgba(255,107,53,.14); color:#ff9d73; }
 
-/* project previews sectino */
-.mock.mk-pv { padding:0; }
-.mock.mk-pv.on { display:flex; flex-direction:column; }
-.pv-slot { flex:1; display:flex; align-items:center; justify-content:center; padding:28px 24px; min-height:300px; position:relative; }
-.pv-slot.pv-fill { padding:0; align-items:stretch; justify-content:stretch; }
-.pv-frame { display:block; width:100%; height:100%; min-height:360px; border:0; background:#000; }
-
-
-
-/* PLACEHOLDER — delete .pv-ph inside a slot and mount the custom preview there */
-.pv-ph { text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px; width:100%; max-width:340px; border:0.5px dashed rgba(255,255,255,.18); border-radius:0; padding:28px 20px; }
-.pv-ph-t { font-size:15px; font-weight:800; letter-spacing:-.02em; }
-.pv-ph-s { font-size:10.5px; color:rgba(255,255,255,.38); line-height:1.6; }
-.pv-test { font-family:'Inter',sans-serif; cursor:pointer; margin-top:6px; border:0.5px solid var(--pink); background:transparent; color:#fff; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; border-radius:0; padding:9px 16px; transition: background .2s, transform .1s; }
-.pv-test:hover { background:rgba(255,6,181,.14); }
-.pv-test:active { transform:translateY(1px); }
-.pv-test.hit { background:var(--pink); }
-.pv-out { font-size:10px; letter-spacing:.06em; color:rgba(255,255,255,.4); min-height:1.4em; font-variant-numeric:tabular-nums; }
-.pv-out.hit { color:#3fe373; }
-
-
-
-
-.site-bar { display:flex; align-items:center; gap:12px; padding:12px 24px; background:#0A0A0A; border-top:0.5px solid var(--line); }
+/* mocks 2 & 3 — real project pages, embedded verbatim and scaled down */
+.mock.mk-site { padding:0; }
+.mock.mk-site.on { display:flex; flex-direction:column; }
+.site-frame { position:relative; overflow:hidden; background:#000; border-bottom:0.5px solid var(--line); }
+.site-frame iframe { position:absolute; top:0; left:0; width:1440px; height:1000px; border:0; transform-origin:top left; pointer-events:auto; }
+.site-frame::after { content:""; position:absolute; inset:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); pointer-events:none; }
+.site-bar { display:flex; align-items:center; gap:12px; padding:11px 14px; background:#0A0A0A; }
 .site-bar .sb-name { font-size:11.5px; font-weight:700; color:#fff; letter-spacing:-.01em; }
-.site-bar .sb-note { font-size:9.5px; color:rgba(255,255,255,.3); margin-top:2px; }
+.site-bar .sb-note { font-size:9.5px; color:rgba(255,255,255,.3); }
 .site-bar .mock-cta { margin-left:auto; }
 .cta-dr { background:#FFB400; color:#101114; }
-.cta-dr:hover { background:#ffc533; }
-.cta-steak { background:#3fe373; color:#04160f; }
-.cta-steak:hover { background:#6aeb94; }
-.cta-next { background:var(--pink); color:#fff; }
-.cta-next:hover { background:#ff3dc6; }
+.cta-dr:hover { box-shadow:0 8px 20px rgba(255,180,0,.3); }
+.cta-steak { background:linear-gradient(135deg,#3fe373,#22c890); color:#04160f; }
+.cta-steak:hover { box-shadow:0 8px 20px rgba(63,227,115,.32); }
+
+/* overview — concise project descriptions + preview buttons */
+.ov-list { display:grid; gap:9px; }
+.ov-item { background:#0D0D0D; border:0.5px solid var(--line); border-radius:12px; padding:13px 14px; }
+.ov-top { display:flex; align-items:center; gap:9px; }
+.ov-name { font-size:12.5px; font-weight:700; color:#fff; letter-spacing:-.01em; }
+.ov-top .stage-pill { margin-left:auto; }
+.ov-desc { font-size:10.5px; line-height:1.6; color:rgba(255,255,255,.42); margin:6px 0 10px; max-width:52ch; }
+.ov-btn { font-family:'Inter',sans-serif; cursor:pointer; border:0.5px solid rgba(255,255,255,.16); background:rgba(255,255,255,.04); color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.05em; border-radius:7px; padding:7px 12px; transition: background .2s, border-color .2s, transform .2s; }
+.ov-btn:hover { background: rgba(255,6,181,.14); border-color: rgba(255,6,181,.4); transform: translateY(-1px); }
+
+/* mock 4 — unannounced placeholder project */
+.mk-next { background: repeating-linear-gradient(135deg, #090909 0 12px, #0c0c0c 12px 24px); color:#fff; }
+.mk-next.on { display:flex; align-items:center; justify-content:center; }
+.mk-next .nx-shell { border:0.5px dashed rgba(255,255,255,.18); border-radius:14px; padding:26px 16px; text-align:center; width:100%; }
+.mk-next .nx-tag { display:inline-block; font-size:8.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink); background:rgba(255,6,181,.12); border:0.5px solid rgba(255,6,181,.3); border-radius:999px; padding:4px 10px; }
+.mk-next .nx-title { font-size:20px; font-weight:800; letter-spacing:-.03em; margin:10px 0 6px; }
+.mk-next .nx-sub { font-size:10px; color:rgba(255,255,255,.38); line-height:1.6; max-width:38ch; margin:0 auto; }
+.mk-next .nx-bars { display:grid; gap:6px; margin:13px auto 0; max-width:300px; }
+.mk-next .nx-bar { height:8px; border-radius:999px; background:rgba(255,255,255,.07); overflow:hidden; }
+.mk-next .nx-bar i { display:block; height:100%; border-radius:999px; background:var(--brand-gradient); }
+.mk-next .cta-next { background:var(--brand-gradient); color:#fff; margin-top:13px; }
 
 /* ── ABOUT US ── */
 .about-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 100px 32px; scroll-snap-align: start; }
@@ -150,6 +150,12 @@ Not for unauthorised personal or commercial redistribution. -->
 .about-card-body p { margin-bottom: 4px; }
 .about-card-body p:last-child { margin-bottom: 0; }
 .about-card-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--orange); text-decoration: none; }
+
+.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 48px 24px; border-top: 0.5px solid rgba(255,255,255,0.07); }
+.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
+.about-footer-text { text-align: left; }
+.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
+.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
 
 /* ── TWO-COL OPSTAT + STATS ── */
 .two-col-section { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 90px 32px; max-width: 1100px; margin: 0 auto; box-sizing: border-box; scroll-snap-align: start; }
@@ -191,7 +197,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .stat-grid { grid-template-columns: 1fr 1fr; }
 .stat-grid > .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .stat { --site: rgba(255,255,255,0.18); padding: 18px; text-align: left; }
-.stat-label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+.stat-label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
 .stat-value { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; color: #fff; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .stat-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; }
 .stat--pink .stat-value   { color: var(--pink); }
@@ -201,6 +207,8 @@ Not for unauthorised personal or commercial redistribution. -->
 .stat-grid--f .stat-label { grid-column: 1; margin: 0; padding: 16px 18px 0; }
 .stat-grid--f .stat-note  { grid-column: 1; margin: 0; padding: 4px 18px 16px; }
 .stat-grid--f .stat-value { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; font-size: 30px; background: var(--panel-hover); border-left: 0.5px solid var(--card-line); box-shadow: inset 0 -2px 0 var(--site); }
+
+/* ── FAQ ── */
 .faq-section { width: 100%; max-width: 760px; margin: 0 auto; padding: 100px 32px; }
 .faq-list { max-width: 740px; margin: 46px auto 0; }
 .faq-list details { border-bottom: 0.5px solid var(--line); }
@@ -214,6 +222,7 @@ Not for unauthorised personal or commercial redistribution. -->
 
 .contact-section { width: 100%; max-width: 760px; margin: 0 auto; padding: 100px 32px; }
 
+/* ── SOCIALS BUTTON (gradient-ring capsule) ── */
 .socials-row { margin-top: 34px; }
 .socials-lead { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 18px; }
 .social-btn {
@@ -246,12 +255,11 @@ Not for unauthorised personal or commercial redistribution. -->
 @media (max-width: 900px) {
   .card-grid--about { grid-template-columns: 1fr 1fr; }
   .stage-body { grid-template-columns: 1fr; min-height: 0; }
-  .stage-side { border-right: none; border-bottom: 0.5px solid var(--line); flex-direction: row; flex-wrap: wrap; gap: 0; padding: 12px 0 0; }
-  .stage-logo { width: 100%; padding-bottom: 10px; }
-  .stage-nav { width: auto; border-left: 0; border-bottom: 2px solid transparent; padding: 10px 14px; }
-  .stage-nav.on { border-bottom-color: var(--pink); }
+  .stage-side { border-right: none; border-bottom: 0.5px solid var(--line); flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .stage-logo { width: 100%; padding-bottom: 8px; }
+  .stage-nav { width: auto; }
   .stage-side-note { display: none; }
-  .stage-chrome-l { display: none; }
+  .mk-steak .sk-body { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
   .two-col-section { grid-template-columns: 1fr; padding: 60px 20px; }
@@ -264,6 +272,7 @@ Not for unauthorised personal or commercial redistribution. -->
   .stage-section { padding: 70px 18px; }
   
   .faq-section { padding: 70px 20px; }
+  .mk-dr .dr-grid { grid-template-columns: 1fr; }
 }
  .contact-link {
             font-size: clamp(24px, 4.5vw, 36px);
@@ -333,7 +342,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Weekdays: 7:00am to 10:00pm</p>
         <p>Weekends: 10:00am to 10:00pm</p>
       </div>
-    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">View OPSTAT</a>
+    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">View current OPSTAT →</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.12s">
@@ -343,10 +352,10 @@ Not for unauthorised personal or commercial redistribution. -->
           <p>Steak</p>
         <p>Digital Repository...</p>
       </div>
-      <a class="about-card-cta" href="./projects.html">View All Projects</a>
+      <a class="about-card-cta" href="./projects.html">View All Projects →</a>
      
      
-       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View Project Previews</a>
+       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View Project Previews →</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.18s">
@@ -355,7 +364,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Marketing: social media, graphic design</p>
         <p>Development: HTML, Google Apps Script</p>
       </div>
-      <a class="about-card-cta" href="./join-us.html">Apply on Join Us</a>
+      <a class="about-card-cta" href="./join-us.html">Apply on Join Us →</a>
     </div>
   </div>
 </section>
@@ -366,31 +375,27 @@ Not for unauthorised personal or commercial redistribution. -->
 <section class="stage-section" id="stageSection">
   <div class="stage-intro reveal">
     <p class="section-label">PROJECTS</p>
-    <h2 class="heading-orange">Project <span>previews</span></h2>
-    <p class="stage-sub">Pick a project on the left to load its preview. Previews are interactive; for the full experience, visit the respective project's website.</p>
+    <h2 class="heading-orange">Public <span>previews</span></h2>
+    <p class="stage-sub">Pick a project on the left to load its preview. Previews are uninteractable; to use, visit the respective projects' website.</p>
   </div>
 
   <div class="hero-stage-wrap reveal" id="projects">
     <div class="hero-stage" id="stage">
       <div class="stage-chrome">
-        <span class="stage-chrome-l"></span>
+        <span class="stage-dot" style="background:#ff5f57"></span><span class="stage-dot" style="background:#febc2e"></span><span class="stage-dot" style="background:#28c840"></span>
         <span class="stage-addr" id="stageAddr">placeholdersystems.pages.dev</span>
-        <div class="stage-winctl" aria-hidden="true">
-          <span class="wc" title="this doesnt work"><svg viewBox="0 0 10 10"><path d="M0 5.5h10"/></svg></span>
-          <span class="wc" title="this also doesnt work"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9"/></svg></span>
-          <span class="wc wc-x" title="imagine trying to close this"><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0L0 10"/></svg></span>
-        </div>
       </div>
       <div class="stage-body">
 
         <!-- LEFT MENU -->
         <div class="stage-side">
-          <div class="stage-logo">Placeholder Systems<span>project previews</span></div>
-          <button class="stage-nav on" type="button" data-mock="overview">Overview</button>
-          <button class="stage-nav" type="button" data-mock="steak">Steak</button>
-          <button class="stage-nav" type="button" data-mock="dr">Digital Repository</button>
-          <button class="stage-nav" type="button" data-mock="next">Unreleased Project</button>
-          <p class="stage-side-note">all previews are interactive stripped down versions of the real thing</p>
+          <div class="stage-logo">Placeholder Systems<span style="opacity:.4;font-weight:500">project previews</span></div>
+          <button class="stage-nav on" type="button" data-mock="overview"><i></i>Overview</button>
+         
+          <button class="stage-nav" type="button" data-mock="steak"><i></i>Steak</button>
+          <button class="stage-nav" type="button" data-mock="dr"><i></i>Digital Repository</button>
+          <button class="stage-nav" type="button" data-mock="next"><i></i>Project X</button>
+          <p class="stage-side-note">PREVIEWS ARE SCALED DOWN UNINTERACTABLE COPIES!!!</p>
         </div>
 
         <!-- PREVIEW PANE -->
@@ -400,90 +405,59 @@ Not for unauthorised personal or commercial redistribution. -->
           <div class="mock on" data-mock="overview">
             <div class="stage-title">Projects</div>
             <div class="ov-list">
+             
               <div class="ov-item">
-                <div class="ov-head">
-                  <div class="ov-logo"><img src="https://github.com/placeholdersystems/image-assets/blob/main/stk-logo.png?raw=true" alt="Steak logo" onerror="this.replaceWith(document.createTextNode('S'))"></div>
-                  <div class="ov-id"><span class="ov-name">Steak™</span><span class="stage-status ss-live">(available)</span></div>
-                </div>
-                <p class="ov-desc">A simulated casino with popular betting games; more to come.</p>
+                <div class="ov-top"><span class="ov-name">Steak</span><span class="stage-pill sp-live">Available</span></div>
+                <p class="ov-desc">A simulated casino with popular betting games, more to come. Entertainment only with no real money wagering.</p>
                 <button class="ov-btn" type="button" data-goto="steak">Preview</button>
               </div>
               <div class="ov-item">
-                <div class="ov-head">
-                  <div class="ov-logo"><img src="https://github.com/placeholdersystems/image-assets/blob/main/dgr-logo.png?raw=true" alt="Digital Repository logo" onerror="this.replaceWith(document.createTextNode('D'))"></div>
-                  <div class="ov-id"><span class="ov-name">Digital Repository™</span><span class="stage-status ss-test">(partially available)</span></div>
-                </div>
-                <p class="ov-desc">Movies, radio, TV and games in one place. Only Live TV is open for testing atm.</p>
+                <div class="ov-top"><span class="ov-name">Digital Repository</span><span class="stage-pill sp-deploy">Testing</span></div>
+                <p class="ov-desc">A website for movies, TV and games. Open for testing Live TV only.</p>
                 <button class="ov-btn" type="button" data-goto="dr">Preview</button>
               </div>
               <div class="ov-item">
-                <div class="ov-head">
-                  <div class="ov-logo">?</div>
-                  <div class="ov-id"><span class="ov-name">Unreleased Project</span><span class="stage-status ss-soon">(coming soon)</span></div>
-                </div>
+                <div class="ov-top"><span class="ov-name">Project A</span><span class="stage-pill sp-sync">Soon</span></div>
                 <p class="ov-desc">Nothing here yet. We will put stuff here once we have announced it.</p>
-                <button class="ov-btn" type="button" data-goto="next">Preview</button>
+                <button class="ov-btn" type="button" data-goto="next">Preview </button>
               </div>
             </div>
           </div>
 
-          <!-- Steak · PREVIEW SLOT
-               To mount your preview, either:
-               (A) delete the .pv-ph block and paste your own HTML into .pv-slot, or
-               (B) add class "pv-fill" to .pv-slot and replace .pv-ph with:
-                   <iframe class="pv-frame" src="YOUR_PREVIEW_URL" title="Steak preview" loading="lazy"></iframe>
-               Delete the .pv-test click handler in the script once no placeholder remains. -->
-          <div class="mock mk-pv" data-mock="steak">
-            <div class="pv-slot" data-preview="steak">
-              <div class="pv-ph">
-                <p class="pv-ph-t">Steak</p>
-                <p class="pv-ph-s">Placeholder. Custom interactive preview goes here.</p>
-                <button class="pv-test" type="button">Test interactivity</button>
-                <p class="pv-out" aria-live="polite">Not clicked yet</p>
-              </div>
-            </div>
-            <div class="site-bar">
-              <div>
-                <div class="sb-name">Steak, Home</div>
-                <div class="sb-note">Interactive preview</div>
-              </div>
-              <a class="mock-cta cta-steak" href="#" data-project-link="steak" target="_blank" rel="noopener">Play Steak</a>
-            </div>
-          </div>
-
-          <!-- Digital Repository · PREVIEW SLOT -->
-          <div class="mock mk-pv" data-mock="dr">
-            <div class="pv-slot" data-preview="dr">
-              <div class="pv-ph">
-                <p class="pv-ph-t">Digital Repository</p>
-                <p class="pv-ph-s">Placeholder. Custom interactive preview goes here.</p>
-                <button class="pv-test" type="button">Test interactivity</button>
-                <p class="pv-out" aria-live="polite">Not clicked yet</p>
-              </div>
-            </div>
+          <!-- Digital Repository · the real page, embedded verbatim and scaled down -->
+          <div class="mock mk-site" data-mock="dr">
+            <div class="site-frame"><iframe title="Digital Repository preview" data-tpl="tpl-dr" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></div>
             <div class="site-bar">
               <div>
                 <div class="sb-name">Digital Repository, Live TV</div>
-                <div class="sb-note">Interactive preview</div>
+                <div class="sb-note">Live page, scaled down</div>
               </div>
-              <a class="mock-cta cta-dr" href="#" data-project-link="dr" target="_blank" rel="noopener">Test Digital Repository</a>
+              <a class="mock-cta cta-dr" href="#" data-project-link="dr" target="_blank" rel="noopener">TEST DIGITAL REPOSITORY</a>
             </div>
           </div>
 
-          <!-- Project X · PREVIEW SLOT -->
-          <div class="mock mk-pv" data-mock="next">
-            <div class="pv-slot" data-preview="next">
-              <div class="pv-ph">
-                <p class="pv-ph-t">Unreleased Project</p>
-                <p class="pv-ph-s">Placeholder. Custom interactive preview goes here.</p>
-                <button class="pv-test" type="button">Test interactivity</button>
-                <p class="pv-out" aria-live="polite">Not clicked yet</p>
-              </div>
-            </div>
+          <!-- Steak · the real Mines page, embedded verbatim and scaled down -->
+          <div class="mock mk-site" data-mock="steak">
+            <div class="site-frame"><iframe title="Steak preview" data-tpl="tpl-steak" data-tab="mines" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></div>
             <div class="site-bar">
               <div>
-                <div class="sb-name">Project A</div>
-                <div class="sb-note">Interactive preview</div>
+                <div class="sb-name">Steak, Home</div>
+                <div class="sb-note">Live page, scaled down</div>
+              </div>
+              <a class="mock-cta cta-steak" href="#" data-project-link="steak" target="_blank" rel="noopener">PLAY STEAK</a>
+            </div>
+          </div>
+
+          <!-- Project 03 · placeholder -->
+          <div class="mock mk-next" data-mock="next">
+            <div class="nx-shell">
+             
+              <div class="nx-title">Project A</div>
+              <p class="nx-sub">Nothing here yet. We will put stuff here once we have announced it.</p>
+              <div class="nx-bars">
+                <div class="nx-bar"><i style="width:72%"></i></div>
+                <div class="nx-bar"><i style="width:46%"></i></div>
+                <div class="nx-bar"><i style="width:23%"></i></div>
               </div>
               <a class="mock-cta cta-next" href="#" data-project-link="next" target="_blank" rel="noopener">Placeholder</a>
             </div>
@@ -552,7 +526,7 @@ Not for unauthorised personal or commercial redistribution. -->
     <div class="card stat" style="--site:#FF06B5"><p class="stat-label"> This Site</p><p class="stat-value" id="counter-s1">—</p></div>
     <div class="card stat" style="--site:#FFB400"><p class="stat-label"> Digital Repository</p><p class="stat-value" id="counter-s2">—</p></div>
     <div class="card stat" style="--site:#3fe373"><p class="stat-label"> Steak</p><p class="stat-value" id="counter-s3">—</p></div>
-    <div class="card stat" style="--site:#378ADD"><p class="stat-label">Unreleased Project</p><p class="stat-value" id="counter-s4">—</p><p class="stat-note">not available</p></div>
+    <div class="card stat" style="--site:#378ADD"><p class="stat-label">[unreleased project]</p><p class="stat-value" id="counter-s4">—</p><p class="stat-note">not available</p></div>
   </div>
 </div>
 </div>
@@ -669,36 +643,55 @@ const PROJECTS = {
   const addr  = document.getElementById('stageAddr');
   const navs  = document.querySelectorAll('.stage-nav');
   const mocks = document.querySelectorAll('.mock');
-  const main  = document.getElementById('stageMain');
+  const FRAME_W = 1440, FRAME_H = 1000;  
 
   document.querySelectorAll('[data-project-link]').forEach(a => {
     const key = a.getAttribute('data-project-link');
     if (PROJECTS[key] && PROJECTS[key].url) a.setAttribute('href', PROJECTS[key].url);
   });
 
+  function fitFrames(){
+    document.querySelectorAll('.site-frame').forEach(box => {
+      const fr = box.querySelector('iframe');
+      const w  = box.clientWidth;
+      if (!fr || !w) return;
+      const s = w / FRAME_W;
+      fr.style.transform = 'scale(' + s + ')';
+      box.style.height = Math.round(FRAME_H * s) + 'px';
+    });
+  }
+
+  function loadFrame(mock){
+    const fr = mock.querySelector('iframe[data-tpl]');
+    if (!fr || fr.dataset.loaded) return;
+    const tpl = document.getElementById(fr.dataset.tpl);
+    if (!tpl) return;
+    fr.dataset.loaded = '1';
+    const attrs = tpl.getAttribute('data-html-attrs') || '';
+    fr.addEventListener('load', () => {
+      const tab = fr.dataset.tab;
+      if (!tab) return;
+      try { fr.contentWindow.switchPlatformTab(tab); } catch (e) {}
+    });
+    fr.srcdoc = '<!DOCTYPE html><html ' + attrs + '>' + tpl.innerHTML + '</html>';
+  }
+
   function show(key){
     navs.forEach(n => n.classList.toggle('on', n.dataset.mock === key));
-    mocks.forEach(m => m.classList.toggle('on', m.dataset.mock === key));
+    mocks.forEach(m => {
+      const on = m.dataset.mock === key;
+      m.classList.toggle('on', on);
+      if (on) { loadFrame(m); requestAnimationFrame(fitFrames); }
+    });
     if (PROJECTS[key]) addr.textContent = PROJECTS[key].addr;
   }
 
   navs.forEach(n => n.addEventListener('click', () => show(n.dataset.mock)));
   document.querySelectorAll('.ov-btn[data-goto]').forEach(b =>
     b.addEventListener('click', () => show(b.dataset.goto)));
-
-  /* placeholder interactivity test (remove along with .pv-ph when custom previews are mounted) */
-  main.addEventListener('click', e => {
-    const btn = e.target.closest('.pv-test');
-    if (!btn) return;
-    const out = btn.parentElement.querySelector('.pv-out');
-    const n = (parseInt(btn.dataset.n, 10) || 0) + 1;
-    btn.dataset.n = n;
-    btn.classList.add('hit');
-    out.classList.add('hit');
-    out.textContent = 'Interactive: clicked ' + n + (n === 1 ? ' time' : ' times');
-  });
-
+  window.addEventListener('resize', fitFrames, {passive:true});
   show('overview');
+  fitFrames();
 })();
 
 /* Cycling text */
@@ -863,5 +856,1235 @@ function scrollToStage(e) {
   });
 </script>
 
+<template id="tpl-dr" data-html-attrs='lang="en" data-theme="gold"'>
+<!-- Copyright (c) Placeholder Systems, 2025-2026 All Rights Reserved
+Not for unauthorised personal or commercial redistribution -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dgr Live TV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style>
+:root{
+  
+  --theme-bg:     #0A0A05;
+  --theme-alt:    #14140A;
+  --theme-card:   #231E0F;
+  --theme-text:   #FFD700;
+  --theme-muted:  #C8B464;
+  --theme-accent: #FFB400;
+  --bg:      var(--theme-bg);
+  --panel:   rgba(35,30,15,.5);
+  --panel-2: rgba(35,30,15,.7);
+  --line:    rgba(255,180,0,.18);
+  --text:    var(--theme-text);
+  --muted:   var(--theme-muted);
+  --muted-2: rgba(200,180,100,.55);
+ 
+  --shadow:0 24px 90px rgba(0,0,0,.55);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.wrap{
+  min-height:100vh;
+  padding:28px;
+}
+.shell{
+  width:min(1240px,100%);
+  margin:0 auto;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:var(--panel);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  overflow:hidden;
+  position:relative;
+}
+.shell:before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:rgba(255,180,0,.12);
+  filter:blur(60px);
+  opacity:.6;
+  pointer-events:none;
+}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:22px 26px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  z-index:1;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--theme-accent);
+  box-shadow:0 0 24px rgba(255,180,0,.45);
+}
+.brand h1{
+  font-size:15px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin:0;
+}
+.brand span{
+  display:block;
+  font-size:12px;
+  color:var(--muted-2);
+  margin-top:2px;
+}
+.pill{
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(35,30,15,.4);
+  font-size:12px;
+  color:var(--muted);
+}
+.hero{
+  padding:28px;
+  position:relative;
+  z-index:1;
+}
+.kicker{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,180,0,.22);
+  background:rgba(255,180,0,.08);
+  color:var(--yellow);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.kicker:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--yellow);
+  box-shadow:0 0 14px rgba(255,180,0,.65);
+}
+.headline{
+  font-size:clamp(42px,6vw,72px);
+  line-height:.95;
+  letter-spacing:-.05em;
+  margin:18px 0 14px;
+  color:var(--muted);
+}
+.headline .accent{display:block;color:var(--yellow)}
+.lead{
+  max-width:72ch;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.75;
+  margin:0;
+}
+.section{
+  padding:0 28px 28px;
+  position:relative;
+  z-index:1;
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin-bottom:14px;
+}
+.section-title{
+  margin:0;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted-2);
+}
+.section-sub{
+  margin:0;
+  font-size:12px;
+  color:var(--muted-2);
+}
+.channel-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+.channel-card{
+  border:1px solid var(--line);
+  border-radius:0;
+  background:var(--panel);
+  overflow:hidden;
+  cursor:pointer;
+  text-align:left;
+  padding:0;
+  color:inherit;
+  transition:transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.channel-art {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  padding: 24px;
+  background: var(--theme-alt);
+}
+.channel-body{
+  padding:16px;
+}
+.channel-top{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:10px;
+}
+.channel-name{
+  margin:0;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-.03em;
+  line-height:1.15;
+}
+.live-badge{
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,180,0,.1);
+  border:1px solid rgba(255,180,0,.22);
+  color:var(--yellow);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.live-badge:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--yellow);
+  box-shadow:0 0 12px rgba(255,180,0,.7);
+}
+.channel-desc{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+.channel-meta{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.channel-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,180,0,.18);
+  background:rgba(255,180,0,.08);
+  color:#FFE9A8;
+  font-size:11px;
+  font-weight:600;
+}
+.channel-arrow{
+  color:rgba(255,215,0,.28);
+  font-size:14px;
+  transition:transform .2s ease, color .2s ease;
+}
+.footer-block{
+  padding:0 28px 28px;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:14px;
+  position:relative;
+  z-index:1;
+}
+.note-card{
+  padding:18px;
+  border-radius:0;
+  border:1px solid var(--line);
+  background:var(--panel);
+}
+.note-label{
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--muted-2);
+  margin-bottom:10px;
+}
+.note-text{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+.mini-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.mini{
+  padding:18px;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:var(--panel);
+}
+.mini b{
+  display:block;
+  margin-top:8px;
+  font-size:20px;
+  letter-spacing:-.03em;
+}
+.mini span{
+  font-size:12px;
+  color:var(--muted-2);
+}
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(10,10,5,.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
+  z-index:1000;
+}
+.overlay.is-open{
+  opacity:1;
+  pointer-events:auto;
+}
+.player-shell{
+  position:absolute;
+  inset:20px;
+  border:1px solid var(--line);
+  border-radius:26px;
+  overflow:hidden;
+  background:var(--panel-2);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  box-shadow:0 24px 90px rgba(0,0,0,.65);
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+}
+.player-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:18px 20px;
+  border-bottom:1px solid var(--line);
+}
+.player-title{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.player-title h2{
+  margin:0;
+  font-size:18px;
+  letter-spacing:-.03em;
+}
+.player-title p{
+  margin:0;
+  color:var(--muted-2);
+  font-size:12px;
+}
+.player-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.player-btn{
+  border:none;
+  cursor:pointer;
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  font-weight:700;
+  padding:10px 14px;
+  border-radius:12px;
+  color:#101008;
+  background:var(--yellow);
+}
+.player-btn.secondary{
+  color:var(--text);
+  background:rgba(35,30,15,.4);
+  border:1px solid var(--line);
+}
+.player-stage{
+  display:grid;
+  place-items:center;
+  padding:18px;
+}
+.video-wrap{
+  width:min(1200px,100%);
+  aspect-ratio:16 / 9;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#000;
+  position:relative;
+}
+video{
+  width:100%;
+  height:100%;
+  display:block;
+  background:#000;
+}
+.player-overlay-bar{
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  padding:12px 14px;
+  border-radius:16px;
+  background:rgba(10,10,5,.44);
+  border:1px solid var(--line);
+}
+.player-tag{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:var(--muted);
+}
+.player-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--yellow);
+  box-shadow:0 0 14px rgba(255,180,0,.7);
+}
+.player-hint{
+  color:rgba(255,215,0,.45);
+  font-size:12px;
+}
+.player-bottom{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px 20px 20px;
+  border-top:1px solid var(--line);
+  color:var(--muted-2);
+  font-size:12px;
+  line-height:1.7;
+}
+.player-bottom strong{color:var(--text)}
+.hidden{display:none !important}
+@media (max-width: 980px){
+  .channel-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  .footer-block{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .wrap{padding:0}
+  .shell{border-radius:0;min-height:100vh}
+  .topbar,.hero,.section,.footer-block{padding-left:18px;padding-right:18px}
+  .headline{font-size:clamp(38px,12vw,56px)}
+  .channel-grid{grid-template-columns:1fr}
+  .mini-grid{grid-template-columns:1fr}
+  .player-shell{inset:0;border-radius:0}
+  .player-top,.player-bottom{flex-direction:column;align-items:flex-start}
+}
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .03em;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all .2s ease;
+}
+.nav-links a:hover {
+  color: var(--text);
+  background: rgba(35,30,15,.4);
+  border-color: var(--line);
+}
+.nav-links a.active {
+  color: var(--yellow);
+  background: rgba(255,180,0,.08);
+  border-color: rgba(255,180,0,.2);
+  font-weight: 600;
+}
+.player-diddy{
+  display:flex;
+  justify-content:space-between;
+  gap:0px;
+  padding:0px 0px 0px;
+  border-top:1px solid rgba(0,0,0,0);
+  color:var(--muted-2);
+  font-size:0px;
+  line-height:0;
+}
+</style>
+</head>
+<body>
+         
+<div class="wrap">
+ <main class="shell">
+  
+
+  <section class="hero">
+    
+
+    <section class="hero">
+    
+      <h2 class="headline">Live
+        <span class="accent">Television</span>
+      </h2>
+     
+      <p class="lead">Choose a channel card to begin streaming.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="section-title">Available Channels</p>
+         
+        </div>
+      </div>
+
+      <div class="channel-grid" id="channelGrid"></div>
+    </section>
+
+   
+  </main>
+</div>
+
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="player-shell" role="dialog" aria-modal="true" aria-label="Live TV player">
+    <div class="player-top">
+      <div class="player-title">
+        <h2 id="playerTitle">Channel Title</h2>
+          <div class="player-tag"><span class="player-dot"></span><span id="streamLabel">Live</span></div>
+        <p id="playerDesc">Channel description</p>
+      
+          
+      </div>
+      <div class="player-actions">
+        <button class="player-btn secondary" id="reloadBtn">↻</button>
+        <button class="player-btn" id="closeBtn">X</button>
+      </div>
+    </div>
+
+    <div class="player-stage">
+      <div class="video-wrap">
+        <video id="video" controls playsinline autoplay muted></video>
+
+          
+        
+        
+      </div>
+    </div>
+       
+
+    <div class="player-bottom">
+        
+          
+       
+      
+      <div><strong>Tips:</strong> Enable sound after playback begins. If the stream doesn't load or is low quality, try pressing Reload Stream.</div>
+      
+    </div>
+      <div class="player-diddy">
+        
+          
+        <div><strong>Stream URL:</strong> <span id="streamUrlText">—</span></div>
+  </div>
+</div>
+
+<script>
+const channels = [
+ {
+    name: "CNA",
+    description: "Channel News Asia Singapore shows live and updated news from an Asian perspective to the world. ",
+    image: "https://github.com/placeholdersystems/image-assets/blob/main/cna-logo.png?raw=true",
+    url: "https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8",
+    tag: "News"
+  },
+   {
+    name: "BBC News",
+    description: "Distinctive, world-class programmes and content which inform, educate and entertain around the globe.",
+    image: "https://github.com/placeholdersystems/image-assets/blob/main/bbc-logo.png?raw=true",
+    url: "https://vs-hls-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/mobile_wifi_main_sd_abr_v2.m3u8",
+    tag: "News"
+  },
+  {
+    name: "Someone's surveillance camera",
+    description: "World-class broadcasting of a scenic view from someone's surveillance camera. Enjoy nature 24/7.",
+    image: "https://github.com/placeholdersystems/image-assets/blob/main/ssc-logo.png?raw=true",
+    url: "https://live.143b.ch/cam/flux/ts:abr.m3u8",
+    tag: "Misc"
+  },
+    {
+    name: "Redbull TV",
+    description: "Redbull TV specializes in action sports, lifestyle, music, and entertainment. Ad-free! ",
+    image: "https://img.redbull.com/images/w_250/q_auto,f_auto/redbullcom/2021/3/8/v1viztxjab9e9a6of4by/redbulltv",
+    url: "https://e7c8f7d5.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX1JlZEJ1bGxUVi0xX0hMUw/playlist.m3u8",
+    tag: "Sports"
+  },
+  {
+    name: "Mythbusters",
+    description: "A science entertainment television series that uses elements of the scientific method to test the validity of myths. ",
+    image: "https://github.com/placeholdersystems/image-assets/blob/main/myth-logo.png?raw=true",
+    url: "https://amg00627-amg00627c14-rakuten-uk-4802.playouts.now.amagi.tv/index.m3u8",
+    tag: "Entertainment"
+  },
+  {
+    name: "Harbin Comprehensive News Channel",
+    description: "The primary local television channel in Harbin.",
+    image: "https://github.com/placeholdersystems/image-assets/blob/main/hrb-logo.png?raw=true",
+    url: "https://stream.hrbtv.net/xwzh/playlist.m3u8?_upt=ef41dd531755913594",
+    tag: "General"
+  },
+ 
+ 
+ 
+  
+];
+
+const grid = document.getElementById('channelGrid');
+const overlay = document.getElementById('overlay');
+const video = document.getElementById('video');
+const playerTitle = document.getElementById('playerTitle');
+const playerDesc = document.getElementById('playerDesc');
+const streamUrlText = document.getElementById('streamUrlText');
+const closeBtn = document.getElementById('closeBtn');
+const reloadBtn = document.getElementById('reloadBtn');
+
+let hls = null;
+let activeUrl = "";
+
+function renderChannels() {
+  grid.innerHTML = channels.map((c, i) => `
+    <button class="channel-card" onclick="openChannel(${i})">
+      <img class="channel-art" src="${c.image}" alt="${c.name}">
+      <div class="channel-body">
+        <div class="channel-top">
+          <div>
+            <h3 class="channel-name">${c.name}</h3>
+          </div>
+          <div class="live-badge">Live</div>
+        </div>
+        <p class="channel-desc">${c.description}</p>
+        <div class="channel-meta">
+          <span class="channel-chip">${c.tag}</span>
+          <span class="channel-arrow">↗</span>
+        </div>
+      </div>
+    </button>
+  `).join('');
+}
+
+function destroyHls() {
+  if (hls) {
+    hls.destroy();
+    hls = null;
+  }
+}
+
+function loadStream(url) {
+  activeUrl = url;
+  streamUrlText.textContent = url;
+  destroyHls();
+
+  if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = url;
+    video.play().catch(() => {});
+    return;
+  }
+
+  if (window.Hls && Hls.isSupported()) {
+    hls = new Hls();
+    hls.loadSource(url);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      video.play().catch(() => {});
+    });
+    hls.on(Hls.Events.ERROR, (_, data) => {
+      if (data.fatal) {
+        console.error('HLS fatal error:', data);
+      }
+    });
+  } else {
+    streamUrlText.textContent = "HLS not supported in this browser.";
+  }
+}
+
+function openChannel(index) {
+  const c = channels[index];
+  playerTitle.textContent = c.name;
+  playerDesc.textContent = c.description;
+  overlay.classList.add('is-open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  loadStream(c.url);
+}
+
+function closePlayer() {
+  overlay.classList.remove('is-open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+  destroyHls();
+}
+
+closeBtn.addEventListener('click', closePlayer);
+reloadBtn.addEventListener('click', () => {
+  if (activeUrl) loadStream(activeUrl);
+});
+
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closePlayer();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && overlay.classList.contains('is-open')) closePlayer();
+});
+
+renderChannels();
+</script>
+</body>
+
+</html>
+
+</template>
+
+<template id="tpl-steak" data-html-attrs='lang="en"'>
+<!DOCTYPE html>
+<!-- Copyright (c) Placeholder Systems, 2026 All Rights Reserved
+Not for unauthorised personal or commercial redistribution -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Steak — Preview</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --steak-bg: #0a1712;
+  --steak-surface: #122019;
+  --steak-surface-2: #16271f;
+  --steak-border: #1f3b2d;
+  --steak-border-strong: #3fe373;
+  --steak-primary: #3fe373;
+  --steak-primary-hover: #34cf68;
+  --steak-cashout: #e6d98a;
+  --steak-cashout-hover: #d9cc78;
+  --steak-text: #eef6f1;
+  --steak-muted: #8fa89b;
+  --steak-green-text: #3fe373;
+  --steak-red-text: #ff7a7a;
+  --steak-blue-text: #6db2ff;
+  --steak-radius-lg: 18px;
+  --steak-radius-md: 12px;
+}
+
+.steak-root, .steak-root * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+.steak-root h1, .steak-root h2, .steak-root h3,
+.steak-root .steak-multiplier-pill, .steak-root .steak-amount {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+.steak-root {
+  min-height: 100vh;
+  background: var(--steak-bg);
+  color: var(--steak-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.steak-platform-header {
+  background: var(--steak-surface);
+  border-bottom: 1px solid var(--steak-border);
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.steak-platform-logo { display: inline-flex; align-items: center; }
+.steak-platform-logo-img { height: 40px; width: auto; display: block; }
+
+.steak-platform-nav { display: flex; gap: 6px; background: var(--steak-surface-2); border: 1px solid var(--steak-border); padding: 4px; border-radius: 12px; }
+
+.steak-nav-link {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--steak-muted);
+  padding: 9px 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.steak-nav-link:hover { color: var(--steak-text); background: rgba(255,255,255,0.05); }
+.steak-nav-link.steak-active { color: #04160f; background: var(--steak-primary); }
+
+.steak-platform-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1290px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.steak-page-view { display: none; }
+.steak-page-view.steak-active { display: block; }
+
+.steak-card, .steak-sidebar, .steak-board-container, .steak-home-balance-card, .steak-placeholder-card, .steak-welcome-card {
+  background: var(--steak-surface);
+  border: 1px solid var(--steak-border);
+  border-radius: var(--steak-radius-lg);
+}
+
+/* ---------------- HOMEPAGE ---------------- */
+.steak-home-balance-card { padding: 26px; margin-bottom: 20px; }
+.steak-home-balance-label { color: var(--steak-muted); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+.steak-home-balance-value { font-size: 38px; font-weight: 900; color: var(--steak-green-text); margin-bottom: 16px; }
+
+.steak-welcome-card { padding: 32px; line-height: 1.7; }
+.steak-welcome-card h1 { color: var(--steak-green-text); font-size: 26px; font-weight: 800; margin-bottom: 14px; }
+.steak-welcome-card p { color: var(--steak-muted); font-size: 14.5px; margin-bottom: 12px; }
+.steak-green-link { color: var(--steak-green-text); }
+
+/* ---------------- GAME LAYOUT ---------------- */
+.steak-game-container { width: 100%; display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+
+.steak-sidebar { padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.steak-sidebar h3 { font-size: 16px; font-weight: 800; color: var(--steak-text); }
+
+.steak-balance-top { color: var(--steak-muted); font-size: 12px; display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.steak-balance-value { color: var(--steak-text); font-size: 16px; font-weight: 800; }
+
+.steak-form-group { display: flex; flex-direction: column; gap: 8px; }
+.steak-form-group label { font-size: 13px; color: var(--steak-muted); font-weight: 700; }
+
+.steak-root input, .steak-root select {
+  width: 100%;
+  background: var(--steak-bg);
+  border: 1px solid var(--steak-border);
+  border-radius: var(--steak-radius-md);
+  color: var(--steak-text);
+  padding: 13px 15px;
+  font-size: 15px;
+  font-weight: 700;
+  outline: none;
+}
+.steak-root input:focus, .steak-root select:focus { border-color: var(--steak-border-strong); }
+
+.steak-btn-primary, .steak-btn-cashout {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 15px 18px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.steak-btn-primary { background: var(--steak-primary); color: #04160f; }
+.steak-btn-primary:hover:not(:disabled) { background: var(--steak-primary-hover); }
+.steak-btn-cashout { background: var(--steak-cashout); color: #362f0b; }
+.steak-btn-cashout:hover:not(:disabled) { background: var(--steak-cashout-hover); }
+.steak-btn-primary:disabled, .steak-btn-cashout:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.steak-profit-box { background: var(--steak-surface-2); border: 1px solid var(--steak-border); border-radius: var(--steak-radius-md); padding: 16px; text-align: center; }
+.steak-profit-box .steak-label { color: var(--steak-muted); font-size: 11px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
+.steak-profit-box .steak-amount { color: var(--steak-green-text); font-size: 34px; font-weight: 900; }
+
+.steak-board-container { padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 18px; min-height: 560px; }
+.steak-board-title { text-align: center; }
+.steak-board-title h2 { font-size: 20px; color: var(--steak-text); margin-bottom: 6px; font-weight: 800; }
+.steak-board-title p { color: var(--steak-muted); font-size: 13px; }
+
+.steak-grid { width: min(100%, 560px); display: grid; gap: 10px; aspect-ratio: 1 / 1; grid-template-columns: repeat(5, 1fr); }
+
+.steak-tile {
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  background: var(--steak-surface-2);
+  border: 1px solid var(--steak-border);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.steak-tile:hover { border-color: var(--steak-border-strong); }
+.steak-tile.steak-disabled { pointer-events: none; }
+.steak-tile img { width: 56%; height: 56%; object-fit: contain; pointer-events: none; }
+.steak-tile.steak-safe { background: #163423; border-color: var(--steak-border-strong); }
+.steak-tile.steak-mine { background: #3a1818; border-color: var(--steak-red-text); }
+.steak-tile.steak-revealed { opacity: 0.55; }
+
+.steak-board-footer {
+  width: min(100%, 560px);
+  display: flex;
+  gap: 10px;
+  background: var(--steak-surface-2);
+  border: 1px solid var(--steak-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  justify-content: space-between;
+}
+.steak-stat { flex: 1; text-align: center; }
+.steak-stat .steak-label { font-size: 10.5px; color: var(--steak-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.6px; }
+.steak-stat .steak-num { font-size: 16px; font-weight: 800; }
+#steak-stat-good { color: var(--steak-green-text); }
+#steak-stat-mines { color: var(--steak-red-text); }
+#steak-stat-prob { color: var(--steak-blue-text); }
+
+/* ---------------- PLACEHOLDER GAMES ---------------- */
+.steak-placeholder-card {
+  padding: 60px 30px;
+  text-align: center;
+  color: var(--steak-muted);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .steak-platform-main { padding: 16px; }
+  .steak-game-container { grid-template-columns: 1fr; }
+  .steak-board-container { min-height: 460px; padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="steak-root">
+
+  <header class="steak-platform-header">
+    <a href="#" class="steak-platform-logo" id="steak-logo-link">
+      <img src="https://raw.githubusercontent.com/placeholdersystems/image-assets/refs/heads/main/stk-logo.png" alt="Steak" class="steak-platform-logo-img" />
+    </a>
+    <nav class="steak-platform-nav">
+      <button class="steak-nav-link steak-active" id="steak-nav-homepage">Home</button>
+      <button class="steak-nav-link" id="steak-nav-mines">Mines</button>
+      <button class="steak-nav-link" id="steak-nav-dice">Dice</button>
+      <button class="steak-nav-link" id="steak-nav-blackjack">Blackjack</button>
+    </nav>
+  </header>
+
+  <div class="steak-platform-main">
+
+    <!-- Homepage -->
+    <div id="steak-tab-content-homepage" class="steak-page-view steak-active">
+      <div class="steak-home-balance-card">
+        <div class="steak-home-balance-label">Your Balance</div>
+        <div class="steak-home-balance-value" id="steak-home-balance">$100.00</div>
+        <button class="steak-btn-primary" style="width:auto; padding:12px 22px;" id="steak-home-play-mines-btn">Play Mines</button>
+      </div>
+
+      <div class="steak-welcome-card">
+        <h1>Welcome to Steak™</h1>
+        <p>Welcome to <strong>Steak™</strong>, a simulated online casino experience by Placeholder Systems.</p>
+        <p>All gameplay on Steak uses virtual credits only, not real money. The site is intended for entertainment and testing purposes only.</p>
+        <p>If gambling ever feels difficult to control, support is available from
+          <a href="https://www.ncpg.org.sg" class="steak-green-link" target="_blank" rel="noopener noreferrer">NCPG Singapore</a>
+          or by calling <a href="tel:1800668668" class="steak-green-link">1800-6-668-668</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mines -->
+    <div id="steak-tab-content-mines" class="steak-page-view">
+      <div class="steak-game-container">
+        <aside class="steak-sidebar">
+          <div>
+            <h3>Game Settings</h3>
+            <div class="steak-balance-top">
+              <span>Balance</span>
+              <span id="steak-mines-balance" class="steak-balance-value">$100.00</span>
+            </div>
+          </div>
+
+          <div class="steak-form-group">
+            <label for="steak-mines-bet-amount">Bet Amount</label>
+            <input id="steak-mines-bet-amount" type="number" value="1" min="0.01" step="0.01" />
+          </div>
+
+          <div class="steak-form-group">
+            <label for="steak-mines-count">Number of Mines</label>
+            <input id="steak-mines-count" type="number" value="3" min="1" max="24" step="1" />
+          </div>
+
+          <div class="steak-profit-box">
+            <div class="steak-label">Potential Payout</div>
+            <div id="steak-mines-potential-profit" class="steak-amount">$0.00</div>
+          </div>
+          <button id="steak-mines-action-btn" class="steak-btn-primary">Bet</button>
+        </aside>
+
+        <main class="steak-board-container">
+          <div class="steak-board-title">
+            <h2>Click tiles to reveal!</h2>
+            <p id="steak-safe-remaining">-- safe tiles remaining</p>
+          </div>
+
+          <div id="steak-grid" class="steak-grid"></div>
+
+          <div class="steak-board-footer">
+            <div class="steak-stat"><div class="steak-label">Diamonds Found</div><div id="steak-stat-good" class="steak-num">0</div></div>
+            <div class="steak-stat"><div class="steak-label">Mines Left</div><div id="steak-stat-mines" class="steak-num">0</div></div>
+            <div class="steak-stat"><div class="steak-label">Success Rate</div><div id="steak-stat-prob" class="steak-num">--</div></div>
+            <div class="steak-stat"><div class="steak-label">Multiplier</div><div id="steak-current-multiplier" class="steak-num">1.00x</div></div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Dice placeholder -->
+    <div id="steak-tab-content-dice" class="steak-page-view">
+      <div class="steak-placeholder-card">Play the actual version of Steak to enjoy the fullest experience</div>
+    </div>
+
+    <!-- Blackjack placeholder -->
+    <div id="steak-tab-content-blackjack" class="steak-page-view">
+      <div class="steak-placeholder-card">Play the actual version of Steak to enjoy the fullest experience</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(function () {
+  let steakBalance = 100.00;
+
+  function steakSwitchTab(id) {
+    document.querySelectorAll('.steak-page-view').forEach(el => el.classList.remove('steak-active'));
+    document.querySelectorAll('.steak-nav-link').forEach(el => el.classList.remove('steak-active'));
+    document.getElementById(`steak-tab-content-${id}`).classList.add('steak-active');
+    document.getElementById(`steak-nav-${id}`).classList.add('steak-active');
+  }
+
+  function steakSyncBalance() {
+    document.getElementById('steak-home-balance').textContent = '$' + steakBalance.toFixed(2);
+    document.getElementById('steak-mines-balance').textContent = '$' + steakBalance.toFixed(2);
+  }
+
+  // ---------------- MINES GAME ----------------
+  const STEAK_GRID_SIZE = 25;
+  const STEAK_MINE_LIMIT = 24;
+
+  const STEAK_ASSETS = {
+    mine: "https://raw.githubusercontent.com/placeholdersystems/image-assets/refs/heads/main/stk-mine.png",
+    diamond: "https://raw.githubusercontent.com/placeholdersystems/image-assets/refs/heads/main/stk-diamond.png"
+  };
+
+  let steakState = { active: false, bet: 1, minesCount: 3, minesPositions: [], revealed: [], goodFound: 0 };
+
+  const steakGridEl = document.getElementById('steak-grid');
+  const steakMinesInput = document.getElementById('steak-mines-count');
+  const steakMinesBetInput = document.getElementById('steak-mines-bet-amount');
+  const steakMinesActionBtn = document.getElementById('steak-mines-action-btn');
+  const steakCurrentMultEl = document.getElementById('steak-current-multiplier');
+  const steakMinesPotentialProfitEl = document.getElementById('steak-mines-potential-profit');
+  const steakSafeRemainingEl = document.getElementById('steak-safe-remaining');
+  const steakStatGood = document.getElementById('steak-stat-good');
+  const steakStatMines = document.getElementById('steak-stat-mines');
+  const steakStatProb = document.getElementById('steak-stat-prob');
+
+  function steakCombinations(n, r) {
+    if (r < 0 || r > n) return 0;
+    if (r === 0 || r === n) return 1;
+    if (r > n / 2) r = n - r;
+    let res = 1;
+    for (let i = 1; i <= r; i++) res = res * (n - i + 1) / i;
+    return res;
+  }
+
+  function steakCalculateMultiplier(totalTiles, mines, safePicked) {
+    const safeTiles = totalTiles - mines;
+    if (safePicked === 0) return 1;
+    if (safePicked > safeTiles) return 0;
+    const p = steakCombinations(safeTiles, safePicked) / steakCombinations(totalTiles, safePicked);
+    return p > 0 ? (1 / p) : 0;
+  }
+
+  function steakNextSafeChance(totalTiles, mines, safePicked) {
+    const safeTiles = totalTiles - mines;
+    const remainingTiles = totalTiles - safePicked;
+    const remainingSafe = safeTiles - safePicked;
+    if (remainingTiles <= 0) return 0;
+    return Math.max(0, remainingSafe / remainingTiles);
+  }
+
+  function steakInitGrid() {
+    steakGridEl.innerHTML = '';
+    for (let i = 0; i < STEAK_GRID_SIZE; i++) {
+      const tile = document.createElement('div');
+      tile.className = 'steak-tile';
+      tile.dataset.index = i;
+      tile.addEventListener('click', () => steakOnTileClick(i));
+      steakGridEl.appendChild(tile);
+    }
+  }
+
+  function steakRefreshStats() {
+    const mult = steakCalculateMultiplier(STEAK_GRID_SIZE, steakState.minesCount, steakState.goodFound);
+    const payout = steakState.bet * mult;
+    steakCurrentMultEl.textContent = `${mult.toFixed(2)}x`;
+    steakMinesPotentialProfitEl.textContent = `$${payout.toFixed(2)}`;
+    steakSafeRemainingEl.textContent = `${Math.max(0, STEAK_GRID_SIZE - steakState.minesCount - steakState.goodFound)} safe tiles remaining`;
+    steakStatGood.textContent = steakState.goodFound;
+    steakStatMines.textContent = steakState.minesCount;
+    steakStatProb.textContent = steakState.active
+      ? `${(steakNextSafeChance(STEAK_GRID_SIZE, steakState.minesCount, steakState.goodFound) * 100).toFixed(2)}%`
+      : '--';
+  }
+
+  function steakStartRound() {
+    steakState.bet = parseFloat(steakMinesBetInput.value) || 1;
+    if (steakState.bet > steakBalance) { alert('Insufficient balance.'); return; }
+    steakBalance -= steakState.bet;
+    steakState.minesCount = Math.min(Math.max(1, parseInt(steakMinesInput.value, 10) || 1), STEAK_MINE_LIMIT);
+    steakState.revealed = [];
+    steakState.goodFound = 0;
+    steakState.active = true;
+    steakState.minesPositions = [];
+    while (steakState.minesPositions.length < steakState.minesCount) {
+      const r = Math.floor(Math.random() * STEAK_GRID_SIZE);
+      if (!steakState.minesPositions.includes(r)) steakState.minesPositions.push(r);
+    }
+    steakInitGrid();
+    steakUpdateUI();
+    steakSyncBalance();
+  }
+
+  function steakOnTileClick(index) {
+    if (!steakState.active || steakState.revealed.includes(index)) return;
+    steakState.revealed.push(index);
+    const tile = steakGridEl.children[index];
+    tile.classList.add('steak-disabled');
+
+    if (steakState.minesPositions.includes(index)) {
+      tile.classList.add('steak-mine');
+      tile.innerHTML = `<img src="${STEAK_ASSETS.mine}" alt="mine">`;
+      steakEndRound(false);
+    } else {
+      tile.classList.add('steak-safe');
+      tile.innerHTML = `<img src="${STEAK_ASSETS.diamond}" alt="diamond">`;
+      steakState.goodFound++;
+      if (steakState.goodFound === (STEAK_GRID_SIZE - steakState.minesCount)) steakEndRound(true);
+      else steakUpdateUI();
+    }
+  }
+
+  function steakEndRound(win) {
+    steakState.active = false;
+    const mult = steakCalculateMultiplier(STEAK_GRID_SIZE, steakState.minesCount, steakState.goodFound);
+    const payout = steakState.bet * mult;
+    if (win) steakBalance += payout;
+
+    for (let i = 0; i < STEAK_GRID_SIZE; i++) {
+      const tile = steakGridEl.children[i];
+      if (steakState.minesPositions.includes(i)) {
+        tile.classList.add('steak-mine', 'steak-revealed');
+        tile.innerHTML = `<img src="${STEAK_ASSETS.mine}" alt="mine">`;
+      } else if (!steakState.revealed.includes(i)) {
+        tile.classList.add('steak-safe', 'steak-revealed');
+        tile.innerHTML = `<img src="${STEAK_ASSETS.diamond}" alt="diamond">`;
+      }
+    }
+    steakUpdateUI();
+    steakSyncBalance();
+  }
+
+  function steakUpdateUI() {
+    if (!steakState.active) {
+      steakMinesActionBtn.textContent = 'Bet';
+      steakMinesActionBtn.className = 'steak-btn-primary';
+      steakMinesBetInput.disabled = false;
+      steakMinesInput.disabled = false;
+    } else {
+      steakMinesActionBtn.textContent = 'Cashout';
+      steakMinesActionBtn.className = 'steak-btn-cashout';
+      steakMinesBetInput.disabled = true;
+      steakMinesInput.disabled = true;
+    }
+    steakRefreshStats();
+  }
+
+  // ---------------- EVENT WIRING ----------------
+  document.getElementById('steak-logo-link').addEventListener('click', (e) => { e.preventDefault(); steakSwitchTab('homepage'); });
+  document.getElementById('steak-nav-homepage').addEventListener('click', () => steakSwitchTab('homepage'));
+  document.getElementById('steak-nav-mines').addEventListener('click', () => steakSwitchTab('mines'));
+  document.getElementById('steak-nav-dice').addEventListener('click', () => steakSwitchTab('dice'));
+  document.getElementById('steak-nav-blackjack').addEventListener('click', () => steakSwitchTab('blackjack'));
+  document.getElementById('steak-home-play-mines-btn').addEventListener('click', () => steakSwitchTab('mines'));
+
+  steakMinesInput.addEventListener('input', () => {
+    let v = parseInt(steakMinesInput.value, 10) || 1;
+    if (v < 1) v = 1;
+    if (v > STEAK_MINE_LIMIT) v = STEAK_MINE_LIMIT;
+    steakMinesInput.value = v;
+    if (steakState.active) steakRefreshStats();
+  });
+
+  steakMinesBetInput.addEventListener('input', () => {
+    steakState.bet = parseFloat(steakMinesBetInput.value) || 1;
+    steakRefreshStats();
+  });
+
+  steakMinesActionBtn.addEventListener('click', () => {
+    if (!steakState.active) steakStartRound();
+    else steakEndRound(true);
+  });
+
+  steakInitGrid();
+  steakUpdateUI();
+  steakSyncBalance();
+})();
+</script>
+</body>
+</html>
+</template>
 </body>
 </html>
