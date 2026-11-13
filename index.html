@@ -47,7 +47,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .stage-heading { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; color: #fff; margin-bottom: 14px; }
 .stage-heading span { background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .stage-sub { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7; }
-.hero-stage-wrap { width: 100%; max-width: 980px; perspective: 400px; position: relative; z-index: 1; }
+.hero-stage-wrap { width: 100%; max-width: 980px; perspective: 1600px; position: relative; z-index: 1; }
 .hero-stage {
   transform-style: preserve-3d;
   transform: rotateX(55deg) scale(0.85); /* Initial flat/tilted back state */
@@ -57,21 +57,27 @@ Not for unauthorised personal or commercial redistribution. -->
   overflow: hidden;
   transition: transform 0.05s linear;
 }
-.stage-chrome { display:flex; align-items:center; gap:8px; padding:12px 16px; background:#0f0f0f; border-bottom:0.5px solid var(--line); }
-.stage-dot { width:10px; height:10px; border-radius:50%; }
-.stage-addr { flex:1; max-width:320px; margin:0 auto; background:#000; border:0.5px solid var(--line); border-radius:7px; font-size:11px; color:rgba(255,255,255,.4); padding:4px 12px; text-align:center; letter-spacing:.02em; transition: color .25s; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+/* ── STAGE UI · square-cornered, minimal. (Outer stage + address bar keep their rounding.) ── */
+.stage-chrome { display:flex; align-items:center; gap:12px; padding:0 0 0 16px; height:38px; background:#0f0f0f; border-bottom:0.5px solid var(--line); }
+.stage-chrome-l { flex:1 1 0; min-width:0; }
+.stage-addr { flex:0 1 320px; min-width:0; background:#000; border:0.5px solid var(--line); border-radius:7px; font-size:11px; color:rgba(255,255,255,.4); padding:4px 12px; text-align:center; letter-spacing:.02em; transition: color .25s; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.stage-winctl { flex:1 1 0; display:flex; justify-content:flex-end; align-self:stretch; }
+.wc { width:46px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.55); border-radius:0; transition: background .15s, color .15s; cursor:default; }
+.wc svg { width:10px; height:10px; display:block; fill:none; stroke:currentColor; stroke-width:1; shape-rendering:crispEdges; }
+.wc:hover { background:rgba(255,255,255,.08); color:#fff; }
+.wc.wc-x:hover { background:#e81123; color:#fff; }
+
 .stage-body { display:grid; grid-template-columns:178px 1fr; min-height:420px; text-align:left; }
-.stage-side { background:#050505; padding:16px 12px; display:flex; flex-direction:column; gap:4px; border-right:0.5px solid var(--line); }
-.stage-logo { display:flex; align-items:center; gap:7px; font-weight:800; font-size:12.5px; color:#fff; padding:2px 6px 14px; letter-spacing:-.01em; }
-.stage-nav { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.4); font-size:11.5px; font-weight:500; padding:9px 8px; border-radius:7px; background:transparent; border:0; width:100%; text-align:left; font-family:'Inter',sans-serif; cursor:pointer; transition: background .2s, color .2s; }
-.stage-nav:hover { background: rgba(255,255,255,.05); color: rgba(255,255,255,.75); }
-.stage-nav.on { background: rgba(255,6,181,.12); color:#fff; }
-.stage-nav i { width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.6; flex-shrink:0; }
-.stage-side-note { margin-top:auto; padding:10px 8px 2px; font-size:9.5px; line-height:1.5; color:rgba(255,255,255,.22); letter-spacing:.04em; }
+.stage-side { background:#050505; padding:16px 0; display:flex; flex-direction:column; gap:2px; border-right:0.5px solid var(--line); }
+.stage-logo { display:flex; flex-direction:column; gap:3px; font-weight:800; font-size:12.5px; color:#fff; padding:2px 16px 16px; letter-spacing:-.01em; }
+.stage-logo span { opacity:.4; font-weight:500; font-size:10.5px; letter-spacing:0; }
+.stage-nav { display:block; color:rgba(255,255,255,.4); font-size:11.5px; font-weight:500; padding:10px 16px 10px 14px; border-radius:0; background:transparent; border:0; border-left:2px solid transparent; width:100%; text-align:left; font-family:'Inter',sans-serif; cursor:pointer; transition: background .2s, color .2s, border-color .2s; }
+.stage-nav:hover { background: rgba(255,255,255,.04); color: rgba(255,255,255,.75); }
+.stage-nav.on { background: rgba(255,255,255,.05); color:#fff; border-left-color: var(--pink); }
+.stage-nav:focus-visible, .ov-btn:focus-visible, .pv-test:focus-visible, .mock-cta:focus-visible { outline:1px solid var(--pink); outline-offset:-1px; }
+.stage-side-note { margin-top:auto; padding:10px 16px 2px; font-size:9.5px; line-height:1.5; color:rgba(255,255,255,.22); letter-spacing:.06em;  }
 .stage-main { background:#080808; color:#fff; min-width:0; }
-.stage-sub {
-  margin-bottom: 2rem; /* Adjust the 2rem (approx. 32px) to whatever size you need */
-}
+.stage-sub { margin-bottom: 2rem; }
 
 
 
@@ -112,15 +118,20 @@ Not for unauthorised personal or commercial redistribution. -->
 .cta-steak { background:linear-gradient(135deg,#3fe373,#22c890); color:#04160f; }
 .cta-steak:hover { box-shadow:0 8px 20px rgba(63,227,115,.32); }
 
-/* overview — concise project descriptions + preview buttons */
-.ov-list { display:grid; gap:9px; }
-.ov-item { background:#0D0D0D; border:0.5px solid var(--line); border-radius:12px; padding:13px 14px; }
-.ov-top { display:flex; align-items:center; gap:9px; }
-.ov-name { font-size:12.5px; font-weight:700; color:#fff; letter-spacing:-.01em; }
-.ov-top .stage-pill { margin-left:auto; }
-.ov-desc { font-size:10.5px; line-height:1.6; color:rgba(255,255,255,.42); margin:6px 0 10px; max-width:52ch; }
-.ov-btn { font-family:'Inter',sans-serif; cursor:pointer; border:0.5px solid rgba(255,255,255,.16); background:rgba(255,255,255,.04); color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.05em; border-radius:7px; padding:7px 12px; transition: background .2s, border-color .2s, transform .2s; }
-.ov-btn:hover { background: rgba(255,6,181,.14); border-color: rgba(255,6,181,.4); transform: translateY(-1px); }
+.stage-title { font-weight:700; font-size:14px; margin-bottom:14px; letter-spacing:-.01em; }
+.ov-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
+.ov-item { display:flex; flex-direction:column; background:#111; border:0.5px solid rgba(255,255,255,0.08); border-radius:0; transition: border-color .2s; }
+.ov-item:hover { border-color:rgba(255,255,255,0.2); }
+.ov-head { display:flex; align-items:center; gap:12px; padding:14px 14px 0; }
+.ov-logo { width:44px; height:44px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#0d0d0d; border:0.5px solid rgba(255,255,255,0.08); border-radius:0; padding:5px; overflow:hidden; font-size:15px; font-weight:800; color:rgba(255,255,255,.22); user-select:none; }
+.ov-logo img { display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
+.ov-id { min-width:0; display:flex; flex-direction:column; gap:3px; }
+.ov-name { font-size:13px; font-weight:800; color:#fff; letter-spacing:-.01em; line-height:1.2; }
+.stage-status { font-size:8.5px; font-weight:700; letter-spacing:.12em;  }
+.ss-live { color:#00cc44; } .ss-test { color:#ffb302; } .ss-soon { color:#ff3b30; }
+.ov-desc { flex:1; font-size:10.5px; line-height:1.6; color:rgba(255,255,255,.45); padding:12px 14px 14px; }
+.ov-btn { font-family:'Inter',sans-serif; cursor:pointer; width:100%; border:0; border-top:0.5px solid rgba(255,255,255,0.08); background:transparent; color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.1em;  border-radius:0; padding:11px 14px; text-align:left; transition: background .2s, color .2s; }
+.ov-btn:hover { background:rgba(255,6,181,.12); }
 
 /* mock 4 — unannounced placeholder project */
 .mk-next { background: repeating-linear-gradient(135deg, #090909 0 12px, #0c0c0c 12px 24px); color:#fff; }
@@ -382,9 +393,14 @@ Not for unauthorised personal or commercial redistribution. -->
   <div class="hero-stage-wrap reveal" id="projects">
     <div class="hero-stage" id="stage">
       <div class="stage-chrome">
-        <span class="stage-dot" style="background:#ff5f57"></span><span class="stage-dot" style="background:#febc2e"></span><span class="stage-dot" style="background:#28c840"></span>
+        <span class="stage-chrome-l"></span>
         <span class="stage-addr" id="stageAddr">placeholdersystems.pages.dev</span>
-      </div>
+        <div class="stage-winctl" aria-hidden="true">
+          <span class="wc" title="this doesnt work"><svg viewBox="0 0 10 10"><path d="M0 5.5h10"/></svg></span>
+          <span class="wc" title="this also doesnt work"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9"/></svg></span>
+          <span class="wc wc-x" title="imagine trying to close this"><svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0L0 10"/></svg></span>
+        </div>
+        </div>
       <div class="stage-body">
 
         <!-- LEFT MENU -->
@@ -405,21 +421,29 @@ Not for unauthorised personal or commercial redistribution. -->
           <div class="mock on" data-mock="overview">
             <div class="stage-title">Projects</div>
             <div class="ov-list">
-             
               <div class="ov-item">
-                <div class="ov-top"><span class="ov-name">Steak</span><span class="stage-pill sp-live">Available</span></div>
-                <p class="ov-desc">A simulated casino with popular betting games, more to come. Entertainment only with no real money wagering.</p>
+                <div class="ov-head">
+                  <div class="ov-logo"><img src="https://github.com/placeholdersystems/image-assets/blob/main/stk-logo.png?raw=true" alt="Steak logo" onerror="this.replaceWith(document.createTextNode('S'))"></div>
+                  <div class="ov-id"><span class="ov-name">Steak™</span><span class="stage-status ss-live">(available)</span></div>
+                </div>
+                <p class="ov-desc">A simulated casino with popular betting games; more to come.</p>
                 <button class="ov-btn" type="button" data-goto="steak">Preview</button>
               </div>
               <div class="ov-item">
-                <div class="ov-top"><span class="ov-name">Digital Repository</span><span class="stage-pill sp-deploy">Testing</span></div>
-                <p class="ov-desc">A website for movies, TV and games. Open for testing Live TV only.</p>
+                <div class="ov-head">
+                  <div class="ov-logo"><img src="https://github.com/placeholdersystems/image-assets/blob/main/dgr-logo.png?raw=true" alt="Digital Repository logo" onerror="this.replaceWith(document.createTextNode('D'))"></div>
+                  <div class="ov-id"><span class="ov-name">Digital Repository™</span><span class="stage-status ss-test">(partially available)</span></div>
+                </div>
+                <p class="ov-desc">Movies, radio, TV and games in one place. Only Live TV is open for testing atm.</p>
                 <button class="ov-btn" type="button" data-goto="dr">Preview</button>
               </div>
               <div class="ov-item">
-                <div class="ov-top"><span class="ov-name">Project A</span><span class="stage-pill sp-sync">Soon</span></div>
+                <div class="ov-head">
+                  <div class="ov-logo">?</div>
+                  <div class="ov-id"><span class="ov-name">Unreleased Project</span><span class="stage-status ss-soon">(coming soon)</span></div>
+                </div>
                 <p class="ov-desc">Nothing here yet. We will put stuff here once we have announced it.</p>
-                <button class="ov-btn" type="button" data-goto="next">Preview </button>
+                <button class="ov-btn" type="button" data-goto="next">Preview</button>
               </div>
             </div>
           </div>
