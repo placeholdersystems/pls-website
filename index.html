@@ -69,8 +69,46 @@ Not for unauthorised personal or commercial redistribution. -->
 
 .stage-body { display:grid; grid-template-columns:178px 1fr; min-height:420px; text-align:left; }
 .stage-side { background:#050505; padding:16px 0; display:flex; flex-direction:column; gap:2px; border-right:0.5px solid var(--line); }
-.stage-logo { display:flex; flex-direction:column; gap:3px; font-weight:800; font-size:12.5px; color:#fff; padding:2px 16px 16px; letter-spacing:-.01em; }
-.stage-logo span { opacity:.4; font-weight:500; font-size:10.5px; letter-spacing:0; }
+/* ── PROJECT PREVIEW SIDEBAR BRAND ── */
+.stage-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 12.5px;
+  color: #fff;
+  padding: 2px 16px 16px;
+  letter-spacing: -0.01em;
+}
+
+.stage-logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.stage-logo-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.stage-logo-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.stage-logo-subtitle {
+  opacity: 0.4;
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0;
+}
 .stage-nav { display:block; color:rgba(255,255,255,.4); font-size:11.5px; font-weight:500; padding:10px 16px 10px 14px; border-radius:0; background:transparent; border:0; border-left:2px solid transparent; width:100%; text-align:left; font-family:'Inter',sans-serif; cursor:pointer; transition: background .2s, color .2s, border-color .2s; }
 .stage-nav:hover { background: rgba(255,255,255,.04); color: rgba(255,255,255,.75); }
 .stage-nav.on { background: rgba(255,255,255,.05); color:#fff; border-left-color: var(--pink); }
@@ -110,7 +148,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .site-frame iframe { position:absolute; top:0; left:0; width:1440px; height:1000px; border:0; transform-origin:top left; pointer-events:auto; }
 .site-frame::after { content:""; position:absolute; inset:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); pointer-events:none; }
 .site-bar { display:flex; align-items:center; gap:12px; padding:11px 14px; background:#0A0A0A; }
-.site-bar .sb-name { font-size:11.5px; font-weight:700; color:#fff; letter-spacing:-.01em; }
+.site-bar .sb-name { font-size:13px; font-weight:700; color:#fff; letter-spacing:-.01em; }
 .site-bar .sb-note { font-size:9.5px; color:rgba(255,255,255,.3); }
 .site-bar .mock-cta { margin-left:auto; }
 .cta-dr { background:#FFB400; color:#101114; }
@@ -121,7 +159,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .stage-title { font-weight:700; font-size:14px; margin-bottom:14px; letter-spacing:-.01em; }
 .ov-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
 .ov-item { display:flex; flex-direction:column; background:#111; border:0.5px solid rgba(255,255,255,0.08); border-radius:0; transition: border-color .2s; }
-.ov-item:hover { border-color:rgba(255,255,255,0.2); }
+
 .ov-head { display:flex; align-items:center; gap:12px; padding:14px 14px 0; }
 .ov-logo { width:44px; height:44px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#0d0d0d; border:0.5px solid rgba(255,255,255,0.08); border-radius:0; padding:5px; overflow:hidden; font-size:15px; font-weight:800; color:rgba(255,255,255,.22); user-select:none; }
 .ov-logo img { display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
@@ -208,7 +246,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .stat-grid { grid-template-columns: 1fr 1fr; }
 .stat-grid > .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .stat { --site: rgba(255,255,255,0.18); padding: 18px; text-align: left; }
-.stat-label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+.stat-label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em;  color: rgba(255,255,255,0.7); margin-bottom: 10px; }
 .stat-value { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; color: #fff; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .stat-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; }
 .stat--pink .stat-value   { color: var(--pink); }
@@ -333,7 +371,7 @@ Not for unauthorised personal or commercial redistribution. -->
   <div class="about-intro reveal">
     <h2 class="heading-pink">We do<br><span>  a few things.</span></h2>
     <p class="mission-body">Placeholder Systems is a small team building entertainment services, which include gaming, cinema and TV (more to come)</p>
-    <p class="mission-body">Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client. It's part time work,but held to the same bar as anything sold.</p>
+    <p class="mission-body">Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client. </p>
   </div>
 
   <div class="card-grid card-grid--about">
@@ -349,11 +387,11 @@ Not for unauthorised personal or commercial redistribution. -->
     <div class="card card--about reveal" style="--d:.06s">
       <p class="about-card-title">Operational Hours</p>
       <div class="about-card-body">
-        <p>UTC+8 (SGT)</p>
-        <p>Weekdays: 7:00am to 10:00pm</p>
-        <p>Weekends: 10:00am to 10:00pm</p>
+        <p>SGT (UTC+8)</p>
+        <p>Weekdays: 0700 - 2300</p>
+        <p>Weekends: 1000 - 2300</p>
       </div>
-    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">View current OPSTAT →</a>
+    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">view OPSTAT</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.12s">
@@ -363,10 +401,10 @@ Not for unauthorised personal or commercial redistribution. -->
           <p>Steak</p>
         <p>Digital Repository...</p>
       </div>
-      <a class="about-card-cta" href="./projects.html">View All Projects →</a>
+      <a class="about-card-cta" href="./projects.html">view all projects</a>
      
      
-       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">View Project Previews →</a>
+       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">view project previews</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.18s">
@@ -375,7 +413,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Marketing: social media, graphic design</p>
         <p>Development: HTML, Google Apps Script</p>
       </div>
-      <a class="about-card-cta" href="./join-us.html">Apply on Join Us →</a>
+      <a class="about-card-cta" href="./join-us.html">apply here</a>
     </div>
   </div>
 </section>
@@ -386,8 +424,8 @@ Not for unauthorised personal or commercial redistribution. -->
 <section class="stage-section" id="stageSection">
   <div class="stage-intro reveal">
     <p class="section-label">PROJECTS</p>
-    <h2 class="heading-orange">Public <span>previews</span></h2>
-    <p class="stage-sub">Pick a project on the left to load its preview. Previews are uninteractable; to use, visit the respective projects' website.</p>
+    <h2 class="heading-orange">Project <span>previews.</span></h2>
+    <p class="stage-sub">Pick a project on the left to load its preview. Previews are interactive, scaled down, custom versions of the actual thing.</p>
   </div>
 
   <div class="hero-stage-wrap reveal" id="projects">
@@ -405,13 +443,23 @@ Not for unauthorised personal or commercial redistribution. -->
 
         <!-- LEFT MENU -->
         <div class="stage-side">
-          <div class="stage-logo">Placeholder Systems<span style="opacity:.4;font-weight:500">project previews</span></div>
+          <div class="stage-logo">
+  <div class="stage-logo-brand">
+    <img
+      src="https://raw.githubusercontent.com/placeholdersystems/image-assets/refs/heads/main/pls-logo.png"
+      alt="Placeholder Systems Logo"
+      class="stage-logo-img"
+    >
+    <span class="stage-logo-name">Placeholder Systems™</span>
+  </div>
+  <span class="stage-logo-subtitle">project previews</span>
+</div>
           <button class="stage-nav on" type="button" data-mock="overview"><i></i>Overview</button>
          
           <button class="stage-nav" type="button" data-mock="steak"><i></i>Steak</button>
           <button class="stage-nav" type="button" data-mock="dr"><i></i>Digital Repository</button>
-          <button class="stage-nav" type="button" data-mock="next"><i></i>Project X</button>
-          <p class="stage-side-note">PREVIEWS ARE SCALED DOWN UNINTERACTABLE COPIES!!!</p>
+          <button class="stage-nav" type="button" data-mock="next"><i></i>Unreleased Project</button>
+          <p class="stage-side-note">previews are not a complete representation of the actual site</p>
         </div>
 
         <!-- PREVIEW PANE -->
@@ -448,42 +496,39 @@ Not for unauthorised personal or commercial redistribution. -->
             </div>
           </div>
 
-          <!-- Digital Repository · the real page, embedded verbatim and scaled down -->
           <div class="mock mk-site" data-mock="dr">
             <div class="site-frame"><iframe title="Digital Repository preview" data-tpl="tpl-dr" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></div>
             <div class="site-bar">
               <div>
-                <div class="sb-name">Digital Repository, Live TV</div>
-                <div class="sb-note">Live page, scaled down</div>
+                <div class="sb-name">Digital Repository, Live TV (Preview)</div>
+                
               </div>
               <a class="mock-cta cta-dr" href="#" data-project-link="dr" target="_blank" rel="noopener">TEST DIGITAL REPOSITORY</a>
             </div>
           </div>
 
-          <!-- Steak · the real Mines page, embedded verbatim and scaled down -->
           <div class="mock mk-site" data-mock="steak">
             <div class="site-frame"><iframe title="Steak preview" data-tpl="tpl-steak" data-tab="mines" scrolling="no" tabindex="-1" aria-hidden="true"></iframe></div>
             <div class="site-bar">
               <div>
-                <div class="sb-name">Steak, Home</div>
-                <div class="sb-note">Live page, scaled down</div>
+                <div class="sb-name">Steak (Preview)</div>
+               
               </div>
               <a class="mock-cta cta-steak" href="#" data-project-link="steak" target="_blank" rel="noopener">PLAY STEAK</a>
             </div>
           </div>
 
-          <!-- Project 03 · placeholder -->
           <div class="mock mk-next" data-mock="next">
             <div class="nx-shell">
              
-              <div class="nx-title">Project A</div>
+              <div class="nx-title">Unreleased Project</div>
               <p class="nx-sub">Nothing here yet. We will put stuff here once we have announced it.</p>
               <div class="nx-bars">
                 <div class="nx-bar"><i style="width:72%"></i></div>
                 <div class="nx-bar"><i style="width:46%"></i></div>
                 <div class="nx-bar"><i style="width:23%"></i></div>
               </div>
-              <a class="mock-cta cta-next" href="#" data-project-link="next" target="_blank" rel="noopener">Placeholder</a>
+              
             </div>
           </div>
 
@@ -550,7 +595,7 @@ Not for unauthorised personal or commercial redistribution. -->
     <div class="card stat" style="--site:#FF06B5"><p class="stat-label"> This Site</p><p class="stat-value" id="counter-s1">—</p></div>
     <div class="card stat" style="--site:#FFB400"><p class="stat-label"> Digital Repository</p><p class="stat-value" id="counter-s2">—</p></div>
     <div class="card stat" style="--site:#3fe373"><p class="stat-label"> Steak</p><p class="stat-value" id="counter-s3">—</p></div>
-    <div class="card stat" style="--site:#378ADD"><p class="stat-label">[unreleased project]</p><p class="stat-value" id="counter-s4">—</p><p class="stat-note">not available</p></div>
+    <div class="card stat" style="--site:#378ADD"><p class="stat-label">Unreleased Project</p><p class="stat-value" id="counter-s4">—</p><p class="stat-note">not available</p></div>
   </div>
 </div>
 </div>
@@ -575,11 +620,6 @@ Not for unauthorised personal or commercial redistribution. -->
     <details>
       <summary>How do I apply to join the team? <span class="pl">+</span></summary>
       <div class="ans">We are looking for people to help with marketing and development,if you are interested head to the Join Us page.</div>
-    </details>
-    
-    <details>
-      <summary>Is this a company, or a side project? <span class="pl">+</span></summary>
-      <div class="ans">Both, though we are not a registered company, we still hold our work to such standards while still doing this in our free time.</div>
     </details>
     <details>
       <summary>What are Placeholder Accounts, and how do I create one? <span class="pl">+</span></summary>
@@ -1846,9 +1886,9 @@ Not for unauthorised personal or commercial redistribution -->
       </div>
 
       <div class="steak-welcome-card">
-        <h1>Welcome to Steak™</h1>
-        <p>Welcome to <strong>Steak™</strong>, a simulated online casino experience by Placeholder Systems.</p>
-        <p>All gameplay on Steak uses virtual credits only, not real money. The site is intended for entertainment and testing purposes only.</p>
+        <h1>Welcome to Steak™ (Preview)</h1>
+        <p>Welcome to <strong>Steak™ (Preview)</strong>, a preview for a simulated online casino experience by Placeholder Systems.</p>
+        <p>All gameplay on Steak (Preview) uses virtual credits only, not real money. This preview is intended for entertainment and testing purposes only.</p>
         <p>If gambling ever feels difficult to control, support is available from
           <a href="https://www.ncpg.org.sg" class="steak-green-link" target="_blank" rel="noopener noreferrer">NCPG Singapore</a>
           or by calling <a href="tel:1800668668" class="steak-green-link">1800-6-668-668</a>.
@@ -1905,12 +1945,12 @@ Not for unauthorised personal or commercial redistribution -->
 
     <!-- Dice placeholder -->
     <div id="steak-tab-content-dice" class="steak-page-view">
-      <div class="steak-placeholder-card">Play the actual version of Steak to enjoy the fullest experience</div>
+      <div class="steak-placeholder-card">Play the actual version of Steak to enjoy the fullest experience!!1</div>
     </div>
 
     <!-- Blackjack placeholder -->
     <div id="steak-tab-content-blackjack" class="steak-page-view">
-      <div class="steak-placeholder-card">Play the actual version of Steak to enjoy the fullest experience</div>
+      <div class="steak-placeholder-card">Play the actual version of Steak to enjoy the fullest experience!!1</div>
     </div>
 
   </div>
