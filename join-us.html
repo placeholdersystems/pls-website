@@ -224,6 +224,11 @@
 }
 
 
+
+/* ── SQUARE CORNERS (everything except text inputs & primary buttons) ── */
+*, *::before, *::after { border-radius: 0 !important; }
+.ef-wrap input[type=text], .ef-wrap input[type=email], .ef-wrap input[type=password], .ef-wrap textarea, .ef-wrap .btn-primary { border-radius: 8px !important; }
+
 </style>
 </head>
 <body>
@@ -774,7 +779,7 @@ function requireAgreement() {
   if (isAgreed()) return true;
 
   // 1. Show the warning toast
-  showToast("Please check the tickbox above to affirm your agreement to requirements");
+  showToast("please check the tickbox above to affirm your agreement to general requirements");
 
   // 2. Scroll up to the checkbox section
   const card = document.getElementById("agree-card");
