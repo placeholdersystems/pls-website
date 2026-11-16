@@ -336,7 +336,24 @@ Not for unauthorised personal or commercial redistribution. -->
         .contact-link:hover { color: var(--pink); text-decoration-color: var(--pink); }
  
  
-
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pls-btn {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  background: var(--pink);
+  border: 0;
+  border-radius: 0px;
+  padding: 11px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+.pls-btn:hover { background: var(--orange); }
+.pls-btn:focus-visible { outline: 1px solid #fff; outline-offset: 2px; }
 
 </style>
 </head>
@@ -369,9 +386,9 @@ Not for unauthorised personal or commercial redistribution. -->
   <p class="section-label reveal">ABT US</p>
 
   <div class="about-intro reveal">
-    <h2 class="heading-pink">We do<br><span>  a few things.</span></h2>
-    <p class="mission-body">Placeholder Systems is a small team building entertainment services, which include gaming, cinema and TV (more to come)</p>
-    <p class="mission-body">Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client. </p>
+    <h2 class="heading-pink">A brief<br><span> introduction</span></h2>
+    <p class="mission-body">Placeholder Systems is a small team building entertainment services. Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client.</p>
+    <p class="mission-body">We are also actively looking for partners and interested people to join our team, so if you're interested, contact us! </p>
   </div>
 
   <div class="card-grid card-grid--about">
@@ -401,10 +418,10 @@ Not for unauthorised personal or commercial redistribution. -->
           <p>Steak</p>
         <p>Digital Repository...</p>
       </div>
-      <a class="about-card-cta" href="./projects.html">view all projects</a>
+      <a class="about-card-cta" href="./projects.html">all projects</a>
      
      
-       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">view project previews</a>
+       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">project previews</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.18s">
@@ -413,7 +430,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Marketing: social media, graphic design</p>
         <p>Development: HTML, Google Apps Script</p>
       </div>
-      <a class="about-card-cta" href="./join-us.html">apply here</a>
+      <a class="about-card-cta" href="./join-us.html">apply</a>
     </div>
   </div>
 </section>
@@ -649,11 +666,7 @@ Not for unauthorised personal or commercial redistribution. -->
 
     <div class="socials-row reveal">
       <p class="socials-lead">or get the latest information from our socials:</p>
-      <a class="social-btn" href="./socials.html">
-        <span class="sb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        Socials
-        <span class="sb-arrow" aria-hidden="true">&rarr;</span>
-      </a>
+      <a class="pls-btn" href="./socials.html">Socials</a>
     </div>
   </div>
 </section>
