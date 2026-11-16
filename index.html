@@ -67,7 +67,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .wc:hover { background:rgba(255,255,255,.08); color:#fff; }
 .wc.wc-x:hover { background:#e81123; color:#fff; }
 
-.stage-body { display:grid; grid-template-columns:178px 1fr; min-height:420px; text-align:left; }
+.stage-body { display:grid; grid-template-columns:200px 1fr; min-height:420px; text-align:left; }
 .stage-side { background:#050505; padding:16px 0; display:flex; flex-direction:column; gap:2px; border-right:0.5px solid var(--line); }
 /* ── PROJECT PREVIEW SIDEBAR BRAND ── */
 .stage-logo {
@@ -198,13 +198,24 @@ Not for unauthorised personal or commercial redistribution. -->
 .about-card-body { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.75; }
 .about-card-body p { margin-bottom: 4px; }
 .about-card-body p:last-child { margin-bottom: 0; }
-.about-card-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--orange); text-decoration: none; }
-
-.about-footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 48px 24px; border-top: 0.5px solid rgba(255,255,255,0.07); }
-.about-footer img { width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; }
-.about-footer-text { text-align: left; }
-.org-name    { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 4px; }
-.org-tagline { font-size: 15px; color: rgba(255,255,255,0.4); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pls-btn {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  background: var(--pink);
+  border: 0;
+  border-radius: 0px;
+  padding: 11px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+.pls-btn:hover { background: var(--orange); }
+.pls-btn:focus-visible { outline: 1px solid #fff; outline-offset: 2px; }
 
 /* ── TWO-COL OPSTAT + STATS ── */
 .two-col-section { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 90px 32px; max-width: 1100px; margin: 0 auto; box-sizing: border-box; scroll-snap-align: start; }
@@ -274,30 +285,7 @@ Not for unauthorised personal or commercial redistribution. -->
 /* ── SOCIALS BUTTON (gradient-ring capsule) ── */
 .socials-row { margin-top: 34px; }
 .socials-lead { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 18px; }
-.social-btn {
-  --ring: 1.5px;
-  position: relative; display: inline-flex; align-items: center; gap: 11px;
-  padding: 14px 26px; border-radius: 999px; text-decoration: none; isolation: isolate;
-  font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em; color: #fff;
-  background: linear-gradient(#050505, #050505) padding-box,
-              var(--brand-gradient) border-box;
-  border: var(--ring) solid transparent;
-  transition: color .25s ease, transform .25s cubic-bezier(.16,.7,.2,1), box-shadow .25s ease;
-}
-.social-btn::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
-  background: var(--brand-gradient); opacity: 0; transform: scale(.82);
-  transition: opacity .25s ease, transform .35s cubic-bezier(.16,.7,.2,1);
-}
-.social-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(255,6,181,0.22); }
-.social-btn:hover::before { opacity: 1; transform: scale(1); }
-.social-btn .sb-dots { display: inline-flex; gap: 4px; }
-.social-btn .sb-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--pink); transition: background .25s ease; }
-.social-btn .sb-dots i:nth-child(2) { background: #ff3d8b; }
-.social-btn .sb-dots i:nth-child(3) { background: var(--orange); }
-.social-btn:hover .sb-dots i { background: #fff; }
-.social-btn .sb-arrow { transition: transform .25s cubic-bezier(.16,.7,.2,1); }
-.social-btn:hover .sb-arrow { transform: translateX(4px); }
+
 
 
 
@@ -369,9 +357,9 @@ Not for unauthorised personal or commercial redistribution. -->
   <p class="section-label reveal">ABT US</p>
 
   <div class="about-intro reveal">
-    <h2 class="heading-pink">We do<br><span>  a few things.</span></h2>
-    <p class="mission-body">Placeholder Systems is a small team building entertainment services, which include gaming, cinema and TV (more to come)</p>
-    <p class="mission-body">Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client. </p>
+    <h2 class="heading-pink">A brief<br><span>introduction</span></h2>
+    <p class="mission-body">Placeholder Systems is a small team building entertainment services. Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client. </p>
+    <p class="mission-body">We are also actively looking for partners and interested people to join our team, so if you're interested, contact us!</p>
   </div>
 
   <div class="card-grid card-grid--about">
@@ -391,7 +379,9 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Weekdays: 0700 - 2300</p>
         <p>Weekends: 1000 - 2300</p>
       </div>
-    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">view OPSTAT</a>
+    <div class="btn-row">
+  <button type="button" class="pls-btn" onclick="scrollToOpstat(event)">view OPSTAT</button>
+</div>
     </div>
 
     <div class="card card--about reveal" style="--d:.12s">
@@ -401,10 +391,10 @@ Not for unauthorised personal or commercial redistribution. -->
           <p>Steak</p>
         <p>Digital Repository...</p>
       </div>
-      <a class="about-card-cta" href="./projects.html">view all projects</a>
-     
-     
-       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">view project previews</a>
+      <div class="btn-row">
+  <a class="pls-btn" href="./projects.html">all projects</a>
+  <button type="button" class="pls-btn" onclick="scrollToStage(event)">project previews</button>
+</div>
     </div>
 
     <div class="card card--about reveal" style="--d:.18s">
@@ -413,7 +403,9 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Marketing: social media, graphic design</p>
         <p>Development: HTML, Google Apps Script</p>
       </div>
-      <a class="about-card-cta" href="./join-us.html">apply here</a>
+      <div class="btn-row">
+  <a class="pls-btn" href="./join-us.html">apply</a>
+</div>
     </div>
   </div>
 </section>
@@ -649,11 +641,7 @@ Not for unauthorised personal or commercial redistribution. -->
 
     <div class="socials-row reveal">
       <p class="socials-lead">or get the latest information from our socials:</p>
-      <a class="social-btn" href="./socials.html">
-        <span class="sb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        Socials
-        <span class="sb-arrow" aria-hidden="true">&rarr;</span>
-      </a>
+     <a class="pls-btn" href="./socials.html">Socials</a>
     </div>
   </div>
 </section>
