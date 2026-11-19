@@ -21,18 +21,28 @@
 .req-list li::before { content: "—"; position: absolute; left: 0; color: rgba(255,107,53,0.6); font-weight: 700; }
 .req-list li strong { color: rgba(255,255,255,0.7); font-weight: 600; }
 
-/* ── TRACK CARDS (bumped, pink accent for the active/primary track) ── */
-.card-grid--track { grid-template-columns: 1fr 1fr; margin-top: 18px; }
-.card--track { padding: 22px 18px; overflow: hidden; }
-.card--track::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--brand-gradient); opacity: 0.7; }
 
-.card--track .track-name { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 8px; }
-.card--track .track-status { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; margin-bottom: 12px; font-style: italic; }
-.card--track .track-body { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; }
-.card--track .track-list { list-style: none; padding: 0; margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
-.card--track .track-list li { font-size: 14px; color: rgba(255,255,255,0.4); padding-left: 16px; position: relative; }
-.card--track .track-list li::before { content: "·"; position: absolute; left: 0; color: var(--orange); }
-.card--track .track-list li strong { color: rgba(255,255,255,0.65); }
+.card-grid--track { grid-template-columns: 1fr 1fr; margin-top: 18px; }
+.card--track-pink { padding: 22px 18px; overflow: hidden; }
+.card--track-orange { padding: 22px 18px; overflow: hidden; }
+.card--track-pink::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--pink); opacity: 1; }
+.card--track-orange::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--orange); opacity: 1; }
+
+.card--track-pink .track-name { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 8px; }
+.card--track-pink .track-status { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; margin-bottom: 12px; font-style: italic; }
+.card--track-pink .track-body { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+.card--track-pink .track-list { list-style: none; padding: 0; margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
+.card--track-pink .track-list li { font-size: 14px; color: rgba(255,255,255,0.4); padding-left: 16px; position: relative; }
+.card--track-pink .track-list li::before { content: "·"; position: absolute; left: 0; color: var(--orange); }
+.card--track-pink .track-list li strong { color: rgba(255,255,255,0.65); }
+
+.card--track-orange .track-name { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 8px; }
+.card--track-orange .track-status { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; margin-bottom: 12px; font-style: italic; }
+.card--track-orange .track-body { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+.card--track-orange .track-list { list-style: none; padding: 0; margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
+.card--track-orange .track-list li { font-size: 14px; color: rgba(255,255,255,0.4); padding-left: 16px; position: relative; }
+.card--track-orange .track-list li::before { content: "·"; position: absolute; left: 0; color: var(--orange); }
+.card--track-orange .track-list li strong { color: rgba(255,255,255,0.65); }
 
 /* ── FLOWCHART (bumped labels) ── */
 .flowchart-wrap { background: #0D0D0D; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; margin-top: 6px; }
@@ -287,7 +297,7 @@
 
     <p class="info-label" style="margin-top:32px;">membership</p>
     <div class="card-grid card-grid--track" style="grid-template-columns:1fr;">
-      <div class="card card--track">
+      <div class="card card--track-pink">
        
         <div class="track-name">Membership</div>
         <div class="track-status">Placeholder Account™</div>
@@ -301,7 +311,7 @@
 <div class="section-block" >
     <p class="info-label" style="margin-top:32px;">track A</p>
     <div class="card-grid card-grid--track" style="grid-template-columns:1fr;">
-      <div class="card card--track">
+      <div class="card card--track-orange">
        
         <div class="track-name">Via Membership</div>
         <div class="track-status">For existing Placeholder Account™ holders</div>
@@ -312,7 +322,7 @@
 
     <p class="info-label" style="margin-top:32px;">track B</p>
     <div class="card-grid card-grid--track" style="grid-template-columns:1fr;">
-      <div class="card card--track">
+      <div class="card card--track-orange">
        
         <div class="track-name">Direct</div>
         <div class="track-status">For applicants without a prior Placeholder Account™</div>
@@ -324,7 +334,7 @@
     <p class="info-label" style="margin-top:32px;">departments</p>
     <p class="req-body">Every standard position sits within one of the four departments below. Pick the one that matches your skills and interests when filling out the application. You may change departments if you later think that it was unsuitable for you.</p>
     <div class="card-grid" style="grid-template-columns:1fr 1fr;">
-      <div class="card card--track">
+      <div class="card card--track-pink">
         <div class="track-name" style="font-size:14px;">Marketing Department</div>
         <div class="track-body">Responsible for creating and executing promotional strategies and managing our social media platforms. </div>
         <ul class="track-list">
@@ -332,7 +342,7 @@
         </ul>
         
       </div>
-      <div class="card card--track">
+      <div class="card card--track-pink">
         <div class="track-name" style="font-size:14px;">Security Department</div>
         <div class="track-body">Ensures the security of our operations and data. Covers account security reviews, monitoring for abuse of our projects or copyright violations.</div>
         <ul class="track-list">
@@ -341,7 +351,7 @@
         <ul>
         
       </div>
-      <div class="card card--track">
+      <div class="card card--track-pink">
         <div class="track-name" style="font-size:14px;">Administrative Department</div>
         <div class="track-body">Manages human resource, financial and legal matters. </div>
         <ul class="track-list">
@@ -350,7 +360,7 @@
         </ul>
        
       </div>
-      <div class="card card--track">
+      <div class="card card--track-pink">
         <div class="track-name" style="font-size:14px;">Research &amp; Development Department</div>
         <div class="track-body">Develops, maintains and updates projects and internal systems.</div>
         <ul class="track-list">
@@ -359,7 +369,7 @@
         <ul>
        
       </div>
-      <div class="card card--track" style="grid-column:1/-1;">
+      <div class="card card--track-pink" style="grid-column:1/-1;">
         <div class="track-name" style="font-size:14px;">Executive Board (not really a department)</div>
         <div class="track-body">People in charge of running Placeholder Systems make up this board, including Chief Regional Executives, Directors and Managers (deputy directors).
         </div>
