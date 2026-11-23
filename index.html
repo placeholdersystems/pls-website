@@ -198,7 +198,8 @@ Not for unauthorised personal or commercial redistribution. -->
 .about-card-body { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.75; }
 .about-card-body p { margin-bottom: 4px; }
 .about-card-body p:last-child { margin-bottom: 0; }
-.about-card-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--orange); text-decoration: none; }
+.small-link-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--orange); text-decoration: none; }
+.bigger-link-cta { display: inline-block; margin-top: 14px; font-size: 16px; font-weight: 600; color: var(--orange); text-decoration: none; }
 
 
 
@@ -384,7 +385,7 @@ Not for unauthorised personal or commercial redistribution. -->
   <div class="about-intro reveal">
     <h2 class="heading-pink">A brief<br><span> introduction</span></h2>
     <p class="mission-body">Placeholder Systems is a small team building entertainment services. Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client.</p>
-    <p class="mission-body">We are also actively looking for partners and interested people to join our team, so if you're interested, contact us! </p>
+    <p class="mission-body">We are also actively looking for partners and interested people to join our team, so if you're interested,  <a class="bigger-link-cta" href="#" onclick="scrollToContact(event)">contact us</a>! </p>
   </div>
 
   <div class="card-grid card-grid--about">
@@ -404,7 +405,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Weekdays: 0700 - 2300</p>
         <p>Weekends: 1000 - 2300</p>
       </div>
-    <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">view OPSTAT</a>
+    <a class="small-link-cta" href="#" onclick="scrollToOpstat(event)">view OPSTAT</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.12s">
@@ -414,11 +415,11 @@ Not for unauthorised personal or commercial redistribution. -->
           <p>Steak</p>
         <p>Digital Repository...</p>
       </div>
-      <a class="about-card-cta" href="./projects.html">all projects</a>
+      <a class="small-link-cta" href="./projects.html">all projects</a>
      <!-- DONOTREMOVE THSI IS FOR SPACING -->
      <p></p>
       <!--!!!!!!!!!!!!!!!!!!!!-->
-       <a class="about-card-cta" href="#" onclick="scrollToStage(event)">project previews</a>
+       <a class="small-link-cta" href="#" onclick="scrollToStage(event)">project previews</a>
     </div>
 
     <div class="card card--about reveal" style="--d:.18s">
@@ -427,7 +428,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <p>Marketing: social media, graphic design</p>
         <p>Development: HTML, Google Apps Script</p>
       </div>
-      <a class="about-card-cta" href="./join-us.html">apply</a>
+      <a class="small-link-cta" href="./join-us.html">apply</a>
     </div>
   </div>
 </section>
@@ -629,16 +630,16 @@ Not for unauthorised personal or commercial redistribution. -->
     </details>
     <details>
       <summary>What is OPSTAT? <span class="pl">+</span></summary>
-      <div class="ans">Our live operational-status indicator, left over from more security oriented times. We now use it to display response times and closures because it looked cool.<p></p> <a class="about-card-cta" href="#" onclick="scrollToOpstat(event)">view OPSTAT</a></div>
+      <div class="ans">Our live operational-status indicator, left over from more security oriented times. We now use it to display response times and closures because it looked cool.<p></p> <a class="small-link-cta" href="#" onclick="scrollToOpstat(event)">view OPSTAT</a></div>
     </details>
     <details>
       <summary>How do I apply to join the team? <span class="pl">+</span></summary>
-      <div class="ans">We are looking for people to help with marketing and development,if you are interested head to the Join Us page. <!-- spacing dn rmove!!!--> <p></p><a class="about-card-cta" href="./join-us.html">apply for a position here!</a></a></div>
+      <div class="ans">We are looking for people to help with marketing and development,if you are interested head to the Join Us page. <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./join-us.html">apply for a position here!</a></a></div>
     </details>
     <details>
       <summary>What are Placeholder Accounts, and how do I create one? <span class="pl">+</span></summary>
       <div class="ans">A Placeholder Account is basically a membership, and you can use that account to login and get access to more features from our projects. Create one by heading to the Join Us page.
-      <!-- spacing dn rmove!!!--> <p></p><a class="about-card-cta" href="./join-us.html">create an account here!</a></a></div>
+      <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./join-us.html">create an account here!</a></a></div>
     </details>
      <details>
       <summary>What was the rationale behind our brand colours and logo?<span class="pl">+</span></summary>
@@ -647,7 +648,7 @@ Not for unauthorised personal or commercial redistribution. -->
      
     <details>
       <summary>How many people are involved in this? <span class="pl">+</span></summary>
-      <div class="ans">Across all branches, we have about 10 individuals supporting Placeholder Systems. How about you make that number increase and join us? <!-- spacing dn rmove!!!--> <p></p><a class="about-card-cta" href="./leadership.html">check out the people who make this possible</a></a></div>
+      <div class="ans">Across all branches, we have about 10 individuals supporting Placeholder Systems. How about you make that number increase and join us? <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./leadership.html">check out the people who make this possible</a></a></div>
     </details>
    
   </div>
@@ -655,7 +656,7 @@ Not for unauthorised personal or commercial redistribution. -->
 
 <div class="divider"></div>
 
-<section class="contact-section">
+<section class="contact-section" id="contactSection">
   <p class="section-label reveal">CONTACT</p>
   <div class="reveal" style="text-align:center">
     <h2 class="heading-orange" >Questions, <span>unanswered?</span></h2>
@@ -873,6 +874,10 @@ function scrollToOpstat(e) {
 function scrollToStage(e) {
   e.preventDefault();
   document.getElementById("stageSection").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function scrollToContact(e) {
+  e.preventDefault();
+  document.getElementById("contactSection").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 /* ── MOTION: stage un-tilt on approach + reveal-on-scroll + card tilt ── */
