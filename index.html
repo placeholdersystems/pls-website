@@ -67,7 +67,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .wc:hover { background:rgba(255,255,255,.08); color:#fff; }
 .wc.wc-x:hover { background:#e81123; color:#fff; }
 
-.stage-body { display:grid; grid-template-columns:178px 1fr; min-height:420px; text-align:left; }
+.stage-body { display:grid; grid-template-columns:200px 1fr; min-height:420px; text-align:left; }
 .stage-side { background:#050505; padding:16px 0; display:flex; flex-direction:column; gap:2px; border-right:0.5px solid var(--line); }
 /* ── PROJECT PREVIEW SIDEBAR BRAND ── */
 .stage-logo {
@@ -96,7 +96,7 @@ Not for unauthorised personal or commercial redistribution. -->
 }
 
 .stage-logo-name {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #fff;
@@ -106,12 +106,12 @@ Not for unauthorised personal or commercial redistribution. -->
 .stage-logo-subtitle {
   opacity: 0.4;
   font-weight: 500;
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0;
 }
 .stage-nav { display:block; color:rgba(255,255,255,.4); font-size:11.5px; font-weight:500; padding:10px 16px 10px 14px; border-radius:0; background:transparent; border:0; border-left:2px solid transparent; width:100%; text-align:left; font-family:'Inter',sans-serif; cursor:pointer; transition: background .2s, color .2s, border-color .2s; }
 .stage-nav:hover { background: rgba(255,255,255,.04); color: rgba(255,255,255,.75); }
-.stage-nav.on { background: rgba(255,255,255,.05); color:#fff; border-left-color: var(--pink); }
+.stage-nav.on { background: rgba(255,255,255,.05); color:#fff; border-left-color: var(--orange); }
 .stage-nav:focus-visible, .ov-btn:focus-visible, .pv-test:focus-visible, .mock-cta:focus-visible { outline:1px solid var(--pink); outline-offset:-1px; }
 .stage-side-note { margin-top:auto; padding:10px 16px 2px; font-size:9.5px; line-height:1.5; color:rgba(255,255,255,.22); letter-spacing:.06em;  }
 .stage-main { background:#080808; color:#fff; min-width:0; }
@@ -169,7 +169,7 @@ Not for unauthorised personal or commercial redistribution. -->
 .ss-a { color:#00cc44; } .ss-pa { color:#FFD700; } .ss-soon { color:#ff3b30; }
 .ov-desc { flex:1; font-size:10.5px; line-height:1.6; color:rgba(255,255,255,.45); padding:12px 14px 14px; }
 .ov-btn { font-family:'Inter',sans-serif; cursor:pointer; width:100%; border:0; border-top:0.5px solid rgba(255,255,255,0.08); background:transparent; color:#fff; font-size:9.5px; font-weight:700; letter-spacing:.1em;  border-radius:0; padding:11px 14px; text-align:left; transition: background .2s, color .2s; }
-.ov-btn:hover { background:rgba(255,6,181,.12); }
+.ov-btn:hover { background:var(--orange); }
 
 /* mock 4 — unannounced placeholder project */
 .mk-next { background: repeating-linear-gradient(135deg, #090909 0 12px, #0c0c0c 12px 24px); color:#fff; }
@@ -193,13 +193,14 @@ Not for unauthorised personal or commercial redistribution. -->
 
 .card-grid--about { grid-template-columns: repeat(4, 1fr); margin-bottom: 64px; }
 .card--about { padding: 28px 22px; overflow: hidden; transform-style: preserve-3d; transition: transform .35s ease; }
-.card--about::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); }
+.card--about::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--pink); }
 .about-card-title { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em; margin-bottom: 14px; }
 .about-card-body { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.75; }
 .about-card-body p { margin-bottom: 4px; }
 .about-card-body p:last-child { margin-bottom: 0; }
-.small-link-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--orange); text-decoration: none; }
-.bigger-link-cta { display: inline-block; margin-top: 14px; font-size: 16px; font-weight: 600; color: var(--orange); text-decoration: none; }
+.small-link-cta { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--pink); text-decoration: none; }
+.bigger-link-cta-o { display: inline-block; margin-top: 14px; font-size: 16px; font-weight: 600; color: var(--orange); text-decoration: none; }
+.bigger-link-cta-p { display: inline-block; margin-top: 14px; font-size: 16px; font-weight: 600; color: var(--pink); text-decoration: none; }
 
 
 
@@ -270,7 +271,7 @@ Not for unauthorised personal or commercial redistribution. -->
 
 /* ── SOCIALS BUTTON (gradient-ring capsule) ── */
 .socials-row { margin-top: 34px; }
-.socials-lead { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 18px; }
+.socials-lead { font-size: 17px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 18px; }
 .social-btn {
   --ring: 1.5px;
   position: relative; display: inline-flex; align-items: center; gap: 11px;
@@ -385,7 +386,7 @@ Not for unauthorised personal or commercial redistribution. -->
   <div class="about-intro reveal">
     <h2 class="heading-pink">A brief<br><span> introduction</span></h2>
     <p class="mission-body">Placeholder Systems is a small team building entertainment services. Current work spans a gaming-and-cinema platform, a simulated casino (no real money), and an instant messaging client.</p>
-    <p class="mission-body">We are also actively looking for partners and interested people to join our team, so if you're interested,  <a class="bigger-link-cta" href="#" onclick="scrollToContact(event)">contact us</a>! </p>
+    <p class="mission-body">We are also actively looking for partners and interested people to join our team, so if you're interested,  <a class="bigger-link-cta-p" href="#" onclick="scrollToContact(event)">contact us</a>! </p>
   </div>
 
   <div class="card-grid card-grid--about">
@@ -480,7 +481,7 @@ Not for unauthorised personal or commercial redistribution. -->
         <!-- PREVIEW PANE -->
         <div class="stage-main" id="stageMain">
 
-          <!-- overview · concise descriptions + preview buttons -->
+          <!-- ov concise descriptions + preview buttons -->
           <div class="mock on" data-mock="overview">
             <div class="stage-title">Projects</div>
             <div class="ov-list">
@@ -634,12 +635,12 @@ Not for unauthorised personal or commercial redistribution. -->
     </details>
     <details>
       <summary>How do I apply to join the team? <span class="pl">+</span></summary>
-      <div class="ans">We are looking for people to help with marketing and development,if you are interested head to the Join Us page. <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./join-us.html">apply for a position here!</a></a></div>
+      <div class="ans">We are looking for people to help with marketing and development,if you are interested head to the Join Us page. <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./join-us.html">apply for a position here!</a></div>
     </details>
     <details>
       <summary>What are Placeholder Accounts, and how do I create one? <span class="pl">+</span></summary>
       <div class="ans">A Placeholder Account is basically a membership, and you can use that account to login and get access to more features from our projects. Create one by heading to the Join Us page.
-      <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./join-us.html">create an account here!</a></a></div>
+      <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./join-us.html">create an account here!</a></div>
     </details>
      <details>
       <summary>What was the rationale behind our brand colours and logo?<span class="pl">+</span></summary>
@@ -648,7 +649,7 @@ Not for unauthorised personal or commercial redistribution. -->
      
     <details>
       <summary>How many people are involved in this? <span class="pl">+</span></summary>
-      <div class="ans">Across all branches, we have about 10 individuals supporting Placeholder Systems. How about you make that number increase and join us? <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./leadership.html">check out the people who make this possible</a></a></div>
+      <div class="ans">Across all branches, we have about 10 individuals supporting Placeholder Systems. How about you make that number increase and join us? <!-- spacing dn rmove!!!--> <p></p><a class="small-link-cta" href="./leadership.html">check out the people who make this possible</a></div>
     </details>
    
   </div>
@@ -660,12 +661,12 @@ Not for unauthorised personal or commercial redistribution. -->
   <p class="section-label reveal">CONTACT</p>
   <div class="reveal" style="text-align:center">
     <h2 class="heading-orange" >Questions, <span>unanswered?</span></h2>
-     <p class="stage-sub">Contact us via email here:</p>
+     <p class="socials-lead">Contact us via email here:</p>
  <a href="mailto:placeholdersystems@gmail.com" class="contact-link">placeholdersystems@gmail.com</a>
 
     <div class="socials-row reveal">
-      <p class="socials-lead">or get the latest information from our socials:</p>
-      <a class="pls-btn" href="./socials.html">Socials</a>
+      <p class="socials-lead">or get the latest information from our <a class="bigger-link-cta-o" href="#" onclick="scrollToContact(event)">socials</a>!</p>
+     
     </div>
   </div>
 </section>
