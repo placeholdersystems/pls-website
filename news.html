@@ -194,10 +194,37 @@
 .news-empty .ne-icon  { font-size: 24px; margin-bottom: 10px; opacity: 0.4; }
 .news-empty .ne-label { font-size: 13px; letter-spacing: 0.06em; }
 
-/* ── FOOTER ── */
-.page-footer { margin-top: 64px; padding-top: 28px; border-top: 0.5px solid rgba(255,255,255,0.07); text-align: center; }
-.footer-org  { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.55); margin-bottom: 5px; }
-.footer-note { font-size: 13px; color: rgba(255,255,255,0.25); }
+/* ── LOADING STATE ── */
+.news-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 56px 24px;
+  border: 1px dashed rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.35);
+}
+.news-loading .nl-logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: contain;
+  animation: nl-spin 1.2s linear infinite;
+}
+.news-loading .ne-label {
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+@keyframes nl-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .news-loading .nl-logo { animation-duration: 3s; }
+}
+@media (max-width: 520px) {
+  .news-loading .nl-logo { width: 32px; height: 32px; }
+}
 </style>
 
 </head>
@@ -216,8 +243,11 @@
 
  
   <div class="card-grid card-grid--news" id="news-list">
-    <div class="news-empty"><div class="ne-label">Loading news…</div></div>
+  <div class="news-loading" role="status" aria-live="polite">
+    <img class="nl-logo" src="https://raw.githubusercontent.com/placeholdersystems/image-assets/refs/heads/main/pls-logo.png" alt="">
+    <div class="ne-label">Loading news…</div>
   </div>
+</div>
   <!-- END #news-list -->
   
 
