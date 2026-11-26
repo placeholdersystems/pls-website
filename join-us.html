@@ -784,52 +784,6 @@ document.addEventListener("keydown", function(e) { if (e.key === "Escape") close
     img.title = "Click to expand";
   }
 })();
-/* ── AGREEMENT CHECKBOX GATE & TOAST ── */
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function isAgreed() {
-  const box = document.getElementById("agree-checkbox");
-  return !!(box && box.checked);
-}
-
-// Function to trigger the custom toast notification
-function showToast(message) {
-  let toast = document.getElementById("custom-toast");
-  if (!toast) {
-    toast = document.createElement("div");
-    toast.id = "custom-toast";
-    toast.className = "toast";
-    document.body.appendChild(toast);
-  }
-  
-  toast.textContent = message;
-  toast.classList.add("show");
-
-  // Automatically hide after 3.5 seconds
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3500);
-}
-
-function requireAgreement() {
-  if (isAgreed()) return true;
-
-  // 1. Show the warning toast
-  showToast("please check the tickbox above to affirm your agreement to general requirements");
-
-  // 2. Scroll up to the checkbox section
-  const card = document.getElementById("agree-card");
-  if (card) {
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
-    card.classList.add("shake");
-    setTimeout(() => card.classList.remove("shake"), 400);
-  }
-  
-  return false;
-}
 
 // Keep buttons active so users can click them to trigger validation & toast
 function onAgreeChange() {
