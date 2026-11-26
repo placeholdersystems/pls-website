@@ -208,30 +208,6 @@
 .agree-info-btn:hover { background: rgba(255,107,53,0.16); border-color: rgba(255,107,53,0.5); }
 
 @media (max-width: 480px) { .agree-btn-row { flex-direction: column; } }
-/* ── TOAST NOTIFICATION ── */
-.toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: #151515;
-  border: 1px solid var(--orange);
-  color: #fff;
-  padding: 14px 20px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  z-index: 10000;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 
 
@@ -570,6 +546,7 @@
   </div><!-- /centered-section-content -->
 </div>
 <div id="site-footer"></div>
+<script src="/toasts.js"> </script>
 <script>
   const base = "https://cdn.jsdelivr.net/gh/placeholdersystems/pls-website-hf@main/";
 
@@ -591,9 +568,61 @@
   document.body.appendChild(s);
 });
 </script>
+<script>/* ── AGREEMENT CHECKBOX GATE & TOAST ── */
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
+function isAgreed() {
+  const box = document.getElementById("agree-checkbox");
+  return !!(box && box.checked);
+}
+
+// Function to trigger the toast notification (uses toasts.js)
+function showToast(message) {
+  Toast.clear(); // avoid stacking duplicates on repeated clicks
+  Toast.warning(message, {
+    title: "Agreement required",
+    primary: "Show me",
+    secondary: "Dismiss",
+    onPrimary: () => scrollToSection("agree-card"),
+    duration: 6000
+  });
+}
+
+function requireAgreement() {
+  if (isAgreed()) return true;
+
+  // 1. Show the warning toast
+  showToast("check the tickbox to affirm your agreement to general requirements");
+
+  // 2. Scroll up to the checkbox section
+  const card = document.getElementById("agree-card");
+  if (card) {
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.classList.add("shake");
+    setTimeout(() => card.classList.remove("shake"), 400);
+  }
+  
+  return false;
+}
+
+// Keep buttons active so users can click them to trigger validation & toast
+function onAgreeChange() {
+  const memBtn = document.getElementById("mem-sendBtn");
+  const stdBtn = document.getElementById("std-submitBtn");
+  if (memBtn) memBtn.disabled = false;
+  if (stdBtn) stdBtn.disabled = false;
+}
+
+// Ensure buttons stay enabled on initial page load
+document.addEventListener("DOMContentLoaded", onAgreeChange);</script>
 
 <script>
+    
+    //TOAST!!!!!!!!!!!!!!!!
+    
 // Set this to your deployed Code.gs Web App /exec URL.
 const API = "https://script.google.com/macros/s/AKfycbwODZAUMzVLRvXNMteW_rSAUjOEo0lQdJ3Xk44xS8syEb8pCdVw4UHxvB4BebxzsYLw/exec";
 
