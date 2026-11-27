@@ -466,6 +466,7 @@ input[type=checkbox], input[type=radio] { accent-color: var(--pink); }
   width:min(800px,calc(100vw - 32px));
   margin:0;padding:0;pointer-events:none;
 }
+
 .ui-toast-stack.ui-toast-inline{position:static;width:auto;pointer-events:auto}
 
 .ui-toast{
