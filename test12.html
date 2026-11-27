@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="/standard.css">
  
 <style>
- /* toasts: bottom-right instead of the default top-right */
-.ui-toast-stack { top: auto; bottom: 24px; right: 24px; }
 
 
 
@@ -242,7 +240,7 @@
       <span class="sh-title">Details</span>
     </div>
 
-    <p class="info-label">general requirements</p>
+    <p class="info-label" id="agree-card">general requirements</p>
     <p class="req-body">Before registering for <strong>Membership</strong> or applying for any <strong>Employee</strong> position, make sure you meet every requirement below.</p>
     <ul class="req-list">
       <li>You must be <strong>at least 13 years of age</strong> to register for membership or hold a position in Placeholder Systems. </li>
@@ -252,7 +250,7 @@
      
       <li> Your application(s) are typically reviewed within <strong> seven business days</strong>. You'll be contacted at the email address you provided.</li>
     </ul>
-    <div class="card card--agree" id="agree-card">
+    <div class="card card--agree" >
   <div class="agree-row">
     <input type="checkbox" id="agree-checkbox" onchange="onAgreeChange()">
     <label for="agree-checkbox">
