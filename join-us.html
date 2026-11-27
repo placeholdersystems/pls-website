@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="/standard.css">
  
 <style>
-
+/* toasts: bottom-right instead of the default top-right */
+.ui-toast-stack { top: auto; bottom: 24px; right: 24px; }
 
 
 /* ── REQUIREMENTS (bumped) ── */
@@ -240,7 +241,7 @@
       <span class="sh-title">Details</span>
     </div>
 
-    <p class="info-label">general requirements</p>
+    <p class="info-label" id="agree-card">general requirements</p>
     <p class="req-body">Before registering for <strong>Membership</strong> or applying for any <strong>Employee</strong> position, make sure you meet every requirement below.</p>
     <ul class="req-list">
       <li>You must be <strong>at least 13 years of age</strong> to register for membership or hold a position in Placeholder Systems. </li>
@@ -250,7 +251,7 @@
      
       <li> Your application(s) are typically reviewed within <strong> seven business days</strong>. You'll be contacted at the email address you provided.</li>
     </ul>
-    <div class="card card--agree" id="agree-card">
+    <div class="card card--agree" >
   <div class="agree-row">
     <input type="checkbox" id="agree-checkbox" onchange="onAgreeChange()">
     <label for="agree-checkbox">
@@ -585,7 +586,7 @@ function showToast(message) {
   Toast.warning(message, {
     title: "Agreement required",
     primary: "Show me",
-    secondary: "Dismiss",
+  
     onPrimary: () => scrollToSection("agree-card"),
     duration: 6000
   });
@@ -597,13 +598,7 @@ function requireAgreement() {
   // 1. Show the warning toast
   showToast("check the tickbox to affirm your agreement to general requirements");
 
-  // 2. Scroll up to the checkbox section
-  const card = document.getElementById("agree-card");
-  if (card) {
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
-    card.classList.add("shake");
-    setTimeout(() => card.classList.remove("shake"), 400);
-  }
+
   
   return false;
 }
@@ -621,7 +616,7 @@ document.addEventListener("DOMContentLoaded", onAgreeChange);</script>
 
 <script>
     
-    //TOAST!!!!!!!!!!!!!!!!
+    
     
 // Set this to your deployed Code.gs Web App /exec URL.
 const API = "https://script.google.com/macros/s/AKfycbwODZAUMzVLRvXNMteW_rSAUjOEo0lQdJ3Xk44xS8syEb8pCdVw4UHxvB4BebxzsYLw/exec";
@@ -716,7 +711,7 @@ function memShow2(msg, ok) { const el = document.getElementById("mem-step2Result
 function stdShowTrack(track) {
   const note = document.getElementById("std-username-note");
   if (track === "A") {
-    note.textContent = "Enter your existing Member username. This identifies your Member account so it can be linked to your new Employee record — your username, email and password will carry over unchanged.";
+    note.textContent = "Enter your existing Member username. This identifies your Member account so it can be linked to your new Employee record, so your username, email and password will carry over unchanged.";
   } else {
     note.textContent = "Choose a username for your new Employee account. If you're already an Employee applying for a different role, enter your current username instead.";
   }
