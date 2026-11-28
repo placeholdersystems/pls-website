@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="/standard.css">
  
 <style>
-/* toasts: bottom-right instead of the default top-right */
-.ui-toast-stack { top: auto; bottom: 24px; right: 24px; }
+
 
 
 /* ── REQUIREMENTS (bumped) ── */
@@ -118,7 +117,7 @@
 .form-toggle-btn:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
 
 .form-panel { display: none; }
-.form-panel.active { display: block; animation: panelIn 0.35s ease both; }
+.form-panel.active { display: block;  }
 @keyframes panelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 480px) {
